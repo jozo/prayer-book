@@ -1,0 +1,13 @@
+{
+  "appId": "io.jozo.prayerbook",
+  "appName": "prayer-book",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
