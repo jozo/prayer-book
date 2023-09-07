@@ -1,0 +1,3 @@
+Contains collections of catholics prayers as you could see in a prayer book.
+Prayers are divided into several categories.
+Currently only in Slovak language, later more will be added.
