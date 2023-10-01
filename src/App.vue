@@ -16,9 +16,11 @@ App.addListener('backButton', (data) => {
 
 <template>
   <header class="bg-sky-400 py-3 mb-3 text-center text-lg">
-    <nav class="overflow-scroll">
+    <nav class="overflow-scroll whitespace-nowrap">
       <RouterLink to="/category/basic" class="mx-2">Základné</RouterLink>
+      <RouterLink to="/category/saints" class="mx-2">K svätým</RouterLink>
       <RouterLink to="/category/rosary" class="mx-2">Ruženec</RouterLink>
+      <RouterLink to="/category/litany" class="mx-2">Litánie</RouterLink>
       <RouterLink to="/about" class="mx-2">O appke</RouterLink>
     </nav>
   </header>

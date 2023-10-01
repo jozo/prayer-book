@@ -10,5 +10,5 @@ const prayer = computed(() => prayers[route.params.id])
 
 <template>
   <h2 class="mb-3 text-2xl text-center">{{ prayer.title }}</h2>
-  <div v-html="prayer.content"></div>
+  <div v-html="prayer.content" class="leading-8"></div>
 </template>
