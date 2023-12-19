@@ -1,0 +1,8 @@
+### Added
+
+- New design
+- Support for translations
+- English prayers and translation
+
+### Changed
+- Upgrade JS packages
