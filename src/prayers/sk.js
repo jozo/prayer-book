@@ -450,4 +450,6 @@ for (let i = 0; i < prayers.length; i++) {
     prayers[i]["id"] = i
 }
 
-export default prayers
+const prayersSk = prayers
+
+export default prayersSk

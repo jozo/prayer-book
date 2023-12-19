@@ -11,9 +11,3 @@ Or download the latest APK from the [Releases Section](https://codeberg.org/jozo
 ## Development
 
 https://codeberg.org/jozo/prayer-book/wiki/Home
-
-
-## TODO
-[ ] Preklad appky
-[ ] Anglicke modlitby
-[ ] View s vysvetlenim napadov na vylepsenie

@@ -39,29 +39,41 @@ function closeMenu() {
     <div class="flex flex-col ml-3.5 text-2xl leading-loose">
       <div class="flex items-center">
         <IconHomeModern />
-        <RouterLink to="/category/basic" @click="closeMenu" class="mx-3">Základné</RouterLink>
+        <RouterLink to="/category/basic" @click="closeMenu" class="mx-3">
+          {{ $t("category.basic") }}
+        </RouterLink>
       </div>
       <div class="flex items-center">
         <IconBolt />
-        <RouterLink to="/category/rosary" @click="closeMenu" class="mx-3">Ruženec</RouterLink>
+        <RouterLink to="/category/rosary" @click="closeMenu" class="mx-3">
+          {{ $t("category.rosary") }}
+        </RouterLink>
       </div>
       <div class="flex items-center">
         <IconListBullet />
-        <RouterLink to="/category/litany" @click="closeMenu" class="mx-3">Litánie</RouterLink>
+        <RouterLink to="/category/litany" @click="closeMenu" class="mx-3">
+          {{ $t("category.litany") }}
+        </RouterLink>
       </div>
       <div class="flex items-center">
         <IconLightBulb />
-        <RouterLink to="/category/saints" @click="closeMenu" class="mx-3">K svätým</RouterLink>
+        <RouterLink to="/category/saints" @click="closeMenu" class="mx-3">
+          {{ $t("category.saints") }}
+        </RouterLink>
       </div>
     </div>
     <div class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
       <div class="flex items-center">
         <IconCog />
-        <RouterLink to="/settings" @click="closeMenu" class="mx-3">Nastavenia</RouterLink>
+        <RouterLink to="/settings" @click="closeMenu" class="mx-3">
+          {{ $t("menu.settings") }}
+        </RouterLink>
       </div>
       <div class="flex items-center">
         <IconChat />
-        <a href="mailto:hi@jozo.io" class="mx-3">Nápad na vylepšenie</a>
+        <a href="mailto:hi@jozo.io" class="mx-3">
+         {{ $t("menu.suggestions") }}
+        </a>
       </div>
     </div>
   </nav>

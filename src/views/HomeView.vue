@@ -1,6 +1,11 @@
 <script setup>
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconGlobe from "@/components/icons/IconGlobe.vue";
+import {ref} from "vue";
+import {useI18n} from "vue-i18n";
+
+const searchText = ref("")
+const { t, locale } = useI18n({ useScope: 'global' })
 </script>
 
 <template>
@@ -9,7 +14,7 @@ import IconGlobe from "@/components/icons/IconGlobe.vue";
              rounded-b-2xl bg-gradient-to-b from-cyan-500 to-blue-500">
     <!--  word-spacing is used to break after every word  -->
     <h1 class="text-5xl text-center text-white font-bold [word-spacing:100vw]">
-      Prayer Book
+      {{ t("prayerBook") }}
     </h1>
   </div>
   <div class="flex flex-col grow mx-5">
@@ -18,7 +23,7 @@ import IconGlobe from "@/components/icons/IconGlobe.vue";
         <input type="text"
                class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
             text-lg text-center placeholder:italic"
-               placeholder="Search..."
+               :placeholder="t('search')"
                v-model="searchText"
                @input="searchText = $event.target.value"
         />
@@ -29,7 +34,8 @@ import IconGlobe from "@/components/icons/IconGlobe.vue";
     <div class="flex flex-col grow justify-center my-4">
       <div class="flex justify-center">
         <IconGlobe class="mt-0.5 mr-1" />
-        <select class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
+        <select v-model="locale"
+            class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
           <option value="en">English</option>
           <option value="sk">Slovenčina</option>
         </select>
