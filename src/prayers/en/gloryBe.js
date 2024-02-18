@@ -1,0 +1,15 @@
+export default [{
+  version: 1,
+  title: "Glory Be",
+  content: `
+Glory be to the Father,
+and to the Son,
+and to the Holy Spirit.
+As it was in the beginning,
+is now,
+and ever shall be,
+world without end.
+<br>
+Amen.
+`
+}]

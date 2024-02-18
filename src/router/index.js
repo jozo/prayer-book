@@ -16,7 +16,7 @@ const router = createRouter({
       component: SettingsView
     },
     {
-      path: '/category/:name',
+      path: '/category/:categoryName',
       name: 'category',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

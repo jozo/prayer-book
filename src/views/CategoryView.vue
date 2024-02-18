@@ -6,18 +6,48 @@ import IconChevronRight from "@/components/icons/IconChevronRight.vue";
 import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
-import allPrayers from "@/prayers/all";
-const { t, locale } = useI18n({ useScope: 'global' })
+import {prayers} from "@/prayers/db";
+import {Categories, Category} from "@/constants";
+
+const {t, locale} = useI18n({useScope: 'global'})
 
 
 const route = useRoute();
 const searchText = ref("")
+const category = computed(() => {
+  switch (route.params.categoryName) {
+    case "basic":
+      return Category.Basic
+    case "rosary":
+      return Category.Rosary
+    case "litany":
+      return Category.Litany
+    case "saints":
+      return Category.Saints
+    default:
+      console.error("Unknown category: " + route.params.categoryName)
+      return Category.Basic
+  }
+})
+
 const prayersInCategory = computed(
-    () => allPrayers[locale.value]
-        .filter((item) => item.category === route.params.name)
-        .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
-        // sort by title by locale/language conventions
-        .sort((a, b) => a.title.localeCompare(b.title, locale.value))
+    () => {
+      let selectedPrayers = []
+      for (const prayerId of Categories[category.value]) {
+        if (prayerId in prayers[locale.value]) {
+          selectedPrayers.push(
+              {prayerId: prayerId, title: prayers[locale.value][prayerId][0].title}
+          )
+        }
+      }
+      if (searchText.value !== "") {
+        selectedPrayers = selectedPrayers
+            .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
+      }
+      // sort by title by locale/language conventions
+      return selectedPrayers
+          .sort((a, b) => a.title.localeCompare(b.title, locale.value))
+    }
 )
 
 function clean(value) {
@@ -35,7 +65,7 @@ watch(
 </script>
 
 <template>
-  <BgWithHeader :title="t(`category.${route.params.name}`)">
+  <BgWithHeader :title="t(`category.${route.params.categoryName}`)">
     <div class="flex flex-col">
       <div class="flex justify-center mb-6 mx-8">
         <div class="relative">
@@ -51,9 +81,9 @@ watch(
       </div>
       <RoundMain>
         <div class="-my-4">
-          <div v-for="prayer in prayersInCategory" :key="prayer.id"
+          <div v-for="prayer in prayersInCategory" :key="prayer.prayerId"
                class="group flex items-center text-xl">
-            <RouterLink :to="{name: 'prayer', params: {id: prayer.id}}"
+            <RouterLink :to="{name: 'prayer', params: {id: prayer.prayerId}}"
                         class="py-5 grow border-b border-gray-300 group-last:border-0">
               {{ prayer.title }}
             </RouterLink>
