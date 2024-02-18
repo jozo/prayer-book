@@ -3,9 +3,14 @@ import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconGlobe from "@/components/icons/IconGlobe.vue";
 import {ref} from "vue";
 import {useI18n} from "vue-i18n";
+import {Preferences} from "@capacitor/preferences";
 
 const searchText = ref("")
-const { t, locale } = useI18n({ useScope: 'global' })
+const {t, locale} = useI18n({useScope: 'global'})
+
+async function changeLanguage(language) {
+  await Preferences.set({key: 'language', value: language})
+}
 </script>
 
 <template>
@@ -27,32 +32,33 @@ const { t, locale } = useI18n({ useScope: 'global' })
                v-model="searchText"
                @input="searchText = $event.target.value"
         />
-        <IconMagnifyingGlass class="absolute top-[11px] left-[8px]" />
+        <IconMagnifyingGlass class="absolute top-[11px] left-[8px]"/>
       </div>
     </div>
 
     <div class="flex flex-col grow justify-center my-4">
       <div class="flex justify-center">
-        <IconGlobe class="mt-0.5 mr-1" />
-        <select v-model="locale"
-            class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
+        <IconGlobe class="mt-0.5 mr-1"/>
+        <select @change="changeLanguage($event.target.value)"
+                v-model="locale"
+                class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
           <option value="en">English</option>
           <option value="sk">Slovenčina</option>
         </select>
       </div>
     </div>
-<!--    <div class="my-4">-->
-<!--      <div class="text-sm mb-1">Continue with:</div>-->
-<!--      <div class="flex flex-row flex-wrap text-sm">-->
-<!--        <a href="#"-->
-<!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
-<!--          Our Father-->
-<!--        </a>-->
-<!--        <a href="#"-->
-<!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
-<!--          Hail, Mary-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div class="my-4">-->
+    <!--      <div class="text-sm mb-1">Continue with:</div>-->
+    <!--      <div class="flex flex-row flex-wrap text-sm">-->
+    <!--        <a href="#"-->
+    <!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
+    <!--          Our Father-->
+    <!--        </a>-->
+    <!--        <a href="#"-->
+    <!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
+    <!--          Hail, Mary-->
+    <!--        </a>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </div>
 </template>
