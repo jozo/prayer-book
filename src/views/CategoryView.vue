@@ -26,20 +26,30 @@ const category = computed(() => {
       return Category.Saints
     default:
       console.error("Unknown category: " + route.params.categoryName)
-      return Category.Basic
+      return Category.All
   }
 })
 
 const prayersInCategory = computed(
     () => {
       let selectedPrayers = []
-      for (const prayerId of Categories[category.value]) {
-        if (prayerId in prayers[locale.value]) {
+
+      if (category.value === Category.All) {
+        for (const [prayerId, prayer] of Object.entries(prayers[locale.value])) {
           selectedPrayers.push(
-              {prayerId: prayerId, title: prayers[locale.value][prayerId][0].title}
+              {prayerId: prayerId, title: prayer[0].title}
           )
         }
+      } else {
+        for (const prayerId of Categories[category.value]) {
+          if (prayerId in prayers[locale.value]) {
+            selectedPrayers.push(
+                {prayerId: prayerId, title: prayers[locale.value][prayerId][0].title}
+            )
+          }
+        }
       }
+
       if (searchText.value !== "") {
         selectedPrayers = selectedPrayers
             .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
@@ -72,6 +82,7 @@ watch(
           <input type="text"
                  class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
                   text-lg text-center placeholder:italic"
+                 autofocus
                  :placeholder="t('search')"
                  v-model="searchText"
                  @input="searchText = $event.target.value"

@@ -8,6 +8,7 @@ export const Lang = Object.freeze({
 
 
 export const Category = Object.freeze({
+  All: Symbol("all"),
   Basic: Symbol("basic"),
   Rosary: Symbol("rosary"),
   Litany: Symbol("litany"),

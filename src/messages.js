@@ -3,6 +3,7 @@ const messages = {
     prayerBook: "Prayer Book",
     search: "Search…",
     category: {
+      all: "All",
       basic: "Basic",
       rosary: "Rosary",
       litany: "Litany",
@@ -18,6 +19,7 @@ const messages = {
     prayerBook: "Modlitebná knižka",
     search: "Hľadať…",
     category: {
+      all: "Všetko",
       basic: "Základné",
       rosary: "Ruženec",
       litany: "Litánie",

@@ -1,15 +1,18 @@
 <script setup>
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconGlobe from "@/components/icons/IconGlobe.vue";
-import {ref} from "vue";
 import {useI18n} from "vue-i18n";
 import {Preferences} from "@capacitor/preferences";
+import router from "@/router";
 
-const searchText = ref("")
 const {t, locale} = useI18n({useScope: 'global'})
 
 async function changeLanguage(language) {
   await Preferences.set({key: 'language', value: language})
+}
+
+function goToSearch() {
+  router.push('category/all/')
 }
 </script>
 
@@ -29,8 +32,7 @@ async function changeLanguage(language) {
                class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
             text-lg text-center placeholder:italic"
                :placeholder="t('search')"
-               v-model="searchText"
-               @input="searchText = $event.target.value"
+               @click="goToSearch()"
         />
         <IconMagnifyingGlass class="absolute top-[11px] left-[8px]"/>
       </div>
