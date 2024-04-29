@@ -1,0 +1,3 @@
+### Added
+- Remember the selected language
+- New EN and SK prayers
