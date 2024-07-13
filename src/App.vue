@@ -33,50 +33,58 @@ function closeMenu() {
     <IconHamburger class="absolute z-30 inset-3.5 text-gray-100" />
   </button>
 
-  <nav v-show="menuVisible"
-       class="absolute flex flex-col justify-between pt-16 min-w-[250px] max-w-[90%] h-full z-20
-              bg-sky-500 text-gray-100">
-    <div class="flex flex-col ml-3.5 text-2xl leading-loose">
-      <div class="flex items-center">
-        <IconHomeModern />
-        <RouterLink to="/category/basic" @click="closeMenu" class="mx-3">
-          {{ $t("category.basic") }}
-        </RouterLink>
+  <nav v-show="menuVisible" class="absolute flex flex-row h-full w-full z-20">
+    <div class="flex flex-col justify-between pt-16 min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100">
+      <div class="flex flex-col ml-3.5 text-2xl leading-loose">
+        <div class="flex -ml-3.5 items-center mb-6">
+          <RouterLink to="/" @click="closeMenu" class="flex grow justify-center mx-3 font-bold">
+              {{ $t("prayerBook") }}
+          </RouterLink>
+        </div>
+
+        <div class="flex items-center">
+          <IconHomeModern />
+          <RouterLink to="/category/basic" @click="closeMenu" class="mx-3">
+            {{ $t("category.basic") }}
+          </RouterLink>
+        </div>
+        <div class="flex items-center">
+          <IconBolt />
+          <RouterLink to="/category/rosary" @click="closeMenu" class="mx-3">
+            {{ $t("category.rosary") }}
+          </RouterLink>
+        </div>
+        <div class="flex items-center">
+          <IconListBullet />
+          <RouterLink to="/category/litany" @click="closeMenu" class="mx-3">
+            {{ $t("category.litany") }}
+          </RouterLink>
+        </div>
+        <div class="flex items-center">
+          <IconLightBulb />
+          <RouterLink to="/category/saints" @click="closeMenu" class="mx-3">
+            {{ $t("category.saints") }}
+          </RouterLink>
+        </div>
       </div>
-      <div class="flex items-center">
-        <IconBolt />
-        <RouterLink to="/category/rosary" @click="closeMenu" class="mx-3">
-          {{ $t("category.rosary") }}
-        </RouterLink>
-      </div>
-      <div class="flex items-center">
-        <IconListBullet />
-        <RouterLink to="/category/litany" @click="closeMenu" class="mx-3">
-          {{ $t("category.litany") }}
-        </RouterLink>
-      </div>
-      <div class="flex items-center">
-        <IconLightBulb />
-        <RouterLink to="/category/saints" @click="closeMenu" class="mx-3">
-          {{ $t("category.saints") }}
-        </RouterLink>
+      <div class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
+        <div class="flex items-center">
+          <IconCog />
+          <RouterLink to="/settings" @click="closeMenu" class="mx-3">
+            {{ $t("menu.settings") }}
+          </RouterLink>
+        </div>
+        <div class="flex items-center">
+          <IconChat />
+          <a href="mailto:hi@jozo.io" class="mx-3">
+            {{ $t("menu.suggestions") }}
+          </a>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
-      <div class="flex items-center">
-        <IconCog />
-        <RouterLink to="/settings" @click="closeMenu" class="mx-3">
-          {{ $t("menu.settings") }}
-        </RouterLink>
-      </div>
-      <div class="flex items-center">
-        <IconChat />
-        <a href="mailto:hi@jozo.io" class="mx-3">
-         {{ $t("menu.suggestions") }}
-        </a>
-      </div>
-    </div>
+    <div @click="menuVisible = !menuVisible" class="grow"></div>
   </nav>
+
 
   <RouterView/>
 </template>
