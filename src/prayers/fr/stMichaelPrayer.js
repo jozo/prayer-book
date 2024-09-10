@@ -1,0 +1,21 @@
+export default [{
+  version: 1,
+  title: "Prière à St. Mickaël/Michel Archange",
+  content: `
+Saint Michel archange,
+défendez-nous dans le combat
+et soyez notre protecteur
+contre la méchanceté
+et les embûches du démon.
+<br>
+Que Dieu lui commande,
+nous vous en supplions,
+et vous, prince de la milice céleste,
+par le pouvoir divin qui vous a été confié,
+précipitez au fond des enfers,
+Satan et les autres esprits mauvais
+qui parcourent le monde pour la perte des âmes.
+<br>
+Amen.
+  `
+}]
