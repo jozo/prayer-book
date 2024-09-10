@@ -30,6 +30,22 @@ const messages = {
       settings: "Nastavenia",
       suggestions: "Návrhy na zlepšenie",
     }
+  },
+  fr: {
+    prayerBook: "Livret de Prières",
+    search: "Rechercher …",
+    category: {
+      all: "Toutes les prières",
+      basic: "Prières de base",
+      rosary: "Rosaire",
+      litany: "Litanies",
+      saints: "Prières aux Saints",
+      others: "Autres",
+    },
+    menu: {
+      settings: "Paramètres",
+      suggestions: "Suggérer une amélioration",
+    }
   }
 }
 
