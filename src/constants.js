@@ -2,6 +2,7 @@
 // https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 export const Lang = Object.freeze({
   English: Symbol("en"),
+  French: Symbol("fr"),
   Slovak: Symbol("sk"),
   Latin: Symbol("la"),
 });
