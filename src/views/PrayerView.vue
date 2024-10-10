@@ -1,22 +1,20 @@
 <script setup>
-import {useRoute} from 'vue-router';
 import {computed} from "vue";
 import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
-import {useI18n} from "vue-i18n";
-import {prayers} from "@/prayers/db";
-const { locale } = useI18n({ useScope: 'global' })
+import {usePrayerDataStore} from "@/stores/prayerDataStore";
 
 
-const route = useRoute();
-const prayerVersions = computed(() => prayers[locale.value][route.params.id])
+const prayerDataStore = usePrayerDataStore()
+const prayer = computed(() => prayerDataStore.currentPrayer)
 </script>
 
 <template>
-    <BgWithHeader :title="prayerVersions[0].title">
+    <BgWithHeader :title="prayer.title">
     <RoundMain>
-      <div v-for="prayerVersion in prayerVersions" :key="prayerVersion.version">
-        <div v-html="prayerVersion.content" class="leading-loose text-left"></div>
+      <div v-for="prayerVersion in prayer.versions" :key="prayerVersion.name">
+        <h3 v-if="prayer.versions.length > 1" class="text-2xl font-bold text-center my-2">{{prayerVersion.name}}</h3>
+        <div v-html="prayerVersion.content" class="leading-loose text-left prayer-text"></div>
       </div>
     </RoundMain>
   </BgWithHeader>

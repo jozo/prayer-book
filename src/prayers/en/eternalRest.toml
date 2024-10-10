@@ -1,0 +1,24 @@
+title = "Eternal Rest Prayer"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+_(For a person)_
+
+Eternal rest grant unto him/her, O Lord,
+and let Your perpetual light shine upon him/her.
+May his/her soul and the souls of all the faithful departed
+rest in peace.
+
+Amen.
+
+_(Collective)_
+
+Eternal rest grant unto them, O Lord,
+and let Your perpetual light shine upon them.
+May their souls and the souls of all the faithful departed
+rest in peace.
+
+Amen.
+"""

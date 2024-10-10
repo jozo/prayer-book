@@ -4,11 +4,14 @@ import IconGlobe from "@/components/icons/IconGlobe.vue";
 import {useI18n} from "vue-i18n";
 import {Preferences} from "@capacitor/preferences";
 import router from "@/router";
+import {usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const {t, locale} = useI18n({useScope: 'global'})
+const prayerDataStore = usePrayerDataStore()
 
 async function changeLanguage(language) {
   await Preferences.set({key: 'language', value: language})
+  prayerDataStore.loadPrayers(language)
 }
 
 function goToSearch() {

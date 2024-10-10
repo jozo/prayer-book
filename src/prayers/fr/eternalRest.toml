@@ -1,0 +1,22 @@
+title = "Prière pour le repos éternel"
+categories = ["basic"]
+
+[[versions]]
+name = "Pour une persnne en particulier"
+content = """
+Accorde-lui le repos éternel, Seigneur,
+Et laisse une lumière perpétuelle l'éclairer.
+Puisse-t-elle/il reposer en paix.
+
+Amen.
+"""
+
+[[versions]]
+name = "Pour un groupe de personnes"
+content = """
+Accorde-leur le repos éternel, Seigneur,
+Et laisse une lumière perpétuelle les éclairer.
+Puissent-ils reposer en paix.
+
+Amen.
+"""

@@ -1,0 +1,17 @@
+title = "Mystères joyeux"
+categories = ["rosary"]
+
+[[versions]]
+name = ""
+content = """
+1. **L'Annonciation à Marie par l'ange Gabriel**
+Fruit du mystère : L'humilité</li>
+2. **La Visitation de Marie à sa cousine Elisabeth**
+Fruit du mystère : La charité fraternelle
+3. **La Nativité de Jésus à Bethléem**
+Fruit du mystère : L'esprit de pauvreté</li>
+4. **La Présentation de Jésus nouveau-né au Temple**
+Fruit du mystère : Pureté et obéissance
+5. **Le Recouvrement de l'enfant Jésus au Temple**
+Fruit du mystère : Ferveur, réponse à l'appel de Dieu.
+"""

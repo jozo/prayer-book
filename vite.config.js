@@ -2,11 +2,16 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { watch } from "vite-plugin-watch"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    watch({
+        pattern: 'src/prayers/**/*.toml',
+        command: "node compilePrayers.js",
+    })
   ],
   resolve: {
     alias: {

@@ -1,64 +1,18 @@
 <script setup>
-import {RouterLink, useRoute} from 'vue-router';
+import {useRoute} from 'vue-router';
 import {computed, ref, watch} from "vue";
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconChevronRight from "@/components/icons/IconChevronRight.vue";
 import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
-import {prayers} from "@/prayers/db";
-import {Categories, Category} from "@/constants";
+import {usePrayerDataStore} from "@/stores/prayerDataStore";
+import router from "@/router";
 
 const {t, locale} = useI18n({useScope: 'global'})
-
-
 const route = useRoute();
 const searchText = ref("")
-const category = computed(() => {
-  switch (route.params.categoryName) {
-    case "basic":
-      return Category.Basic
-    case "rosary":
-      return Category.Rosary
-    case "litany":
-      return Category.Litany
-    case "saints":
-      return Category.Saints
-    default:
-      console.error("Unknown category: " + route.params.categoryName)
-      return Category.All
-  }
-})
-
-const prayersInCategory = computed(
-    () => {
-      let selectedPrayers = []
-
-      if (category.value === Category.All) {
-        for (const [prayerId, prayer] of Object.entries(prayers[locale.value])) {
-          selectedPrayers.push(
-              {prayerId: prayerId, title: prayer[0].title}
-          )
-        }
-      } else {
-        for (const prayerId of Categories[category.value]) {
-          if (prayerId in prayers[locale.value]) {
-            selectedPrayers.push(
-                {prayerId: prayerId, title: prayers[locale.value][prayerId][0].title}
-            )
-          }
-        }
-      }
-
-      if (searchText.value !== "") {
-        selectedPrayers = selectedPrayers
-            .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
-      }
-      // sort by title by locale/language conventions
-      return selectedPrayers
-          .sort((a, b) => a.title.localeCompare(b.title, locale.value))
-    }
-)
+const prayerDataStore = usePrayerDataStore()
 
 function clean(value) {
   return value.normalize("NFD")
@@ -66,12 +20,38 @@ function clean(value) {
       .toLocaleLowerCase(locale.value)
 }
 
-watch(
-    () => route.params.name,
-    async () => {
-      searchText.value = ""
+const prayersInCategory = computed(
+    () => {
+      let selectedPrayers;
+
+      if (route.params.categoryName === "all") {
+        selectedPrayers = {}
+        for (const category in prayerDataStore.prayers) {
+          for (const prayer of prayerDataStore.prayers[category]) {
+            selectedPrayers[prayer.title] = prayer
+          }
+        }
+        selectedPrayers = Object.values(selectedPrayers)
+      } else {
+        selectedPrayers = prayerDataStore.prayers[route.params.categoryName]
+      }
+
+      if (searchText.value !== "") {
+        selectedPrayers = selectedPrayers
+          .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
+      }
+      // sort by title by locale/language conventions
+      return selectedPrayers
+          .sort((a, b) => a.title.localeCompare(b.title, locale.value))
     }
 )
+
+watch(() => route.params.name, async () => { searchText.value = "" })
+
+function navigateToPrayer(prayer) {
+  prayerDataStore.setCurrentPrayer(prayer)
+  router.push({name: 'prayer'})
+}
 </script>
 
 <template>
@@ -92,12 +72,11 @@ watch(
       </div>
       <RoundMain>
         <div class="-my-4">
-          <div v-for="prayer in prayersInCategory" :key="prayer.prayerId"
-               class="group flex items-center text-xl">
-            <RouterLink :to="{name: 'prayer', params: {id: prayer.prayerId}}"
-                        class="py-5 grow border-b border-gray-300 group-last:border-0">
+          <div v-for="prayer in prayersInCategory" class="group flex items-center text-xl">
+            <button @click="navigateToPrayer(prayer)"
+               class="py-5 grow border-b border-gray-300 group-last:border-0 text-left">
               {{ prayer.title }}
-            </RouterLink>
+            </button>
             <IconChevronRight class="ml-6"/>
           </div>
         </div>

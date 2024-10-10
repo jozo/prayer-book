@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import('../views/CategoryView.vue')
     },
     {
-      path: '/prayer/:id',
+      path: '/prayer/',
       name: 'prayer',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

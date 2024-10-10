@@ -1,0 +1,22 @@
+title = "Je te salue Marie (Ave Maria)"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+Je te salue, Marie,
+pleine de grâce,
+le Seigneur est avec toi.
+Tu êtes bénie entre toutes les femmes
+et Jésus,
+le fruit de tes entrailles,
+est béni.
+
+Sainte Marie,
+mère de Dieu,
+prie pour nous,
+pauvres pécheurs,
+maintenant et à l'heure de notre mort.
+
+Amen.
+"""
