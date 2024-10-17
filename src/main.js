@@ -21,7 +21,7 @@ const savedLanguage = await Preferences.get({key: 'language'})
 const i18n = createI18n({
   legacy: false,
   mode: "composition",
-  locale: savedLanguage.value,
+  locale: savedLanguage.value || "en",
   fallbackLocale: 'en',
   messages,
 })
