@@ -1,0 +1,6 @@
+### Added
+- Add ES translation
+
+### Changed
+- Convert prayers to a new toml format. It's easier to read and write for human.
+- Improve README.md to show how to add new prayers and translations.
