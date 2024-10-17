@@ -8,6 +8,10 @@ Mobile app with catholic prayers
 
 Or download the latest APK from the [Releases Section](https://codeberg.org/jozo/prayer-book/releases/latest).
 
+![screenshot](https://codeberg.org/jozo/prayer-book/raw/branch/master/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg)
+![screenshot](https://codeberg.org/jozo/prayer-book/raw/branch/master/fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg)
+![screenshot](https://codeberg.org/jozo/prayer-book/raw/branch/master/fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg)
+
 ## Add prayers
 Create a new file in the `src/prayers/{LANG}` directory with the following format:
 
