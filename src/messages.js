@@ -15,20 +15,20 @@ const messages = {
       suggestions: "Suggestions for improvement",
     }
   },
-  sk: {
-    prayerBook: "Modlitebná knižka",
-    search: "Hľadať…",
+  es: {
+    prayerBook: "Libro de Oraciones",
+    search: "Buscar…",
     category: {
-      all: "Všetko",
-      basic: "Základné",
-      rosary: "Ruženec",
-      litany: "Litánie",
-      saints: "K svätým",
-      others: "Ostatné",
+      all: "Todo",
+      basic: "Básico",
+      rosary: "Rosario",
+      litany: "Letanías",
+      saints: "Santos",
+      others: "Otros",
     },
     menu: {
-      settings: "Nastavenia",
-      suggestions: "Návrhy na zlepšenie",
+      settings: "Ajustes",
+      suggestions: "Sugerencias de mejora",
     }
   },
   fr: {
@@ -45,6 +45,22 @@ const messages = {
     menu: {
       settings: "Paramètres",
       suggestions: "Suggérer une amélioration",
+    }
+  },
+  sk: {
+    prayerBook: "Modlitebná knižka",
+    search: "Hľadať…",
+    category: {
+      all: "Všetko",
+      basic: "Základné",
+      rosary: "Ruženec",
+      litany: "Litánie",
+      saints: "K svätým",
+      others: "Ostatné",
+    },
+    menu: {
+      settings: "Nastavenia",
+      suggestions: "Návrhy na zlepšenie",
     }
   }
 }

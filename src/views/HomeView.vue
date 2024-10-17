@@ -48,8 +48,9 @@ function goToSearch() {
                 v-model="locale"
                 class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
           <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="sk">Slovenčina</option>
+          <option value="fr">French</option>
+          <option value="sk">Slovak</option>
+          <option value="es">Spanish</option>
         </select>
       </div>
     </div>
