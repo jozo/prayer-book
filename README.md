@@ -8,6 +8,32 @@ Mobile app with catholic prayers
 
 Or download the latest APK from the [Releases Section](https://codeberg.org/jozo/prayer-book/releases/latest).
 
-## Development
+## Add prayers
+Create a new file in the `src/prayers/{LANG}` directory with the following format:
 
+```toml
+title = "Prayer Title"
+categories = ["basic"]  # one or more of: basic, rosary, litany, saints
+
+[[versions]]
+name = "Traditional version"
+content = """
+Prayer text in **markdown** format
+"""
+
+[[versions]]
+name = "Modern version"
+content = """
+Prayer text in **markdown** format
+"""
+```
+
+Create a PR and I will add it to the app.
+
+## Translate the app
+New translations are always welcome. You can add a new language by translating strings in the `src/messages.json` file.
+Create a PR and I will add it to the app.
+
+## Development
+Follow the steps in: 
 https://codeberg.org/jozo/prayer-book/wiki/Home
