@@ -1,6 +1,6 @@
 # Prayer Book
 
-Mobile app with catholic prayers
+Mobile app with Catholic prayers.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
@@ -35,7 +35,7 @@ Prayer text in **markdown** format
 Create a PR and I will add it to the app.
 
 ## Translate the app
-New translations are always welcome. You can add a new language by translating strings in the `src/messages.json` file.
+New translations are always welcome. You can add a new language by translating strings in the `src/messages.js` file.
 Create a PR and I will add it to the app.
 
 ## Development
