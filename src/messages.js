@@ -47,6 +47,22 @@ const messages = {
       suggestions: "Suggérer une amélioration",
     }
   },
+  ro: {
+	prayerBook: "Carte de rugăciuni",
+	search: "Căutați...",
+	category: {
+	  all: "Toate rugăciunile",
+      basic: "Rugăciuni de bază",
+      rosary: "Rozarii",
+	  litany: "Litanii",
+	  saints: "Rugăciuni către sfinți",
+	  others: "Altele",
+	},
+	menu: {
+      settings: "Setări",
+	  suggestions: "Sugerați o ameliorare",
+	},
+  },
   sk: {
     prayerBook: "Modlitebná knižka",
     search: "Hľadať…",

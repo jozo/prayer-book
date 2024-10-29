@@ -1,0 +1,20 @@
+title = "Cele 10 porunci"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+<ol class=\"list-decimal list-inside\">
+	<li>Eu sunt Domnul Dumnezeul tău. Să nu ai dumnezei străini înaintea mea, chip cioplit să nu-ți
+	faci ca să te închini lui.</li>
+	<li>Să nu iei numele lui Dumnezeu în deșert.</li>
+	<li>Adu-ți aminte să sfințești ziua Domnului.</li>
+	<li>Cinstește pe tatăl tău și pe mama ta ca să trăiești mult și bine pe pământ.</li>
+	<li>Să nu ucizi.</li>
+	<li>Să nu fii desfrânat.</li>
+	<li>Să nu furi.</li>
+	<li>Să nu mărturisești strâmb împotriva aproapelui tău.</li>
+	<li>Să nu poftești femeia aproapelui tău.</li>
+	<li>Să nu poftești niciun lucru al aproapelui tău.</li>
+</ol>
+"""
