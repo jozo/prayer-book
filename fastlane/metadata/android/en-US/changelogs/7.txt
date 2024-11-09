@@ -1,0 +1,9 @@
+### Added
+- Add RO translation
+
+### Changed
+- Update JS packages
+
+### Fixed
+- Fix FR prayers
+- Fix version number
