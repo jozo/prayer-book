@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Add RO translation
+
+### Changed
+- Update JS packages
+
+### Fixed
+- Fix FR prayers
+- Fix version number
 
 ## [0.4.0] - 2024-09-14
 
