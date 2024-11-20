@@ -1,5 +1,7 @@
 # Prayer Book
 
+[![Chat on Matrix](https://matrix.to/img/matrix-badge.svg)](https://matrix.to/#/#prayer-book:matrix.org)
+
 Mobile app with Catholic prayers.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
