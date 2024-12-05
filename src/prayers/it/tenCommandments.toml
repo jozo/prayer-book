@@ -1,0 +1,17 @@
+title = "I Dieci Comandamenti"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+1. Io sono il Signore, il tuo Dio. Dovrai adorare il Signore, il tuo Dio, e Lui solo servirai.
+2. Non pronuncerai il nome del Signore Dio tuo invano.
+3. Ricordati di santificare lo Sabbath.
+4. Onora tuo padre e tua madre.
+5. Non uccidere.
+6. Non commettere adulterio.
+7. Non rubare.
+8. Non porterai falsa testimonianza contro il tuo prossimo.
+9. Non desidererai la moglie del tuo prossimo.
+10. Non desidererai i beni del tuo prossimo.
+"""
