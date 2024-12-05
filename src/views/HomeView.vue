@@ -49,6 +49,7 @@ function goToSearch() {
                 class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
           <option value="en">English</option>
           <option value="fr">French</option>
+          <option value="it">Italian</option>
           <option value="ro">Romanian</option>
           <option value="sk">Slovak</option>
           <option value="es">Spanish</option>

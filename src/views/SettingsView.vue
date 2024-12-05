@@ -13,7 +13,7 @@ const { t } = useI18n({ useScope: 'global' })
         <p>
           <strong>Prayer Book</strong>
         </p>
-        <p>0.5.0</p>
+        <p>0.6.0</p>
         <p>hi@jozo.io</p>
         <p class="mb-6">
           <a href="https://codeberg.org/jozo/prayer-book" target="_blank"

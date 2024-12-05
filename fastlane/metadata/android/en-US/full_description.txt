@@ -1,3 +1,4 @@
 Contains collections of catholics prayers as you could see in a prayer book.
 Prayers are divided into several categories and you can search in them.
-Prayers are in English and Slovak.
+
+Prayers are in English, French, Italian, Romanian, Slovak and Spanish.
