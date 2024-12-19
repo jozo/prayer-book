@@ -1,0 +1,45 @@
+title = "Salve Regina (Hail Holy Queen)"
+categories = ["basic"]
+
+[[versions]]
+name = "Traditional"
+content = """
+Hail, holy Queen, Mother of Mercy,
+Hail our life, our sweetness and our hope.
+To thee do we cry,
+Poor banished children of Eve;
+To thee do we send up our sighs,
+Mourning and weeping in this valley of tears.
+
+Turn then, most gracious advocate,
+Thine eyes of mercy toward us;
+And after this our exile,
+Show unto us the blessed fruit of thy womb, Jesus.
+O clement, O loving,
+O sweet Virgin Mary.
+
+**V:** Pray for us, O holy Mother of God,
+**R:** that we may be made worthy of the promises of Christ.
+
+Let us pray:
+Almighty, everlasting God, who by the co-operation of the Holy Spirit didst prepare the body and soul of the glorious Virgin-Mother Mary to become a dwelling-place meet for thy Son: grant that as we rejoice in her commemoration; so by her fervent intercession we may be delivered from present evils and from everlasting death. Through the same Christ our Lord. Amen.
+"""
+
+[[versions]]
+name = "Modern"
+content = """
+Hail, holy Queen, mother of mercy,
+Hail our life, our sweetness, and our hope.
+To you we cry, poor banished children of Eve;
+to you we send up our sighs,
+mourning and weeping in this valley of tears.
+
+Turn, then, most gracious advocate,
+your eyes of mercy toward us;
+and after this, our exile,
+show unto us the blessed fruit of your womb, Jesus.
+O clement, O loving, O sweet Virgin Mary.
+
+**V:** Pray for us, O holy Mother of God.
+**R:** That we may be made worthy of the promises of Christ.
+"""
