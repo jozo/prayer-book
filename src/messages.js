@@ -13,6 +13,14 @@ const messages = {
     menu: {
       settings: "Settings",
       suggestions: "Suggestions for improvement",
+    },
+    settings: {
+      theme: {
+        title: "Theme",
+        auto: "Auto",
+        light: "Light",
+        dark: "Dark",
+      },
     }
   },
   es: {
@@ -29,6 +37,14 @@ const messages = {
     menu: {
       settings: "Ajustes",
       suggestions: "Sugerencias de mejora",
+    },
+    settings: {
+      theme: {
+        title: null,
+        auto: null,
+        light: null,
+        dark: null,
+      },
     }
   },
   fr: {
@@ -45,6 +61,14 @@ const messages = {
     menu: {
       settings: "Paramètres",
       suggestions: "Suggérer une amélioration",
+    },
+    settings: {
+      theme: {
+        title: null,
+        auto: null,
+        light: null,
+        dark: null,
+      },
     }
   },
   it: {
@@ -61,23 +85,39 @@ const messages = {
     menu: {
       settings: "Impostazioni",
       suggestions: "Suggerimenti per il miglioramento",
+    },
+    settings: {
+      theme: {
+        title: null,
+        auto: null,
+        light: null,
+        dark: null,
+      },
     }
   },
   ro: {
-	prayerBook: "Carte de rugăciuni",
-	search: "Căutați...",
-	category: {
-	  all: "Toate rugăciunile",
+    prayerBook: "Carte de rugăciuni",
+    search: "Căutați...",
+    category: {
+      all: "Toate rugăciunile",
       basic: "Rugăciuni de bază",
       rosary: "Rozarii",
-	  litany: "Litanii",
-	  saints: "Rugăciuni către sfinți",
-	  others: "Altele",
-	},
-	menu: {
+      litany: "Litanii",
+      saints: "Rugăciuni către sfinți",
+      others: "Altele",
+    },
+    menu: {
       settings: "Setări",
-	  suggestions: "Sugerați o ameliorare",
-	},
+      suggestions: "Sugerați o ameliorare",
+    },
+    settings: {
+      theme: {
+        title: null,
+        auto: null,
+        light: null,
+        dark: null,
+      },
+    }
   },
   sk: {
     prayerBook: "Modlitebná knižka",
@@ -93,6 +133,14 @@ const messages = {
     menu: {
       settings: "Nastavenia",
       suggestions: "Návrhy na zlepšenie",
+    },
+    settings: {
+      theme: {
+        title: "Téma",
+        auto: "Automatická",
+        light: "Svetlá",
+        dark: "Tmavá",
+      },
     }
   }
 }

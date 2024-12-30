@@ -22,9 +22,11 @@ function goToSearch() {
 <template>
   <div
       class="flex flex-col justify-center content-center min-h-[40vh] py-5 mb-16
-             rounded-b-2xl bg-gradient-to-b from-cyan-500 to-blue-500">
+             rounded-b-2xl bg-gradient-to-b from-cyan-500 to-blue-500
+             dark:from-cyan-800 dark:to-blue-800">
     <!--  word-spacing is used to break after every word  -->
-    <h1 class="text-5xl text-center text-white font-bold [word-spacing:100vw]">
+    <h1 class="text-5xl text-center text-white font-bold [word-spacing:100vw]
+               dark:text-gray-300">
       {{ t("prayerBook") }}
     </h1>
   </div>
@@ -33,7 +35,7 @@ function goToSearch() {
       <div class="relative">
         <input type="text"
                class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
-                      text-lg text-center placeholder:italic"
+                      text-lg text-center placeholder:italic dark:bg-neutral-500 dark:text-gray-300"
                :placeholder="t('search')"
                @click="goToSearch()"
         />
