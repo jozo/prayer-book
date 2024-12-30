@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2024-12-30
+
+### Added
+- Add Salve Regina prayer
+- Add dark mode
+
 ## [0.6.0] - 2024-12-05
 
 ### Added

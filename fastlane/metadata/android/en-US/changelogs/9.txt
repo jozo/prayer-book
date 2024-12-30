@@ -1,0 +1,3 @@
+### Added
+- Add Salve Regina prayer
+- Add dark mode
