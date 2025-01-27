@@ -67,6 +67,12 @@ function closeMenu() {
             {{ $t("category.saints") }}
           </RouterLink>
         </div>
+        <div class="flex items-center">
+          <IconLightBulb />
+          <RouterLink to="/category/other" @click="closeMenu" class="mx-3">
+            {{ $t("category.other") }}
+          </RouterLink>
+        </div>
       </div>
       <div class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
         <div class="flex items-center">

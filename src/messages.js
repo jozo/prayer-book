@@ -8,7 +8,7 @@ const messages = {
       rosary: "Rosary",
       litany: "Litany",
       saints: "Saints",
-      others: "Others",
+      other: "Others",
     },
     menu: {
       settings: "Settings",
@@ -32,7 +32,7 @@ const messages = {
       rosary: "Rosario",
       litany: "Letanías",
       saints: "Santos",
-      others: "Otros",
+      other: "Otros",
     },
     menu: {
       settings: "Ajustes",
@@ -56,7 +56,7 @@ const messages = {
       rosary: "Rosaire",
       litany: "Litanies",
       saints: "Prières aux Saints",
-      others: "Autres",
+      other: "Autres",
     },
     menu: {
       settings: "Paramètres",
@@ -80,7 +80,7 @@ const messages = {
       rosary: "Rosario",
       litany: "Litanies",
       saints: "Preghiere ai santi",
-      others: "Altre",
+      other: "Altre",
     },
     menu: {
       settings: "Impostazioni",
@@ -104,7 +104,7 @@ const messages = {
       rosary: "Rozarii",
       litany: "Litanii",
       saints: "Rugăciuni către sfinți",
-      others: "Altele",
+      other: "Altele",
     },
     menu: {
       settings: "Setări",
@@ -128,7 +128,7 @@ const messages = {
       rosary: "Ruženec",
       litany: "Litánie",
       saints: "K svätým",
-      others: "Ostatné",
+      other: "Ostatné",
     },
     menu: {
       settings: "Nastavenia",
