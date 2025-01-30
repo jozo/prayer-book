@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add prayers from br. Fritz Mascarenhas
+- Add prayers from st. Thomas Aquinas
+- Add "other" category
 
 ## [0.7.0] - 2024-12-30
 

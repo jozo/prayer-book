@@ -9,6 +9,7 @@ import IconListBullet from "@/components/icons/IconListBullet.vue";
 import IconLightBulb from "@/components/icons/IconLightBulb.vue";
 import IconCog from "@/components/icons/IconCog.vue";
 import IconChat from "@/components/icons/IconChat.vue";
+import IconCloud from "@/components/icons/IconCloud.vue";
 
 // https://ionic.io/blog/take-control-of-your-capacitor-app-state
 App.addListener('backButton', (data) => {
@@ -62,7 +63,7 @@ function closeMenu() {
           </RouterLink>
         </div>
         <div class="flex items-center">
-          <IconLightBulb />
+          <IconCloud />
           <RouterLink to="/category/saints" @click="closeMenu" class="mx-3">
             {{ $t("category.saints") }}
           </RouterLink>

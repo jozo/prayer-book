@@ -43,3 +43,6 @@ Create a PR and I will add it to the app.
 ## Development
 Follow the steps in: 
 https://codeberg.org/jozo/prayer-book/wiki/Home
+
+## Icons
+https://heroicons.com

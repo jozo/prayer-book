@@ -127,7 +127,7 @@ const messages = {
       basic: "Základné",
       rosary: "Ruženec",
       litany: "Litánie",
-      saints: "K svätým",
+      saints: "Svätí",
       other: "Ostatné",
     },
     menu: {
