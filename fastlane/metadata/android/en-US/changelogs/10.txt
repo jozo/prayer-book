@@ -1,0 +1,4 @@
+### Added
+- Add prayers from br. Fritz Mascarenhas
+- Add prayers from st. Thomas Aquinas
+- Add "other" category
