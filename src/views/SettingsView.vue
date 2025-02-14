@@ -61,7 +61,7 @@ async function changeLanguage(language) {
         <p>
           <strong>Prayer Book</strong>
         </p>
-        <p>0.7.1</p>
+        <p>0.8.0</p>
         <p>hi@jozo.io</p>
         <p class="mb-6">
           <a href="https://codeberg.org/jozo/prayer-book" target="_blank"

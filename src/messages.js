@@ -218,7 +218,7 @@ const messages = {
       edit: "Upraviť",
       delete: "Vymazať",
       confirmDelete: "Naozaj chcete vymazať túto modlitbu?",
-      notFound: null,
+      notFound: "Modlitby sa nenašli…",
     }
   }
 }

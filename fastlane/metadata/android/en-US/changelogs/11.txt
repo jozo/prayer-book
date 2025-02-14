@@ -1,0 +1,5 @@
+### Added
+- Add possibility to add custom prayers
+
+### Removed
+- Remove prayers from br. Fritz Mascarenhas
