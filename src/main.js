@@ -31,6 +31,6 @@ app.use(router)
 app.use(i18n)
 
 const prayerDataStore = usePrayerDataStore()
-prayerDataStore.loadPrayers(savedLanguage.value || 'en')
+await prayerDataStore.loadPrayers(savedLanguage.value || 'en')
 
 app.mount('#app')

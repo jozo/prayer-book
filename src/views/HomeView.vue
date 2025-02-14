@@ -5,13 +5,14 @@ import {useI18n} from "vue-i18n";
 import {Preferences} from "@capacitor/preferences";
 import router from "@/router";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
+import {Lang} from "@/constants";
 
 const {t, locale} = useI18n({useScope: 'global'})
 const prayerDataStore = usePrayerDataStore()
 
 async function changeLanguage(language) {
   await Preferences.set({key: 'language', value: language})
-  prayerDataStore.loadPrayers(language)
+  await prayerDataStore.loadPrayers(language)
 }
 
 function goToSearch() {
@@ -49,12 +50,10 @@ function goToSearch() {
         <select @change="changeLanguage($event.target.value)"
                 v-model="locale"
                 class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
-          <option value="en">English</option>
-          <option value="fr">French</option>
-          <option value="it">Italian</option>
-          <option value="ro">Romanian</option>
-          <option value="sk">Slovak</option>
-          <option value="es">Spanish</option>
+          <option v-for="[langName, langKey] in Object.entries(Lang)" :key="langKey.description"
+                  :value="langKey.description">
+            {{ langName }}
+          </option>
         </select>
       </div>
     </div>

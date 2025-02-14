@@ -33,7 +33,7 @@ const prayersInCategory = computed(
         }
         selectedPrayers = Object.values(selectedPrayers)
       } else {
-        selectedPrayers = prayerDataStore.prayers[route.params.categoryName]
+        selectedPrayers = prayerDataStore.prayers[route.params.categoryName] || []
       }
 
       if (searchText.value !== "") {
@@ -50,14 +50,14 @@ watch(() => route.params.name, async () => { searchText.value = "" })
 
 function navigateToPrayer(prayer) {
   prayerDataStore.setCurrentPrayer(prayer)
-  router.push({name: 'prayer'})
+  router.push({name: 'view-prayer'})
 }
 </script>
 
 <template>
   <BgWithHeader :title="t(`category.${route.params.categoryName}`)">
     <div class="flex flex-col">
-      <div class="flex justify-center mb-6 mx-8">
+      <div class="flex justify-center content-center mb-6 mx-8">
         <div class="relative">
           <input type="text"
                  class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
@@ -71,13 +71,25 @@ function navigateToPrayer(prayer) {
         </div>
       </div>
       <RoundMain>
-        <div class="-my-4">
-          <div v-for="prayer in prayersInCategory" class="group flex items-center text-xl">
-            <button @click="navigateToPrayer(prayer)"
-               class="py-5 grow border-b border-gray-300 group-last:border-0 text-left">
-              {{ prayer.title }}
-            </button>
-            <IconChevronRight class="ml-6"/>
+        <div class="-my-4 flex flex-col">
+          <button
+              v-if="route.params.categoryName === 'custom'"
+              class="flex justify-center mt-4 py-2 px-12 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-xl text-white"
+              @click.prevent="router.push({name: 'add-prayer'})">
+            {{ t('prayer.addPageTitle') }}
+          </button>
+
+          <div v-if="prayersInCategory.length === 0" class="text-center text-xl py-5 italic">
+            {{ t('prayer.notFound') }}
+          </div>
+          <div v-else>
+            <div v-for="prayer in prayersInCategory" :key="prayer.title" class="group flex items-center text-xl">
+              <button @click="navigateToPrayer(prayer)"
+                      class="py-5 grow border-b border-gray-300 group-last:border-0 text-left">
+                {{ prayer.title }}
+              </button>
+              <IconChevronRight class="ml-6"/>
+            </div>
           </div>
         </div>
       </RoundMain>

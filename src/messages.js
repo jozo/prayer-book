@@ -9,6 +9,7 @@ const messages = {
       litany: "Litany",
       saints: "Saints",
       other: "Others",
+      custom: "Custom",
     },
     menu: {
       settings: "Settings",
@@ -21,6 +22,18 @@ const messages = {
         light: "Light",
         dark: "Dark",
       },
+      language: "Language",
+    },
+    prayer: {
+      addPageTitle: "Add prayer",
+      editPageTitle: "Edit prayer",
+      title: "Title",
+      text: "Text of the prayer (use Markdown for formatting)",
+      save: "Save",
+      edit: "Edit",
+      delete: "Delete",
+      confirmDelete: "Are you sure you want to delete this prayer?",
+      notFound: "Prayers not found…",
     }
   },
   es: {
@@ -33,6 +46,7 @@ const messages = {
       litany: "Letanías",
       saints: "Santos",
       other: "Otros",
+      custom: null,
     },
     menu: {
       settings: "Ajustes",
@@ -45,6 +59,18 @@ const messages = {
         light: null,
         dark: null,
       },
+      language: null,
+    },
+    prayer: {
+      addPageTitle: null,
+      editPageTitle: null,
+      title: null,
+      text: null,
+      save: null,
+      edit: null,
+      delete: null,
+      confirmDelete: null,
+      notFound: null,
     }
   },
   fr: {
@@ -57,6 +83,7 @@ const messages = {
       litany: "Litanies",
       saints: "Prières aux Saints",
       other: "Autres",
+      custom: null,
     },
     menu: {
       settings: "Paramètres",
@@ -69,6 +96,18 @@ const messages = {
         light: null,
         dark: null,
       },
+      language: null,
+    },
+    prayer: {
+      addPageTitle: null,
+      editPageTitle: null,
+      title: null,
+      text: null,
+      save: null,
+      edit: null,
+      delete: null,
+      confirmDelete: null,
+      notFound: null,
     }
   },
   it: {
@@ -81,6 +120,7 @@ const messages = {
       litany: "Litanies",
       saints: "Preghiere ai santi",
       other: "Altre",
+      custom: null,
     },
     menu: {
       settings: "Impostazioni",
@@ -93,6 +133,18 @@ const messages = {
         light: null,
         dark: null,
       },
+      language: null,
+    },
+    prayer: {
+      addPageTitle: null,
+      editPageTitle: null,
+      title: null,
+      text: null,
+      save: null,
+      edit: null,
+      delete: null,
+      confirmDelete: null,
+      notFound: null,
     }
   },
   ro: {
@@ -105,6 +157,7 @@ const messages = {
       litany: "Litanii",
       saints: "Rugăciuni către sfinți",
       other: "Altele",
+      custom: null,
     },
     menu: {
       settings: "Setări",
@@ -117,6 +170,18 @@ const messages = {
         light: null,
         dark: null,
       },
+      language: null,
+    },
+    prayer: {
+      addPageTitle: null,
+      editPageTitle: null,
+      title: null,
+      text: null,
+      save: null,
+      edit: null,
+      delete: null,
+      confirmDelete: null,
+      notFound: null,
     }
   },
   sk: {
@@ -129,6 +194,7 @@ const messages = {
       litany: "Litánie",
       saints: "Svätí",
       other: "Ostatné",
+      custom: "Vlastné",
     },
     menu: {
       settings: "Nastavenia",
@@ -141,6 +207,18 @@ const messages = {
         light: "Svetlá",
         dark: "Tmavá",
       },
+      language: "Jazyk",
+    },
+    prayer: {
+      addPageTitle: "Pridať modlitbu",
+      editPageTitle: "Upraviť modlitbu",
+      title: "Názov",
+      text: "Text modlitby (použite Markdown na formátovanie)",
+      save: "Uložiť",
+      edit: "Upraviť",
+      delete: "Vymazať",
+      confirmDelete: "Naozaj chcete vymazať túto modlitbu?",
+      notFound: null,
     }
   }
 }
