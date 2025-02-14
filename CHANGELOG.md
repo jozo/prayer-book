@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add possibility to add custom prayers
 
+### Removed
+- Remove prayers from br. Fritz Mascarenhas
+
+
 ## [0.7.1] - 2025-01-31
 
 ### Added
