@@ -1,0 +1,14 @@
+title = "Eternal Rest Prayer"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+**V:** Requiem æternam dona ei (eis), Domine
+
+**R:** Et lux perpetua luceat ei (eis):
+
+**V:** Requiescat (-ant) in pace.
+
+**R:** Amen.
+"""

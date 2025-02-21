@@ -1,0 +1,12 @@
+title = "Glorious Mysteries"
+categories = ["rosary"]
+
+[[versions]]
+name = ""
+content = """
+1. **Resurrectio**
+2. **Ascensio**
+3. **Descensus Spiritus Sancti**
+4. **Assumptio**
+5. **Coronatio**
+"""

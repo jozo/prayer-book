@@ -4,10 +4,10 @@ export const Lang = Object.freeze({
   English: Symbol("en"),
   French: Symbol("fr"),
   Italian: Symbol("it"),
+  Latin: Symbol("la"),
   Romanian: Symbol("ro"),
   Slovak: Symbol("sk"),
   Spanish: Symbol("es"),
-  // Latin: Symbol("la"),
 });
 
 

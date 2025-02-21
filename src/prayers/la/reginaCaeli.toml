@@ -1,0 +1,28 @@
+title = "Regina Caeli"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+**V:** Regina caeli, laetare, alleluia.
+
+**R:** Quia quem meruisti portare, alleluia.
+
+**V:** Resurrexit, sicut dixit, alleluia.
+
+**R:** Ora pro nobis Deum, alleluia.
+
+**V:** Gaude et laetare, Virgo Maria, alleluia.
+
+**R:** Quia surrexit Dominus vere, alleluia.
+
+Oremus.
+
+Deus, qui per resurrectionem Filii tui,
+Domini nostri Iesu Christi, mundum laetificare dignatus es:
+praesta, quaesumus; ut per eius Genetricem Virginem Mariam,
+perpetuae capiamus gaudia vitae.
+Per eundem Christum Dominum nostrum.
+
+Amen.
+"""

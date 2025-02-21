@@ -1,0 +1,12 @@
+title = "Mysteria Gaudiosi"
+categories = ["rosary"]
+
+[[versions]]
+name = ""
+content = """
+1. **Annuntiatio**
+2. **Visitatio**
+3. **Nativitas**
+4. **Presentatio**
+5. **Inventio in Templo**
+"""
