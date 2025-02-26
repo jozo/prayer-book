@@ -2,7 +2,7 @@ title = "Ave Maria"
 categories = ["basic"]
 
 [[versions]]
-name = ""
+name = "Traditum"
 content = """
 Ave Maria, gratia plena, Dominus tecum.
 Benedicta tu in mulieribus,
@@ -10,6 +10,20 @@ et benedictus fructus ventris tui, Iesus.
 
 Sancta Maria, Mater Dei,
 ora pro nobis peccatoribus,
+nunc, et in hora mortis nostrae.
+
+Amen.
+"""
+
+[[versions]]
+name = "Dominae Nostrae Dolorum"
+content = """
+Ave Maria, doloribus plena, Crucifixus tecum.
+Lacrymabilis te in mulieribus,
+et lacrymabilis fructus ventris tui, Iesus.
+
+Sancta Maria, Mater Crucifixi,
+lacrymas impertire nobis crucifixoribus Filii tui,
 nunc, et in hora mortis nostrae.
 
 Amen.
