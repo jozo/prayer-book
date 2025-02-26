@@ -1,4 +1,12 @@
 Zbierka katolíckych modlitieb ako by ste ich našli v modlitebnej knižke.
 Modlitby sú rozdelené do niekoľkých kategórií a môžete v nich vyhľadávať.
+Je možné pridať svoje vlastné modlitby.
 
-Aktuálne v anglickom, francúzskom, talianskom rumunskom, slovenskom a španielskom jazyku.
+Aktuálne v jazykoch:
+- anglický,
+- francúzsky,
+- latinský,
+- taliansky,
+- rumunský,
+- slovenský,
+- španielsky.

@@ -1,0 +1,7 @@
+### Added
+- Add LA translation
+- Add more EN prayers
+- Add more IT prayers
+
+### Changed
+- Update IT translation
