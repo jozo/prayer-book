@@ -25,13 +25,29 @@ App.addListener('backButton', (data) => {
 
 const menuVisible = ref(false);
 
+function toggleMenu() {
+  if (menuVisible.value) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
+
+function openMenu() {
+  menuVisible.value = true;
+  const body = document.querySelector('body');
+  body.style.overflow = 'hidden';
+}
+
 function closeMenu() {
   menuVisible.value = false;
+  const body = document.querySelector('body');
+  body.style.overflow = 'auto';
 }
 </script>
 
 <template>
-  <button @click="menuVisible = !menuVisible">
+  <button @click="toggleMenu">
     <IconHamburger class="absolute z-30 inset-3.5 text-gray-100" />
   </button>
 
@@ -97,7 +113,7 @@ function closeMenu() {
         </div>
       </div>
     </div>
-    <div @click="menuVisible = !menuVisible" class="grow"></div>
+    <div @click="closeMenu" class="grow"></div>
   </nav>
 
   <RouterView/>
