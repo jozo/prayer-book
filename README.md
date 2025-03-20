@@ -4,9 +4,12 @@
 
 Mobile app with Catholic prayers.
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+[<img src="https://i.imgur.com/mBHhDMo.png"
      alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/io.jozo.prayerbook/)
+     height="50">](https://f-droid.org/packages/io.jozo.prayerbook/)
+[<img src="https://i.imgur.com/6otF5jh.png"
+     alt="Get it on Google Play"
+     height="50">](https://play.google.com/store/apps/details?id=io.jozo.prayerbook)
 
 Or download the latest APK from the [Releases Section](https://codeberg.org/jozo/prayer-book/releases/latest).
 
