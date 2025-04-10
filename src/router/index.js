@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import('../views/CategoryView.vue')
     },
     {
-      path: '/prayer/view/',
+      path: '/prayer/view/:lang/:prayerId',
       name: 'view-prayer',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -37,7 +37,7 @@ const router = createRouter({
       component: () => import('../views/AddPrayerView.vue')
     },
     {
-      path: '/prayer/edit/',
+      path: '/prayer/edit/:prayerId',
       name: 'edit-prayer',
       component: () => import('../views/EditPrayerView.vue')
     }

@@ -4,10 +4,8 @@ import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
 import {Lang} from "@/constants";
 import {Preferences} from "@capacitor/preferences";
-import {usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const { t, locale } = useI18n({ useScope: 'global' })
-const prayerDataStore = usePrayerDataStore()
 
 function changeTheme(theme) {
   localStorage.setItem('theme', theme)
@@ -29,7 +27,6 @@ function changeTheme(theme) {
 
 async function changeLanguage(language) {
   await Preferences.set({key: 'language', value: language})
-  await prayerDataStore.loadPrayers(language)
 }
 </script>
 

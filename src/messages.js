@@ -10,6 +10,7 @@ const messages = {
       saints: "Saints",
       other: "Others",
       custom: "Custom",
+      bookmarks: "Bookmarks",
     },
     menu: {
       settings: "Settings",
@@ -34,6 +35,8 @@ const messages = {
       delete: "Delete",
       confirmDelete: "Are you sure you want to delete this prayer?",
       notFound: "Prayers not found…",
+      bookmark: "Bookmark",
+      unbookmark: "Unbookmark",
     }
   },
   es: {
@@ -47,6 +50,7 @@ const messages = {
       saints: "Santos",
       other: "Otros",
       custom: null,
+      bookmarks: null,
     },
     menu: {
       settings: "Ajustes",
@@ -71,6 +75,8 @@ const messages = {
       delete: null,
       confirmDelete: null,
       notFound: null,
+      bookmark: null,
+      unbookmark: null,
     }
   },
   fr: {
@@ -84,6 +90,7 @@ const messages = {
       saints: "Prières aux Saints",
       other: "Autres",
       custom: null,
+      bookmarks: null,
     },
     menu: {
       settings: "Paramètres",
@@ -108,6 +115,8 @@ const messages = {
       delete: null,
       confirmDelete: null,
       notFound: null,
+      bookmark: null,
+      unbookmark: null,
     }
   },
   it: {
@@ -121,6 +130,7 @@ const messages = {
       saints: "Preghiere ai santi",
       other: "Altre",
       custom: "Personalizzate",
+      bookmarks: null,
     },
     menu: {
       settings: "Impostazioni",
@@ -145,6 +155,8 @@ const messages = {
       delete: "Elimina",
       confirmDelete: "Sei sicuro di voler eliminare questa preghiera?",
       notFound: "Preghiere non trovate...",
+      bookmark: null,
+      unbookmark: null,
     }
   },
   ro: {
@@ -158,6 +170,7 @@ const messages = {
       saints: "Rugăciuni către sfinți",
       other: "Altele",
       custom: null,
+      bookmarks: null,
     },
     menu: {
       settings: "Setări",
@@ -182,6 +195,8 @@ const messages = {
       delete: null,
       confirmDelete: null,
       notFound: null,
+      bookmark: null,
+      unbookmark: null,
     }
   },
   sk: {
@@ -195,6 +210,7 @@ const messages = {
       saints: "Svätí",
       other: "Ostatné",
       custom: "Vlastné",
+      bookmarks: "Obľúbené",
     },
     menu: {
       settings: "Nastavenia",
@@ -219,6 +235,8 @@ const messages = {
       delete: "Vymazať",
       confirmDelete: "Naozaj chcete vymazať túto modlitbu?",
       notFound: "Modlitby sa nenašli…",
+      bookmark: "Pridať do obľúbených",
+      unbookmark: "Odstrániť z obľúbených",
     }
   }
 }

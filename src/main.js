@@ -12,7 +12,6 @@ import App from './App.vue'
 import router from './router'
 import messages from "@/messages";
 import {Preferences} from "@capacitor/preferences";
-import {usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const app = createApp(App)
 
@@ -29,8 +28,5 @@ const i18n = createI18n({
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
-
-const prayerDataStore = usePrayerDataStore()
-await prayerDataStore.loadPrayers(savedLanguage.value || 'en')
 
 app.mount('#app')

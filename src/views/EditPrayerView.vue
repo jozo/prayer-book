@@ -1,14 +1,25 @@
 <script setup>
 import {useI18n} from "vue-i18n";
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
+import {useRoute} from "vue-router";
+import {isEmpty} from "@/utils";
 
 const {t} = useI18n({useScope: 'global'})
+const route = useRoute();
 const prayerDataStore = usePrayerDataStore()
-const prayer = computed(() => prayerDataStore.currentPrayer)
-const prayerTitle = ref(prayer.value.title)
-const prayerText = ref(prayer.value.versions[0].content)
+const prayer = computed(() => prayerDataStore.allPrayers.custom?.[route.params.prayerId])
+const prayerTitle = ref()
+const prayerText = ref()
+
+onMounted(async () => {
+  if (isEmpty(prayerDataStore.allPrayers.custom)) {
+    await prayerDataStore.loadCustomPrayers()
+  }
+  prayerTitle.value = prayer.value.title
+  prayerText.value = prayer.value.versions[0].content
+})
 
 function isSaveDisabled() {
   return !prayerTitle.value || !prayerText.value
@@ -18,9 +29,7 @@ async function savePrayer() {
   prayer.value.title = prayerTitle.value
   prayer.value.versions[0].content = prayerText.value
   await prayerDataStore.saveCustomPrayers()
-
-  prayerDataStore.setCurrentPrayer(prayer.value)
-  await router.push({name: 'view-prayer'})
+  await router.push({name: 'view-prayer', params: {prayerId: prayer.value.id, lang: 'custom'}})
 }
 </script>
 

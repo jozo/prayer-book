@@ -11,6 +11,7 @@ import IconCog from "@/components/icons/IconCog.vue";
 import IconChat from "@/components/icons/IconChat.vue";
 import IconCloud from "@/components/icons/IconCloud.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
+import IconBookmark from "@/components/icons/IconBookmark.vue";
 
 // https://ionic.io/blog/take-control-of-your-capacitor-app-state
 App.addListener('backButton', (data) => {
@@ -95,6 +96,12 @@ function closeMenu() {
           <IconPencil />
           <RouterLink to="/category/custom" @click="closeMenu" class="mx-3">
             {{ $t("category.custom") }}
+          </RouterLink>
+        </div>
+        <div class="flex items-center">
+          <IconBookmark />
+          <RouterLink to="/category/bookmarks" @click="closeMenu" class="mx-3">
+            {{ $t("category.bookmarks") }}
           </RouterLink>
         </div>
       </div>

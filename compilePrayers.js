@@ -99,6 +99,7 @@ async function convertTomlFiles(inputDir, outputDir) {
               // Replace the original prayer_versions with converted prayer_versions
               prayersInLanguage.push({
                 ...parsed,
+                id: fileDirent.name.replace('.toml', ''),
                 versions: convertedVersions
               });
             } catch (err) {
@@ -115,15 +116,22 @@ async function convertTomlFiles(inputDir, outputDir) {
             if (!categories[category]) {
               categories[category] = [];
             }
-            categories[category].push(prayer);
+            categories[category].push({id: prayer.id, title: prayer.title});
           });
+        }
+
+        // Create object with ID as key and prayer as value
+        const prayersById = {};
+        for (const prayer of prayersInLanguage) {
+          prayersById[prayer.id] = prayer;
         }
 
         // Save the converted data to a JSON file if there is any valid data
         if (Object.keys(prayersInLanguage).length > 0) {
           const outputFilePath = path.join(outputDir, `${lang}.json`);
           try {
-            await fs.writeFile(outputFilePath, JSON.stringify(categories), 'utf-8');
+            const finalData = {prayers: prayersById, categories: categories};
+            await fs.writeFile(outputFilePath, JSON.stringify(finalData), 'utf-8');
             console.log(`Successfully saved: ${outputFilePath}`);
           } catch (err) {
             console.error(`Error saving file ${outputFilePath}:`, err.message);

@@ -1,6 +1,6 @@
 <script setup>
 import {useRoute} from 'vue-router';
-import {computed, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconChevronRight from "@/components/icons/IconChevronRight.vue";
 import BgWithHeader from "@/components/BgWithHeader.vue";
@@ -10,9 +10,45 @@ import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
 
 const {t, locale} = useI18n({useScope: 'global'})
+const lang = locale.value
 const route = useRoute();
-const searchText = ref("")
 const prayerDataStore = usePrayerDataStore()
+
+const allPrayers = ref({})
+const searchText = ref("")
+
+const categoryName = computed(() => route.params.categoryName)
+
+const prayersInCategory = computed(() => {
+  let prayers = []
+
+  if (!allPrayers.value[lang]) {
+    return prayers
+  }
+
+  if (categoryName.value === "all") {
+    prayers = getPrayersFromAllCategories()
+  } else if (categoryName.value === "bookmarks") {
+    prayers = getBookmarkedPrayers()
+  } else if (categoryName.value === "custom") {
+    prayers = getCustomPrayers()
+  } else {
+    if (allPrayers.value[lang]?.categories?.[categoryName.value]) {
+      prayers = allPrayers.value[lang].categories[categoryName.value]
+    }
+  }
+
+  if (searchText.value !== "") {
+    prayers = prayers.filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
+  }
+  // sort by title by locale/language conventions
+  return prayers.sort((a, b) => a.title.localeCompare(b.title, locale.value))
+})
+
+onMounted(async () => {
+  await prayerDataStore.loadPrayers(locale.value)
+  allPrayers.value = prayerDataStore.allPrayers
+})
 
 function clean(value) {
   return value.normalize("NFD")
@@ -20,42 +56,53 @@ function clean(value) {
       .toLocaleLowerCase(locale.value)
 }
 
-const prayersInCategory = computed(
-    () => {
-      let selectedPrayers;
-
-      if (route.params.categoryName === "all") {
-        selectedPrayers = {}
-        for (const category in prayerDataStore.prayers) {
-          for (const prayer of prayerDataStore.prayers[category]) {
-            selectedPrayers[prayer.title] = prayer
-          }
-        }
-        selectedPrayers = Object.values(selectedPrayers)
-      } else {
-        selectedPrayers = prayerDataStore.prayers[route.params.categoryName] || []
-      }
-
-      if (searchText.value !== "") {
-        selectedPrayers = selectedPrayers
-          .filter((item) => (clean(item.title).indexOf(clean(searchText.value)) >= 0))
-      }
-      // sort by title by locale/language conventions
-      return selectedPrayers
-          .sort((a, b) => a.title.localeCompare(b.title, locale.value))
+function getPrayersFromAllCategories() {
+  const prayers = {}
+  for (const category in allPrayers.value[lang].categories) {
+    for (const prayer of allPrayers.value[lang].categories[category]) {
+      prayers[prayer.title] = prayer
     }
-)
+  }
+  for (const prayerId in allPrayers.value.custom) {
+    prayers[prayerId] = allPrayers.value.custom[prayerId]
+  }
+  return Object.values(prayers)
+}
 
-watch(() => route.params.name, async () => { searchText.value = "" })
+function getCustomPrayers() {
+  return Object.values(allPrayers.value.custom)
+}
+
+function getBookmarkedPrayers() {
+  const prayers = []
+  for (const lang in allPrayers.value.bookmarks) {
+    for (const prayerId in allPrayers.value.bookmarks[lang]) {
+      let prayer
+
+      if (lang === 'custom') {
+        prayer = allPrayers.value.custom[prayerId]
+      } else {
+        prayer = allPrayers.value[lang].prayers[prayerId]
+      }
+      prayer.lang = lang
+      prayers.push(prayer)
+    }
+  }
+  return prayers
+}
+
+watch(() => route.params.name, async () => {
+  searchText.value = ""
+})
 
 function navigateToPrayer(prayer) {
-  prayerDataStore.setCurrentPrayer(prayer)
-  router.push({name: 'view-prayer'})
+  const language = prayer.lang || lang
+  router.push({name: 'view-prayer', params: {lang: language, prayerId: prayer.id}})
 }
 </script>
 
 <template>
-  <BgWithHeader :title="t(`category.${route.params.categoryName}`)">
+  <BgWithHeader :title="t(`category.${categoryName}`)">
     <div class="flex flex-col">
       <div class="flex justify-center content-center mb-6 mx-8">
         <div class="relative">
@@ -73,7 +120,7 @@ function navigateToPrayer(prayer) {
       <RoundMain>
         <div class="-my-4 flex flex-col">
           <button
-              v-if="route.params.categoryName === 'custom'"
+              v-if="categoryName === 'custom'"
               class="flex justify-center mt-4 py-2 px-12 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-xl text-white"
               @click.prevent="router.push({name: 'add-prayer'})">
             {{ t('prayer.addPageTitle') }}

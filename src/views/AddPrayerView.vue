@@ -15,12 +15,16 @@ function isSaveDisabled() {
 }
 
 async function savePrayer() {
+  let nextId = Object.keys(prayerDataStore.allPrayers.custom).length
   const newPrayer = {
+    id: `custom-${nextId}`,
     title: prayerTitle.value,
-    categories: ["custom"],
-    versions: [{name: "", content: prayerText.value}]
+    categories: ['custom'],
+    versions: [{name: "", content: prayerText.value}],
+    lang: 'custom'
   }
-  prayerDataStore.prayers.custom.push(newPrayer)
+
+  prayerDataStore.allPrayers.custom[newPrayer.id] = newPrayer
   await prayerDataStore.saveCustomPrayers()
   await router.push({name: 'category', params: {categoryName: 'custom'}})
 }
