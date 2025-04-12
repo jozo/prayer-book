@@ -1,6 +1,6 @@
 Zbierka katolíckych modlitieb ako by ste ich našli v modlitebnej knižke.
 Modlitby sú rozdelené do niekoľkých kategórií a môžete v nich vyhľadávať.
-Je možné pridať svoje vlastné modlitby.
+Je možné označiť obľúbené a pridať svoje vlastné modlitby.
 
 Aktuálne v jazykoch:
 - anglický,

@@ -1,0 +1,11 @@
+### Added
+- Add option to bookmark prayers
+- Prayer additions and translations
+- Add prayer before meals
+- Added french version for a few prayers (mostly litanies)
+
+### Changed
+- Rename Litany of Our Lady of the Seven Sorrows
+
+### Fixed
+- Fix screen remains scrollable with the menu open

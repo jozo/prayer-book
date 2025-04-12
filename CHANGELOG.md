@@ -7,14 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2025-04-12
+
 ### Added
 - Add option to bookmark prayers
+- Prayer additions and translations
+- Add prayer before meals
+- Added french version for a few prayers (mostly litanies)
 
+### Changed
+- Rename Litany of Our Lady of the Seven Sorrows
 
-## [0.8.2] - 2025-02-28
 ### Fixed
 - Fix screen remains scrollable with the menu open
-
 
 ## [0.8.1] - 2025-02-26
 ### Added
