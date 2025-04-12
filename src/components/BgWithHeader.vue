@@ -4,7 +4,7 @@ defineProps(['title'])
 
 <template>
   <div class="absolute w-screen min-h-[40vh] z-10
-              rounded-b-2xl bg-gradient-to-b from-cyan-500 to-blue-500
+              rounded-b-2xl bg-linear-to-b from-cyan-500 to-blue-500
               dark:from-cyan-800 dark:to-blue-800">
   </div>
   <div class="w-screen z-10">
