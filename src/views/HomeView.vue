@@ -2,15 +2,11 @@
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconGlobe from "@/components/icons/IconGlobe.vue";
 import {useI18n} from "vue-i18n";
-import {Preferences} from "@capacitor/preferences";
 import router from "@/router";
 import {Lang} from "@/constants";
+import {changeLanguage} from "@/utils";
 
 const {t, locale} = useI18n({useScope: 'global'})
-
-async function changeLanguage(language) {
-  await Preferences.set({key: 'language', value: language})
-}
 
 function goToSearch() {
   router.push('category/all/')
@@ -47,8 +43,7 @@ function goToSearch() {
         <select @change="changeLanguage($event.target.value)"
                 v-model="locale"
                 class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
-          <option v-for="[langName, langKey] in Object.entries(Lang)" :key="langKey.description"
-                  :value="langKey.description">
+          <option v-for="(langCode, langName) in Lang" :key="langCode" :value="langCode">
             {{ langName }}
           </option>
         </select>

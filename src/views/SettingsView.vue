@@ -3,9 +3,9 @@ import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
 import {Lang} from "@/constants";
-import {Preferences} from "@capacitor/preferences";
+import {changeLanguage} from "@/utils";
 
-const { t, locale } = useI18n({ useScope: 'global' })
+const {t, locale} = useI18n({useScope: 'global'})
 
 function changeTheme(theme) {
   localStorage.setItem('theme', theme)
@@ -23,10 +23,6 @@ function changeTheme(theme) {
   } else {
     document.documentElement.classList.remove('dark')
   }
-}
-
-async function changeLanguage(language) {
-  await Preferences.set({key: 'language', value: language})
 }
 </script>
 
@@ -50,7 +46,9 @@ async function changeLanguage(language) {
             <select @change="changeLanguage($event.target.value)"
                     v-model="locale"
                     class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center">
-              <option v-for="[langName, langKey] in Object.entries(Lang)" :value="langKey.description">{{ langName }}</option>
+              <option v-for="(langCode, langName) in Lang" :key="langCode" :value="langCode">
+                {{ langName }}
+              </option>
             </select>
           </div>
         </div>
