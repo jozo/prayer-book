@@ -1,0 +1,17 @@
+title = "Os Dez Mandamentos"
+categories = ["basic"]
+
+[[versions]]
+name = ""
+content = """
+1. Eu sou o Senhor teu Deus,que te fiz tirei da terra do Egipto dessa da casa da escravidão. Não terás outros deuses diante de Mim.
+2. Não invocarás em vão o Nome do Senhor teu Deus.
+3. Guarda o dia do sábado santificando-o.
+4. Honra teu pai e tua mãe.
+5. Não matarás.
+6. Não cometerás adultério.
+7. Não roubarás.
+8. Não levantarás falso testemunho contra o teu próximo.
+9. Não desejarás a mulher do teu próximo.
+10. Não cobiçarás os bens do teu próximo.
+"""

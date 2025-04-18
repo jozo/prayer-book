@@ -5,6 +5,7 @@ export const Lang = {
   French: "fr",
   Italian: "it",
   Latin: "la",
+  Polish: "pt",
   Romanian: "ro",
   Slovak: "sk",
   Spanish: "es",

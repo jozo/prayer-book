@@ -199,6 +199,46 @@ const messages = {
       unbookmark: "Usuń z zakładek",
     }
   },
+  pt: {
+    prayerBook: "Livro de Orações",
+    search: "Procurar…",
+    category: {
+      all: "Todas",
+      basic: "Básicas",
+      rosary: "Rosário",
+      litany: "Ladainhas",
+      saints: "Santos",
+      other: "Outros",
+      custom: "Personalizadas",
+      bookmarks: "Favoritos",
+    },
+    menu: {
+      settings: "Configurações",
+      suggestions: "Sugestões de melhoria",
+    },
+    settings: {
+      theme: {
+        title: "Tema",
+        auto: "Automático",
+        light: "Claro",
+        dark: "Escuro",
+      },
+      language: "Idioma",
+    },
+    prayer: {
+      addPageTitle: "Adicionar oração",
+      editPageTitle: "Editar oração",
+      title: "Título",
+      text: "Texto da oração (use Markdown para formatação)",
+      save: "Salvar",
+      edit: "Editar",
+      delete: "Excluir",
+      confirmDelete: "Tem certeza de que deseja excluir esta oração?",
+      notFound: "Orações não encontradas…",
+      bookmark: "Adicionar aos favoritos",
+      unbookmark: "Remover dos favoritos",
+    }
+  },
   ro: {
     prayerBook: "Carte de rugăciuni",
     search: "Căutați...",
