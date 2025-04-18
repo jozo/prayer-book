@@ -130,7 +130,7 @@ const messages = {
       saints: "Preghiere ai santi",
       other: "Altre",
       custom: "Personalizzate",
-      bookmarks: null,
+      bookmarks: "Segnalibri",
     },
     menu: {
       settings: "Impostazioni",
@@ -138,12 +138,12 @@ const messages = {
     },
     settings: {
       theme: {
-        title: "tema",
-        auto: "auto",
-        light: "chiaro",
-        dark: "scuro",
+        title: "Tema",
+        auto: "Auto",
+        light: "Chiaro",
+        dark: "Scuro",
       },
-      language: "lingua",
+      language: "Lingua",
     },
     prayer: {
       addPageTitle: "Aggiungi preghiera",
@@ -155,8 +155,8 @@ const messages = {
       delete: "Elimina",
       confirmDelete: "Sei sicuro di voler eliminare questa preghiera?",
       notFound: "Preghiere non trovate...",
-      bookmark: null,
-      unbookmark: null,
+      bookmark: "Aggiungi ai segnalibri",
+      unbookmark: "Rimuovi dai segnalibri",
     }
   },
   pl: {

@@ -1,0 +1,327 @@
+title = "Litanie dei Santi"
+categories = ["litany"]
+
+[[versions]]
+name = ""
+content = """
+Signore, pietà
+Cristo, pietà
+Signore, pietà.
+
+Cristo, ascoltaci.
+Cristo, esaudiscici.
+
+Padre del cielo, che sei Dio,
+_abbi pietà di noi._
+
+Figlio, Redentore del mondo, che sei Dio,
+_abbi pietà di noi._
+
+Spirito Santo, che sei Dio,
+_abbi pietà di noi._
+
+Santa Trinità, unico Dio,
+_abbi pietà di noi._
+
+Santa Maria,
+_prega per noi._
+
+Santa Madre di Dio,
+_prega per noi._
+
+Santa Vergine delle vergini,
+_prega per noi._
+
+San Michele arcangelo,
+_prega per noi._
+
+San Gabriele,
+_prega per noi._
+
+San Raffele,
+_prega per noi._
+
+Voi tutti santi Angeli di Dio,
+_pregate per noi._
+
+Sant’Abramo,
+_prega per noi._
+
+San Mosè,
+_prega per noi._
+
+Sant’Elia,
+_prega per noi._
+
+San Giovanni Battista,
+_prega per noi._
+
+San Giuseppe, sposo di Maria,
+_prega per noi._
+
+Voi tutti santi patriarchi e profeti,
+_pregate per noi._
+
+Santi Pietro e Paolo,
+_pregate per noi._
+
+Sant’Andrea,
+_prega per noi._
+
+San Giovanni e Giacomo,
+_pregate per noi._
+
+San Tommaso,
+_prega per noi._
+
+San Filippo e Giacomo,
+_pregate per noi._
+
+San Bartolomeo,
+_prega per noi._
+
+San Matteo,
+_prega per noi._
+
+Voi tutti, santi apostoli,
+_pregate per noi._
+
+Santi Simone e Giuda,
+_pregate per noi._
+
+San Mattia,
+_prega per noi._
+
+San Barnaba,
+_prega per noi._
+
+San Luca,
+_prega per noi._
+
+San Marco,
+_prega per noi._
+
+Santa Maria Maddalena,
+_prega per noi._
+
+Voi tutti, santi discepoli del Signore,
+_pregate per noi._
+
+Santo Stefano,
+_prega per noi._
+
+Sant’Ignazio d’Antiochia,
+_prega per noi._
+
+San Policarpo,
+_prega per noi._
+
+San Giustino,
+_prega per noi._
+
+San Lorenzo,
+_prega per noi._
+
+San Giovanni di Dio,
+_prega per noi._
+
+Santa Giustina di Padova,
+_prega per noi._
+
+San Gaspare del Bufalo,
+_prega per noi._
+
+San Domenico Savio,
+_prega per noi._
+
+Santa Veronica Giuliani,
+_prega per noi._
+
+Santa Francesca Romana,
+_prega per noi._
+
+Santa Gemma Galgani,
+_prega per noi._
+
+Santa Rita,
+_prega per noi._
+
+Santa Chiara,
+_prega per noi._
+
+San Leopoldo Mandic,
+_prega per noi._
+
+Santa Cecilia,
+_prega per noi._
+
+San Cipriano,
+_prega per noi._
+
+San Bonifacio,
+_prega per noi._
+
+Sant’Agnese,
+_prega per noi._
+
+San Tommaso Becket,
+_prega per noi._
+
+Voi tutti, santi martiri,
+_pregate per noi._
+
+Sant’Ambrogio,
+_prega per noi._
+
+Sante Perpetua e Felicita,
+_pregate per noi._
+
+Santa Maria Goretti,
+_prega per noi._
+
+Santa Maria de Balma,
+_prega per noi._
+
+Santi martiri di Cristo,
+_pregate per noi._
+
+Santi Leone e Gregorio,
+_pregate per noi._
+
+San Girolamo,
+_prega per noi._
+
+Sant’Agostino,
+_prega per noi._
+
+Sant’Atanasio,
+_prega per noi._
+
+Santi Basilio e Gregorio Naziazeno,
+_pregate per noi._
+
+San Giovanni Crisostomo,
+_prega per noi._
+
+San Martino,
+_prega per noi._
+
+San Patrizio,
+_prega per noi._
+
+Santi Cirillo e Metodio,
+_pregate per noi._
+
+San Carlo Borromeo,
+_prega per noi._
+
+San Francesco di Sales,
+_prega per noi._
+
+Voi tutti, santi vescovi e dottori,
+_pregate per noi._
+
+San Pio X,
+_prega per noi._
+
+Sant’Antonio di Padova,
+_prega per noi._
+
+San Benedetto,
+_prega per noi._
+
+Voi tutti, santi sacerdoti, religiosi e religiose,
+_pregate per noi._
+
+Santa Teresa del Bambin Gesù,
+_prega per noi._
+
+San Giovanni della Croce,
+_prega per noi._
+
+San Bernardo,
+_prega per noi._
+
+San Francesco d’Assisi,
+_prega per noi._
+
+San Domenico,
+_prega per noi._
+
+San Tommaso d’Aquino,
+_prega per noi._
+
+Sant’Ignazio di Loyola,
+_prega per noi._
+
+San Francesco Saverio,
+_prega per noi._
+
+San Vincenzo de’ Paoli,
+_prega per noi._
+
+San Giovanni Maria Vianney (Curato d’Ars),
+_prega per noi._
+
+San Giovanni Bosco,
+_prega per noi._
+
+Santa Caterina di Siena,
+_prega per noi._
+
+Santa Tersa d’Avila,
+_prega per noi._
+
+Santa Rosa da Lima,
+_prega per noi._
+
+San Luigi,
+_prega per noi._
+
+Santa Monica,
+_prega per noi._
+
+Sant’Elisabetta d’Ungheria,
+_prega per noi._
+
+Sant’Anna, Madre di Maria,
+_prega per noi._
+
+Santa Giovanna d’Arco,
+_prega per noi._
+
+San Bruno,
+_prega per noi._
+
+Santa Venera,
+_prega per noi._
+
+San Pio da Pietralcina,
+_prega per noi._
+
+Santa Teresa di Calcutta,
+_prega per noi._
+
+Santa Caterina da Genova,
+_prega per noi._
+
+Voi tutti santi e sante di Dio,
+_pregate per noi._
+
+Cristo, ascolta la nostra preghiera Cristo esaudisci la nostra supplica.
+
+Agnello di Dio che togli i peccati del mondo,
+_perdonaci, Signore._
+
+Agnello di Dio che togli i peccati del mondo,
+_ascoltaci, Signore._
+
+Agnello di Dio che togli i peccati del mondo,
+_abbi pietà di noi._
+
+**Preghiamo:**
+O Dio nostro Padre Santissimo, tu lo sai, senza il tuo aiuto, noi siamo tutti poveri peccatori.
+Tuttavia, pieni di fiducia nei meriti del tuo Figlio e dei suoi santi, ti preghiamo di renderci degni fin da ora del Regno dei cieli che tu ci hai preparato fin dalla fondazione del mondo.
+
+**℟.** Amen
+"""
