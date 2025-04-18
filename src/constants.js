@@ -8,4 +8,5 @@ export const Lang = {
   Romanian: "ro",
   Slovak: "sk",
   Spanish: "es",
+  Polish: "pl",
 };

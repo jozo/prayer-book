@@ -159,6 +159,46 @@ const messages = {
       unbookmark: null,
     }
   },
+  pl: {
+    prayerBook: "Modlitewnik",
+    search: "Szukaj…",
+    category: {
+      all: "Wszystkie",
+      basic: "Podstawowe",
+      rosary: "Różaniec",
+      litany: "Litanie",
+      saints: "Święci",
+      other: "Inne",
+      custom: "Własne",
+      bookmarks: "Zakładki",
+    },
+    menu: {
+      settings: "Ustawienia",
+      suggestions: "Sugestie poprawek",
+    },
+    settings: {
+      theme: {
+        title: "Motyw",
+        auto: "Automatyczny",
+        light: "Jasny",
+        dark: "Ciemny",
+      },
+      language: "Język",
+    },
+    prayer: {
+      addPageTitle: "Dodaj modlitwę",
+      editPageTitle: "Edytuj modlitwę",
+      title: "Tytuł",
+      text: "Tekst modlitwy (użyj Markdown do formatowania)",
+      save: "Zapisz",
+      edit: "Edytuj",
+      delete: "Usuń",
+      confirmDelete: "Czy na pewno chcesz usunąć tę modlitwę?",
+      notFound: "Modlitwy nie znaleziono…",
+      bookmark: "Dodaj do zakładek",
+      unbookmark: "Usuń z zakładek",
+    }
+  },
   ro: {
     prayerBook: "Carte de rugăciuni",
     search: "Căutați...",
