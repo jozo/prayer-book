@@ -5,56 +5,154 @@ categories = ["litany"]
 name = ""
 content = """
 Seigneur, ayez pitié de nous.
-Jésus-Christ, ayez pitié de nous.
-Père éternel, qui êtes Dieu, ayez pitié de nous.
-Fils rédempteur du monde, qui êtes Dieu, ayez pitié de nous.
-Esprit Saint qui êtes Dieu, ayez pitié de nous.
-Sainte Trinité, qui êtes un seul Dieu, ayez pitié de nous.
-Sainte Marie, priez pour nous.
-Sainte Mère de Dieu, priez pour nous,
-Sainte Vierge des Vierges, priez pour nous,
-Ô Mère crucifiée, priez pour nous,
-Ô Mère de Douleurs, priez pour nous,
-Ô Mère éplorée, priez pour nous,
-Ô Mère affligée, priez pour nous,
-Ô Mère délaissée, priez pour nous,
-Ô Mère désolée, priez pour nous,
-Ô Mère privée de votre Fils, priez pour nous,
-Ô Mère transpercée d'un glaive au pied de la Croix, priez pour nous,
-Ô Mère dévorée par les angoisses, priez pour nous,
-Ô Mère abîmée dans un océan d'amertume, priez pour nous,
-Ô Mère ensevelie dans les chagrins, priez pour nous,
-Ô Mère dont le cœur fut attaché à la Croix, priez pour nous,
-Ô Mère ensevelie dans les chagrins, priez pour nous,
-Fontaine de larmes, priez pour nous,
-Comble de souffrance, priez pour nous,
-Miroir de patience, priez pour nous,
-Sublime roc de constance, priez pour nous,
-Sublime roc de constance, priez pour nous,
-Ancre de confiance, priez pour nous,
-Refuge des délaissés, priez pour nous,
-Bouclier des opprimés, priez pour nous,
-Victorieuse des incrédules, priez pour nous,
-Consolation des malheureux, priez pour nous,
-Guérison des malades, priez pour nous,
-Force des faibles, priez pour nous,
-Port du salut contre le naufrage, priez pour nous,
-Calme aux tempêtes, priez pour nous,
-Douce paix aux affligés, priez pour nous,
-Terreur des malfaiteurs, priez pour nous,
-Trésor des fidèles, priez pour nous,
-Œil des prophètes, priez pour nous,
-Bâton des apôtres, priez pour nous,
-Couronne des martyrs, priez pour nous,
-Lumière des confesseurs, priez pour nous,
-Perle des vierges, priez pour nous,
-Soutien des veuves, priez pour nous,
-Joie de tous les saints, priez pour nous,
-Agneau de Dieu, qui effacez les péchés du monde, pardonnez-nous, Seigneur.
-Agneau de Dieu qui effacez les péchés du monde, exaucez-nous Seigneur.
-Agneau de Dieu qui effacez les péchés du monde, ayez pitié de nous Seigneur.
+Ô Christ, ayez pitié de nous.
+Seigneur, ayez pitié de nous.
 
-— Oraison —
+Jésus-Christ, écoutez-nous.
+Jésus-Christ, exaucez-nous.
+
+Père céleste qui êtes Dieu,
+_ayez pitié de nous._
+
+Fils, rédempteur du monde, qui êtes Dieu,
+_ayez pitié de nous._
+
+Esprit-Saint, qui êtes Dieu,
+_ayez pitié de nous._
+
+Trinité Sainte, qui êtes un seul Dieu,
+_ayez pitié de nous._
+
+Sainte Marie,
+_priez pour nous._
+
+Sainte Mère de Dieu,
+_priez pour nous,_
+
+Sainte Vierge des Vierges,
+_priez pour nous,_
+
+Ô Mère crucifiée,
+_priez pour nous,_
+
+Ô Mère de Douleurs,
+_priez pour nous,_
+
+Ô Mère éplorée,
+_priez pour nous,_
+
+Ô Mère affligée,
+_priez pour nous,_
+
+Ô Mère délaissée,
+_priez pour nous,_
+
+Ô Mère désolée,
+_priez pour nous,_
+
+Ô Mère privée de votre Fils,
+_priez pour nous,_
+
+Ô Mère transpercée d'un glaive au pied de la Croix,
+_priez pour nous,_
+
+Ô Mère dévorée par les angoisses,
+_priez pour nous,_
+
+Ô Mère abîmée dans un océan d'amertume,
+_priez pour nous,_
+
+Ô Mère ensevelie dans les chagrins,
+_priez pour nous,_
+
+Ô Mère dont le cœur fut attaché à la Croix,
+_priez pour nous,_
+
+Ô Mère ensevelie dans les chagrins,
+_priez pour nous,_
+
+Fontaine de larmes,
+_priez pour nous,_
+
+Comble de souffrance,
+_priez pour nous,_
+
+Miroir de patience,
+_priez pour nous,_
+
+Sublime roc de constance,
+_priez pour nous,_
+
+Sublime roc de constance,
+_priez pour nous,_
+
+Ancre de confiance,
+_priez pour nous,_
+
+Refuge des délaissés,
+_priez pour nous,_
+
+Bouclier des opprimés,
+_priez pour nous,_
+
+Victorieuse des incrédules,
+_priez pour nous,_
+
+Consolation des malheureux,
+_priez pour nous,_
+
+Guérison des malades,
+_priez pour nous,_
+
+Force des faibles,
+_priez pour nous,_
+
+Port du salut contre le naufrage,
+_priez pour nous,_
+
+Calme aux tempêtes,
+_priez pour nous,_
+
+Douce paix aux affligés,
+_priez pour nous,_
+
+Terreur des malfaiteurs,
+_priez pour nous,_
+
+Trésor des fidèles,
+_priez pour nous,_
+
+Œil des prophètes,
+_priez pour nous,_
+
+Bâton des apôtres,
+_priez pour nous,_
+
+Couronne des martyrs,
+_priez pour nous,_
+
+Lumière des confesseurs,
+_priez pour nous,_
+
+Perle des vierges,
+_priez pour nous,_
+
+Soutien des veuves,
+_priez pour nous,_
+
+Joie de tous les saints,
+_priez pour nous,_
+
+Agneau de Dieu qui effacez les péchés du monde,
+_pardonnez-nous, Seigneur._
+
+Agneau de Dieu qui effacez les péchés du monde,
+_exaucez-nous, Seigneur._
+
+Agneau de Dieu qui effacez les péchés du monde,
+_ayez pitié de nous._
+
+**Prions:**
 Daignez, ô tendre mère ! Abaissez sur nous vos regards compatissants ; 
 délivrez-nous et préservez-nous de tous les dangers qui nous entourent, par la vertu de Jésus-Christ.
 Ainsi soit-il.

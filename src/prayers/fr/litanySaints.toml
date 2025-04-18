@@ -4,106 +4,267 @@ categories = ["litany"]
 [[versions]]
 name = ""
 content = """
-Seigneur, prends pitié. Seigneur, prends pitié.
-Ô christ, prends pitié. Ô christ, prends pitié.
-Seigneur, prends pitié. Seigneur, prends pitié.
+Seigneur, prends pitié.
+Ô christ, prends pitié.
+Seigneur, prends pitié.
 
-Sainte Marie, priez pour nous.
-Sainte mère de Dieu, priez pour nous.
-Sainte vierge des vierges, priez pour nous.
+Sainte Marie,
+_priez pour nous._
 
-Saints Michel, Gabriel et Raphaël, priez pour nous.
-Vous tous, saints anges de Dieu, priez pour nous.
+Sainte mère de Dieu,
+_priez pour nous._
 
-Saint Abraham, priez pour nous.
-Saint Isaac et Saint Jacob, priez pour nous.
-Saint Joseph, priez pour nous.
-Saint Moïse, priez pour nous.
-Saint David, priez pour nous.
-Saint Job, priez pour nous.
-Saint Isaïe et saint Jérémie, priez pour nous.
-Saint Élie et saint Elisé, priez pour nous.
-Saint Jean-Baptiste, priez pour nous.
-Saint Joseph, époux de Marie, priez pour nous.
-Vous tous, saints patriarches et saints prophètes, priez pour nous.
+Sainte vierge des vierges,
+_priez pour nous._
 
-Saint Pierre et saint Paul, priez pour nous.
-Saint André, priez pour nous.
-Saint Jean et saint Jacques, priez pour nous.
-Saint Thomas, priez pour nous.
-Saint Matthieu, priez pour nous.
-Vous tous, saints apôtres, priez pour nous.
+Saints Michel, Gabriel et Raphaël,
+_priez pour nous._
 
-Saint Luc et saint Marc, priez pour nous.
-Saint Barnabé, priez pour nous.
-Sainte Marie-Madeleine, priez pour nous.
-Vous tous, saints disciples du Seigneur, priez pour nous.
+Vous tous, saints anges de Dieu,
+_priez pour nous._
 
-Saint Étienne, priez pour nous.
-Saint Ignace d'Antioche, priez pour nous.
-Saint Polycarpe de Smyrne, priez pour nous.
-Saint Justin, priez pour nous.
-Saint Pothin et sainte Blandine, priez pour nous.
-Saint Irénée de Lyon, priez pour nous.
-Sainte Perpétue et sainte Félicité, priez pour nous.
-Saint Laurent, priez pour nous.
-Saint Cyprien de Carthage, priez pour nous.
-Sainte Agnès, priez pour nous.
-Saint Thomas Becket, priez pour nous.
-Saint Thomas More, priez pour nous.
-Sainte Maria Goretti, priez pour nous.
-Saint Maximilien Kolbe, priez pour nous.
-Vous tous, saints martyrs, priez pour nous.
+Saint Abraham,
+_priez pour nous._
 
-Saint Léon le grand, priez pour nous.
-Saint Grégoire le grand, priez pour nous.
-Saint Ambroise de Milan, priez pour nous.
-Saint Jérôme, priez pour nous.
-Saint Augustin, priez pour nous.
-Saint Athanase d'Alexandrie, priez pour nous.
-Saint Basile le Grand, priez pour nous.
-Saint Grégoire de Nazianze, priez pour nous.
-Saint Jean Chrysostome, priez pour nous.
-Saint Hilaire de Poitiers, priez pour nous.
-Saint Martin de Tours, priez pour nous.
-Saint François de Sales, priez pour nous.
-Saint Pie X, priez pour nous.
-Vous tous, saints évêques et saints docteurs, priez pour nous.
+Saint Isaac et Saint Jacob,
+_priez pour nous._
 
-Saint Antoine d'Égypte, priez pour nous.
-Saint Benoît, priez pour nous.
-Saint Bernard, priez pour nous.
-Saint François d'Assise, priez pour nous.
-Saint Antoine de Padoue, priez pour nous.
-Saint Dominique, priez pour nous.
-Saint Thomas d'Aquin, priez pour nous.
-Sainte Catherine de Sienne, priez pour nous.
-Saint Ignace de Loyola, priez pour nous.
-Saint François Xavier, priez pour nous.
-Sainte Thérèse d'Avila, priez pour nous.
-Saint Jean de la Croix, priez pour nous.
-Sainte Rose de Lima, priez pour nous.   
-Saint Vincent de Paul, priez pour nous.
-Saint Jean-Marie Vianney, priez pour nous.
-Sainte Bernadette Soubirous, priez pour nous.
-Saint Jean Bosco, priez pour nous.
-Sainte Thérèse de l'Enfant Jésus, priez pour nous.
-Vous tous, saints prêtres, religieux ou religieuses, priez pour nous.
+Saint Joseph,
+_priez pour nous._
 
-Sainte Anne, mère de Marie, priez pour nous.
-Sainte Monique, priez pour nous.
-Saint Louis de France, priez pour nous.
-Saint Nicolas de Flüe, priez pour nous.
-Sainte Élisabeth de Hongrie, priez pour nous.
-Sainte Jeanne d'Arc, priez pour nous.
-Vous tous, saints et saintes de Dieu, priez pour nous.
+Saint Moïse,
+_priez pour nous._
 
-Agneau de Dieu, qui enlève les péchés du monde, pardonne-nous Seigneur.
-Agneau de Dieu, qui enlève les péchés du monde, exauce-nous Seigneur.
-Agneau de Dieu qui enlèves les péchés du monde, aie pitié de nous Seigneur.
+Saint David,
+_priez pour nous._
 
-Prions : Père très Saint, tu le sais, sans ton aide, nous sommes tous de pauvres pécheurs.
+Saint Job,
+_priez pour nous._
+
+Saint Isaïe et saint Jérémie,
+_priez pour nous._
+
+Saint Élie et saint Elisé,
+_priez pour nous._
+
+Saint Jean-Baptiste,
+_priez pour nous._
+
+Saint Joseph, époux de Marie,
+_priez pour nous._
+
+Vous tous, saints patriarches et saints prophètes,
+_priez pour nous._
+
+Saint Pierre et saint Paul,
+_priez pour nous._
+
+Saint André,
+_priez pour nous._
+
+Saint Jean et saint Jacques,
+_priez pour nous._
+
+Saint Thomas,
+_priez pour nous._
+
+Saint Matthieu,
+_priez pour nous._
+
+Vous tous, saints apôtres,
+_priez pour nous._
+
+Saint Luc et saint Marc,
+_priez pour nous._
+
+Saint Barnabé,
+_priez pour nous._
+
+Sainte Marie-Madeleine,
+_priez pour nous._
+
+Vous tous, saints disciples du Seigneur,
+_priez pour nous._
+
+Saint Étienne,
+_priez pour nous._
+
+Saint Ignace d'Antioche,
+_priez pour nous._
+
+Saint Polycarpe de Smyrne,
+_priez pour nous._
+
+Saint Justin,
+_priez pour nous._
+
+Saint Pothin et sainte Blandine,
+_priez pour nous._
+
+Saint Irénée de Lyon,
+_priez pour nous._
+
+Sainte Perpétue et sainte Félicité,
+_priez pour nous._
+
+Saint Laurent,
+_priez pour nous._
+
+Saint Cyprien de Carthage,
+_priez pour nous._
+
+Sainte Agnès,
+_priez pour nous._
+
+Saint Thomas Becket,
+_priez pour nous._
+
+Saint Thomas More,
+_priez pour nous._
+
+Sainte Maria Goretti,
+_priez pour nous._
+
+Saint Maximilien Kolbe,
+_priez pour nous._
+
+Vous tous, saints martyrs,
+_priez pour nous._
+
+Saint Léon le grand,
+_priez pour nous._
+
+Saint Grégoire le grand,
+_priez pour nous._
+
+Saint Ambroise de Milan,
+_priez pour nous._
+
+Saint Jérôme,
+_priez pour nous._
+
+Saint Augustin,
+_priez pour nous._
+
+Saint Athanase d'Alexandrie,
+_priez pour nous._
+
+Saint Basile le Grand,
+_priez pour nous._
+
+Saint Grégoire de Nazianze,
+_priez pour nous._
+
+Saint Jean Chrysostome,
+_priez pour nous._
+
+Saint Hilaire de Poitiers,
+_priez pour nous._
+
+Saint Martin de Tours,
+_priez pour nous._
+
+Saint François de Sales,
+_priez pour nous._
+
+Saint Pie X,
+_priez pour nous._
+
+Vous tous, saints évêques et saints docteurs,
+_priez pour nous._
+
+Saint Antoine d'Égypte,
+_priez pour nous._
+
+Saint Benoît,
+_priez pour nous._
+
+Saint Bernard,
+_priez pour nous._
+
+Saint François d'Assise,
+_priez pour nous._
+
+Saint Antoine de Padoue,
+_priez pour nous._
+
+Saint Dominique,
+_priez pour nous._
+
+Saint Thomas d'Aquin,
+_priez pour nous._
+
+Sainte Catherine de Sienne,
+_priez pour nous._
+
+Saint Ignace de Loyola,
+_priez pour nous._
+
+Saint François Xavier,
+_priez pour nous._
+
+Sainte Thérèse d'Avila,
+_priez pour nous._
+
+Saint Jean de la Croix,
+_priez pour nous._
+
+Sainte Rose de Lima,
+_priez pour nous._
+
+Saint Vincent de Paul,
+_priez pour nous._
+
+Saint Jean-Marie Vianney,
+_priez pour nous._
+
+Sainte Bernadette Soubirous,
+_priez pour nous._
+
+Saint Jean Bosco,
+_priez pour nous._
+
+Sainte Thérèse de l'Enfant Jésus,
+_priez pour nous._
+
+Vous tous, saints prêtres, religieux ou religieuses,
+_priez pour nous._
+
+Sainte Anne, mère de Marie,
+_priez pour nous._
+
+Sainte Monique,
+_priez pour nous._
+
+Saint Louis de France,
+_priez pour nous._
+
+Saint Nicolas de Flüe,
+_priez pour nous._
+
+Sainte Élisabeth de Hongrie,
+_priez pour nous._
+
+Sainte Jeanne d'Arc,
+_priez pour nous._
+
+Vous tous, saints et saintes de Dieu,
+_priez pour nous._
+
+Agneau de Dieu, qui enlève les péchés du monde,
+_pardonne-nous Seigneur._
+
+Agneau de Dieu, qui enlève les péchés du monde,
+_exauce-nous Seigneur._
+
+Agneau de Dieu, qui enlèves les péchés du monde,
+_aie pitié de nous Seigneur._
+
+**Prions:**
+Père très Saint, tu le sais, sans ton aide, nous sommes tous de pauvres pécheurs.
 Cependant, pleins de confiance dans les mérites de ton fils et de ses saints,
 nous te prions de nous rendre dignes dès aujourd'hui du royaume céleste que tu nous
-as préparé depuis la fondation du monde. Amen.
+as préparé depuis la fondation du monde.
+
+**℟.** Amen.
 """

@@ -4,54 +4,116 @@ categories = ["litany"]
 [[versions]]
 name = ""
 content = """
-Seigneur, ayez pitié de nous; Seigneur, ayez pitié de nous;
-Jésus-Christ, ayez pitié de nous; Jésus-Christ, ayez pitié de nous;
-Seigneur, ayez pitié de nous; Seigneur, ayez pitié de nous;
+Seigneur, ayez pitié de nous.
+Ô Christ, ayez pitié de nous.
+Seigneur, ayez pitié de nous.
 
-Jésus-Christ, écoutez-nous; Jésus-Christ, écoutez-nous;
-Jésus-Christ, exaucez-nous. Jésus-Christ, exaucez-nous
+Jésus-Christ, écoutez-nous.
+Jésus-Christ, exaucez-nous.
 
-Père céleste, qui êtes Dieu, ayez pitié de nous,
-Fils, Rédempteur du monde, qui êtes Dieu, ayez pitié de nous,
-Esprit-Saint, qui êtes Dieu, ayez pitié de nous,
-Trinité Sainte, qui êtes un Seul Dieu, ayez pitié de nous,
+Père céleste qui êtes Dieu,
+_ayez pitié de nous._
 
-Sang du Christ, fils unique du Père éternel, sauvez-nous,
-Sang du Christ, Verbe de Dieu incarné, sauvez-nous,
-Sang du Christ, de la nouvelle et éternelle Alliance, sauvez-nous,
-Sang du Christ, répandu sur la terre pendant son agonie, sauvez-nous,
-Sang du Christ, versé lors de la flagellation, sauvez-nous,
-Sang du Christ, jaillissant au couronnement d'épines, sauvez-nous,
-Sang du Christ, répandu sur la croix, sauvez-nous,
-Sang du Christ, prix de notre rédemption, sauvez-nous,
-Sang du Christ, sans lequel il n'est point de rémission, sauvez-nous,
-Sang du Christ, nourriture eucharistique et purifications des âmes, sauvez-nous,
-Sang du Christ, fleuve de miséricorde, sauvez-nous,
-Sang du Christ, victoire sur les démons, sauvez-nous,
-Sang du Christ, force des martyrs, sauvez-nous,
-Sang du Christ, vertu des confesseurs, sauvez-nous,
-Sang du Christ, source de virginité, sauvez-nous,
-Sang du Christ, salut en tous nos périls, sauvez-nous,
-Sang du Christ, soulagement de ceux qui peinent, sauvez-nous,
-Sang du Christ, consolation dans les larmes, sauvez-nous,
-Sang du Christ, espoir des pénitents, sauvez-nous,
-Sang du Christ, secours des mourants, sauvez-nous,
-Sang du Christ, paix et douceur des âmes, sauvez-nous,
-Sang du Christ, gage de vie éternelle, sauvez-nous,
-Sang du Christ, qui libère les âmes du purgatoire, sauvez-nous,
-Sang du Christ, digne de tout honneur et de toute gloire, sauvez-nous,
+Fils, rédempteur du monde, qui êtes Dieu,
+_ayez pitié de nous._
 
-Agneau de Dieu, qui effacez les péchés du monde, pardonnez-nous Seigneur
-Agneau de Dieu, qui effacez les péchés du monde, exaucez-nous Seigneur
-Agneau de Dieu, qui effacez les péchés du monde, ayez pitié de nous Seigneur
+Esprit-Saint, qui êtes Dieu,
+_ayez pitié de nous._
 
-V. Vous nous avez rachetés, Seigneur, dans votre sang.
-R. Et vous avez fait de nous un royaume pour notre Dieu.
+Trinité Sainte, qui êtes un seul Dieu,
+_ayez pitié de nous._
 
-Prions : Dieu éternel et tout-puissant qui avez établi votre Fils unique rédempteur
+Sang du Christ, fils unique du Père éternel,
+_sauvez-nous._
+
+Sang du Christ, Verbe de Dieu incarné,
+_sauvez-nous._
+
+Sang du Christ, de la nouvelle et éternelle Alliance,
+_sauvez-nous._
+
+Sang du Christ, répandu sur la terre pendant son agonie,
+_sauvez-nous._
+
+Sang du Christ, versé lors de la flagellation,
+_sauvez-nous._
+
+Sang du Christ, jaillissant au couronnement d'épines,
+_sauvez-nous._
+
+Sang du Christ, répandu sur la croix,
+_sauvez-nous._
+
+Sang du Christ, prix de notre rédemption,
+_sauvez-nous._
+
+Sang du Christ, sans lequel il n'est point de rémission,
+_sauvez-nous._
+
+Sang du Christ, nourriture eucharistique et purifications des âmes,
+_sauvez-nous._
+
+Sang du Christ, fleuve de miséricorde,
+_sauvez-nous._
+
+Sang du Christ, victoire sur les démons,
+_sauvez-nous._
+
+Sang du Christ, force des martyrs,
+_sauvez-nous._
+
+Sang du Christ, vertu des confesseurs,
+_sauvez-nous._
+
+Sang du Christ, source de virginité,
+_sauvez-nous._
+
+Sang du Christ, salut en tous nos périls,
+_sauvez-nous._
+
+Sang du Christ, soulagement de ceux qui peinent,
+_sauvez-nous._
+
+Sang du Christ, consolation dans les larmes,
+_sauvez-nous._
+
+Sang du Christ, espoir des pénitents,
+_sauvez-nous._
+
+Sang du Christ, secours des mourants,
+_sauvez-nous._
+
+Sang du Christ, paix et douceur des âmes,
+_sauvez-nous._
+
+Sang du Christ, gage de vie éternelle,
+_sauvez-nous._
+
+Sang du Christ, qui libère les âmes du purgatoire,
+_sauvez-nous._
+
+Sang du Christ, digne de tout honneur et de toute gloire,
+_sauvez-nous._
+
+Agneau de Dieu qui effacez les péchés du monde,
+_pardonnez-nous, Seigneur._
+
+Agneau de Dieu qui effacez les péchés du monde,
+_exaucez-nous, Seigneur._
+
+Agneau de Dieu qui effacez les péchés du monde,
+_ayez pitié de nous._
+
+**℣.** Vous nous avez rachetés, Seigneur, dans votre sang.
+
+**℟.** Et vous avez fait de nous un royaume pour notre Dieu.
+
+**Prions:**
+Dieu éternel et tout-puissant qui avez établi votre Fils unique rédempteur
 du monde et qui avez voulu être apaisé par son sang, accordez-nous une telle vénération
 pour le prix de notre rédemption que, protégés sur terre par sa puissance contre
 les maux de cette vie, nous jouissions au ciel de ses fruits éternels.
 Par le même Jésus-Christ notre Seigneur.
-Ainsi soit-il.
+
+**℟.** Amen.
 """
