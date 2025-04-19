@@ -22,7 +22,7 @@ Create a new file in the `src/prayers/{LANG}` directory with the following forma
 
 ```toml
 title = "Prayer Title"
-categories = ["basic"]  # one or more of: basic, rosary, litany, saints
+categories = ["basic"]  # one or more of: basic, rosary, litany, saints, other
 
 [[versions]]
 name = "Traditional version"
@@ -37,10 +37,12 @@ Prayer text in **markdown** format
 """
 ```
 
+Please follow the structure and formatting of the existing prayers. This is especially important for properly displaying litanies.
+
 Create a PR and I will add it to the app.
 
 ## Translate the app
-New translations are always welcome. You can add a new language by translating strings in the `src/messages.js` file.
+New translations are always welcome. You can add a new language by translating strings in the `src/messages.js` file and adding the language in the `src/constants.js` file.
 Create a PR and I will add it to the app.
 
 ## Development

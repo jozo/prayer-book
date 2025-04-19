@@ -5,9 +5,9 @@ export const Lang = {
   French: "fr",
   Italian: "it",
   Latin: "la",
-  Polish: "pt",
+  Polish: "pl",
+  Portuguese: "pt",
   Romanian: "ro",
   Slovak: "sk",
   Spanish: "es",
-  Polish: "pl",
 };
