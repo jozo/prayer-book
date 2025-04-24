@@ -1,0 +1,480 @@
+# Litánie - litánie na verejnú a súkromnú pobožnosť
+# Nihil obstat: ThDr. Joannes Šulík, PhD.
+# ISBN: 978-80-8161-369-2
+
+title = "Litánie k svätým"
+categories = ["litany"]
+
+[[versions]]
+name = ""
+content = """
+_(Vznikli za čias pápeža Sergia I. [687-701] upravené za Pavla VI. v roku 1969)_
+
+**I. Prosba k Bohu**
+
+**A**
+
+Pane, zmiluj sa. _Pane, zmiluj sa._
+
+Kriste, zmiluj sa. _Kriste, zmiluj sa._
+
+Pane, zmiluj sa. _Pane, zmiluj sa._
+
+_alebo_ **B**
+
+Otec na nebesiach, Bože,
+_zmiluj sa nad nami._
+
+Syn, Vykupiteľ sveta, Bože,
+_zmiluj sa nad nami._
+
+Duch Svätý, Bože,
+_zmiluj sa nad nami._
+
+Svätá Trojica, jeden Boh,
+_zmiluj sa nad nami._
+
+
+<br>
+
+
+**II. Vzývanie svätých**
+
+Svätá Mária,
+_oroduj za nás._
+
+Svätá Božia Rodička,
+_oroduj za nás._
+
+Svätá Panna panien,
+_oroduj za nás._
+
+Svätí Michal, Gabriel a Rafael,
+_orodujte za nás._
+
+Všetci svätí anjeli,
+_orodujte za nás._
+
+**Patriarchovia a proroci**
+
+Svätý Abrahám,
+_oroduj za nás._
+
+Svätý Mojžiš,
+_oroduj za nás._
+
+Svätý Eliáš,
+_oroduj za nás._
+
+Svätý Ján Krstiteľ,
+_oroduj za nás._
+
+Svätý Jozef,
+_oroduj za nás._
+
+Všetci svätí patriarchovia a proroci,
+_orodujte za nás._
+
+
+**Apoštoli a učeníci**
+
+Svätí Peter a Pavol,
+_orodujte za nás._
+
+Svätý Ondrej,
+_oroduj za nás._
+
+Svätí Ján a Jakub,
+_orodujte za nás._
+
+Svätý Tomáš,
+_oroduj za nás._
+
+Svätý Matúš,
+_oroduj za nás._
+
+Všetci svätí apoštoli,
+_orodujte za nás._
+
+Svätý Lukáš,
+_oroduj za nás._
+
+Svätý Marek,
+_oroduj za nás._
+
+Svätý Barnabáš,
+_oroduj za nás._
+
+Svätá Mária Magdaléna,
+_oroduj za nás._
+
+Všetci svätí učeníci Pána,
+_orodujte za nás._
+
+
+**Mučeníci**
+
+Svätý Štefan,
+_oroduj za nás._
+
+Svätý Ignác Antiochijský,
+_oroduj za nás_
+
+Svätý Polykarp,
+_oroduj za nás._
+
+Svätý Justín,
+_oroduj za nás._
+
+Svätý Vavrinec,
+_oroduj za nás._
+
+Svätý Cyprián,
+_oroduj za nás._
+
+Svätý Bonifác,
+_oroduj za nás._
+
+Svätý Vojtech,
+_oroduj za nás._
+
+Svätý Stanislav,
+_oroduj za nás._
+
+Svätý Tomáš Becket (beket),
+_oroduj za nás._
+
+Svätý Ján Nepomucký,
+_oroduj za nás._
+
+Svätí Ján Fischer (fišer) a Tomáš More (mór),
+_orodujte za nás._
+
+Svätý Pavol Miki,
+_oroduj za nás._
+
+Svätí košickí mučeníci,
+_orodujte za nás._
+
+Svätí Izák Jogues (žog) a Ján de Brébeuf (breböf),
+_orodujte za nás._
+
+Svätý Peter Chanel (šanel),
+_oroduj za nás._
+
+Svätý Karol Lwanga,
+_oroduj za nás._
+
+Svätá Perpetua a Felicita,
+_orodujte za nás._
+
+Svätá Agnesa,
+_oroduj za nás._
+
+Svätá Mária Goretti,
+_oroduj za nás._
+
+Všetci svätí mučeníci,
+_orodujte za nás._
+
+
+**Biskupi a učitelia Cirkvi**
+
+Svätí Lev a Gregor,
+_orodujte za nás._
+
+Svätý Ambróz,
+_oroduj za nás._
+
+Svätý Hieronym,
+_oroduj za nás._
+
+Svätý Augustín,
+_oroduj za nás._
+
+Svätý Atanáz,
+_oroduj za nás._
+
+Svätý Bazil a Gregor Nazianský,
+_orodujte za nás._
+
+Svätý Ján Zlatoústy,
+_oroduj za nás._
+
+Svätý Martin,
+_oroduj za nás._
+
+Svätý Patrik,
+_oroduj za nás._
+
+Svätí Cyril a Metod,
+_orodujte za nás._
+
+Svätý Karol Borromeo,
+_oroduj za nás._
+
+Svätý František Saleský,
+_oroduj za nás._
+
+Svätý Pius Desiaty,
+_oroduj za nás._
+
+
+**Kňazi a rehoľníci**
+
+Svätý Anton,
+_oroduj za nás._
+
+Svätý Benedikt,
+_oroduj za nás._
+
+Svätý Gorazd,
+_oroduj za nás._
+
+Svätí Andrej Svorad a Benedikt,
+_orodujte za nás._
+
+Svätý Bernard,
+_oroduj za nás._
+
+Svätí František a Dominik,
+_orodujte za nás._
+
+Svätý Tomáš Akvinský,
+_oroduj za nás._
+
+Svätý Ignác Loyolský,
+_oroduj za nás._
+
+Svätý František Xaverský,
+_oroduj za nás._
+
+Svätý Vincent de Paul (de Pól),
+_oroduj za nás._
+
+Svätý Ján Mária Vianney,
+_oroduj za nás._
+
+Svätý Ján Bosco (Bosko),
+_oroduj za nás._
+
+Svätá Katarína Sienská,
+_oroduj za nás._
+
+Svätá Terézia Avilská,
+_oroduj za nás._
+
+Svätá Ružena Limská,
+_oroduj za nás._
+
+
+**Laici**
+
+Svätý Ľudovít,
+_oroduj za nás._
+
+Svätá Monika,
+_oroduj za nás._
+
+Svätá Alžbeta Uhorská,
+_oroduj za nás._
+
+Všetci Boží svätí a sväté,
+_orodujte za nás._
+
+
+<br>
+
+
+**III. Vzývanie Krista**
+
+**A**
+
+Buď nám milostivý,
+_ochraňuj nás, Pane._
+
+Od všetkého zla,
+_ochraňuj nás, Pane._
+
+Od každého hriechu,
+_ochraňuj nás, Pane._
+
+Od úkladov diabla,
+_ochraňuj nás, Pane._
+
+Od hnevu, nenávisti a všetkej zlovôle,
+_ochraňuj nás, Pane._
+
+Od večnej smrti,
+_ochraňuj nás, Pane._
+
+Pre tvoje vtelenie,
+_ochraňuj nás, Pane._
+
+Pre tvoje narodenie,
+_ochraňuj nás, Pane._
+
+Pre tvoj krst a svätý pôst,
+_ochraňuj nás, Pane._
+
+Pre tvoj kríž a tvoje umučenie,
+_ochraňuj nás, Pane._
+
+Pre tvoju smrť a tvoje pochovanie,
+_ochraňuj nás, Pane._
+
+Pre tvoje sväté zmŕtvychvstanie,
+_ochraňuj nás, Pane._
+
+Pre tvoje zázračné nanebovstúpenie,
+_ochraňuj nás, Pane._
+
+Pre zoslanie Ducha Svätého,
+_ochraňuj nás, Pane._
+
+Pre tvoj slávny príchod,
+_ochraňuj nás, Pane._
+
+
+<br>
+
+
+_alebo_ **B**
+
+Kriste, Syn živého Boha,
+_zmiluj sa nad nami._
+
+Ty si prišiel na tento svet,
+_zmiluj sa nad nami._
+
+Ty si visel na kríži,
+_zmiluj sa nad nami._
+
+Ty si pre nás podstúpil smrť,
+_zmiluj sa nad nami._
+
+Ty si ležal v hrobe,
+_zmiluj sa nad nami._
+
+Ty si vstal z mŕtvych,
+_zmiluj sa nad nami._
+
+Ty si vystúpil do neba,
+_zmiluj sa nad nami._
+
+Ty si poslal Ducha Svätého apoštolom,
+_zmiluj sa nad nami._
+
+Ty sedíš po pravici Otca,
+_zmiluj sa nad nami._
+
+Ty prídeš súdiť živých i mŕtvych,
+_zmiluj sa nad nami._
+
+
+<br>
+
+
+**IV. Prosby za rozličné potreby**
+
+**A**
+
+Zľutuj sa, Pane, nad nami,
+_prosíme ťa, vyslyš nás._
+
+Priveď nás k pravému pokániu,
+_prosíme ťa, vyslyš nás._
+
+Posilni a zachovaj nás v tvojej svätej službe,
+_prosíme ťa, vyslyš nás._
+
+Udeľ všetkým našim dobrodincom večnú odmenu,
+_prosíme ťa, vyslyš nás._
+
+Daj a zachovaj nám zemskú úrodu,
+_prosíme ťa, vyslyš nás._
+
+
+<br>
+
+
+_alebo_ **B**
+
+Buď nám, Pane, milostivý,
+_prosíme ťa, vyslyš nás._
+
+Pozdvihni naše srdcia k túžbe po nebi,
+_prosíme ťa, vyslyš nás._
+
+Zachráň nás a našich bratov, príbuzných a dobrodincov od večného zatratenia,
+_prosíme ťa, vyslyš nás._
+
+Udeľ všetkým zosnulým veriacim večnú blaženosť,
+_prosíme ťa, vyslyš nás._
+
+Ochráň svet pred chorobami, hladom a vojnou,
+_prosíme ťa, vyslyš nás._
+
+Daruj všetkým národom pokoj a pravú svornosť,
+_prosíme ťa, vyslyš nás._
+
+
+<br>
+
+
+**C** _(nevynechávajú sa)_
+
+Spravuj a zachovaj svoju svätú Cirkev,
+_prosíme ťa, vyslyš nás._
+
+Zachovaj vo svätej horlivosti Svätého Otca a všetkých zasvätených tvojej službe,
+_prosíme ťa, vyslyš nás._
+
+Zjednoť všetkých veriacich v Krista,
+_prosíme ťa, vyslyš nás._
+
+Priveď všetkých ľudí k svetlu evanjelia,
+_prosíme ťa, vyslyš nás._
+
+
+<br>
+
+
+**V. Záver**
+
+**A**
+
+Kriste, uslyš nás.
+_Kriste, uslyš nás._
+
+Kriste, vyslyš nás.
+_Kriste, vyslyš nás._
+
+
+**B**
+
+Baránok Boží, ty snímaš hriechy sveta, _zľutuj sa nad nami, Pane._
+
+Baránok Boží, ty snímaš hriechy sveta, _vyslyš nás, Pane._
+
+Baránok Boží, ty snímaš hriechy sveta, _zmiluj sa nad nami._
+
+
+<br>
+
+
+**Modlime sa.**
+
+Bože, naše útočisko a sila, pôvodca nábožnosti, ujmi sa nábožných prosieb svojej Cirkvi
+a daj nám dosiahnuť, o čo s dôverou prosíme skrze Krista, nášho Pána.
+
+**℟.** Amen.
+
+_Alebo:_
+
+Milosrdný Bože, ty vieš, že sme krehkí a ľahko klesáme;
+prosíme ťa, zľutuj sa nad nami a príkladom svojich svätých posilni v nás lásku k tebe.
+Skrze Krista, nášho Pána.
+
+**℟.** Amen.
+"""
