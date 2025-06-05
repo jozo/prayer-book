@@ -1,0 +1,11 @@
+### Added
+- Add more litanies in EN, FR, LA, SK
+- Add PL translation
+- Add PT translation
+- Add language detection from device info
+
+### Changed
+- Update ES, IT, FR translations
+
+### Fixed
+- Fix Litany of Humility in IT

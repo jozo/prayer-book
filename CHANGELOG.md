@@ -7,8 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.9.0] - 2025-04-12
+## [0.10.0] - 2025-06-06
+### Added
+- Add more litanies in EN, FR, LA, SK
+- Add PL translation
+- Add PT translation
+- Add language detection from device info
 
+### Changed
+- Update ES, IT, FR translations
+
+### Fixed
+- Fix Litany of Humility in IT
+
+## [0.9.0] - 2025-04-12
 ### Added
 - Add option to bookmark prayers
 - Prayer additions and translations

@@ -7,6 +7,8 @@ Aktuálne v jazykoch:
 - francúzsky,
 - latinský,
 - taliansky,
+- poľský,
+- portugalský,
 - rumunský,
 - slovenský,
 - španielsky.
