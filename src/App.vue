@@ -49,12 +49,14 @@ function closeMenu() {
 
 <template>
   <button @click="toggleMenu">
-    <IconHamburger class="absolute z-30 inset-3.5 text-gray-100" />
+    <IconHamburger class="absolute z-30 ml-3.5 text-gray-100" style="margin-top: calc(14px + env(safe-area-inset-top));" />
   </button>
 
   <nav v-show="menuVisible" class="absolute flex flex-row h-full w-full z-20">
-    <div class="flex flex-col justify-between pt-16 min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100
-                dark:bg-sky-700 dark:text-gray-300">
+    <div class="flex flex-col justify-between min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100
+                dark:bg-sky-700 dark:text-gray-300"
+         style="padding-top: calc(64px + env(safe-area-inset-top));"
+    >
       <div class="flex flex-col ml-3.5 text-2xl leading-loose">
         <div class="flex -ml-3.5 items-center mb-6">
           <RouterLink to="/" @click="closeMenu" class="flex grow justify-center mx-3 font-bold">
