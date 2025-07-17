@@ -1,0 +1,3 @@
+### Fixed
+- Fix overlapping of navigation with notification bar on new Android devices
+- Fix menu not scrollable in the landscape mode
