@@ -109,7 +109,6 @@ function navigateToPrayer(prayer) {
           <input type="text"
                  class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
                   text-lg text-center placeholder:italic dark:bg-neutral-500 dark:text-gray-300"
-                 autofocus
                  :placeholder="t('search')"
                  v-model="searchText"
                  @input="searchText = $event.target.value"

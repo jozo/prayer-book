@@ -24,6 +24,11 @@ App.addListener('backButton', (data) => {
   }
 });
 
+// Close menu when screen orientation changes because the menu can have wrong height
+screen.orientation.addEventListener("change", () => {
+  closeMenu();
+});
+
 const menuVisible = ref(false);
 
 function toggleMenu() {
@@ -36,28 +41,47 @@ function toggleMenu() {
 
 function openMenu() {
   menuVisible.value = true;
-  const body = document.querySelector('body');
-  body.style.overflow = 'hidden';
+
+  // When menu is opened, we want to scroll only menu, not the whole page.
+  document.querySelector('body').style.overflow = 'hidden';
+
+  // Menu is positioned 'fixed' and covers the whole viewport.
+  // If the menu height is larger than the viewport, we set the height of the menu to the height of the navigation.
+  // so it can be scrolled. The fixed element can be scrolled only if it has a height set.
+  const navigationTop = document.querySelector('#navigation-top');
+  const navigationBottom = document.querySelector('#navigation-bottom');
+  const safeAreaInsetTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat'), 10);
+  const navigationHeight = navigationTop.offsetHeight + navigationBottom.offsetHeight + safeAreaInsetTop;
+  if (navigationHeight > window.innerHeight) {
+    document.querySelector('#navigation-wrapper').style.height = navigationHeight + 'px';
+  }
 }
 
 function closeMenu() {
   menuVisible.value = false;
-  const body = document.querySelector('body');
-  body.style.overflow = 'auto';
+  // When menu is closed, we want to scroll the whole page again.
+  document.querySelector('body').style.overflow = 'auto';
+  // Reset the height of the menu to 100% so it covers the whole viewport again.
+  document.querySelector('#navigation-wrapper').style.height = '100%';
 }
 </script>
 
 <template>
-  <button @click="toggleMenu">
+  <button @click="toggleMenu" v-show="!menuVisible">
     <IconHamburger class="absolute z-30 ml-3.5 text-gray-100" style="margin-top: calc(14px + env(safe-area-inset-top));" />
   </button>
 
-  <nav v-show="menuVisible" class="absolute flex flex-row h-full w-full z-20">
-    <div class="flex flex-col justify-between min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100
+  <nav :class="['fixed flex flex-row h-full w-full z-20 overflow-scroll', { 'invisible': !menuVisible }]">
+    <div id="navigation-wrapper" class="flex flex-col justify-between min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100
                 dark:bg-sky-700 dark:text-gray-300"
-         style="padding-top: calc(64px + env(safe-area-inset-top));"
+         style="padding-top: env(safe-area-inset-top); padding-left: env(safe-area-inset-left);"
     >
-      <div class="flex flex-col ml-3.5 text-2xl leading-loose">
+      <div id="navigation-top" class="flex flex-col ml-3.5 pb-10 text-2xl leading-loose">
+
+        <button @click="toggleMenu">
+          <IconHamburger class="z-30 mt-3.5 mb-6 text-gray-100" />
+        </button>
+
         <div class="flex -ml-3.5 items-center mb-6">
           <RouterLink to="/" @click="closeMenu" class="flex grow justify-center mx-3 font-bold">
               {{ $t("prayerBook") }}
@@ -107,7 +131,7 @@ function closeMenu() {
           </RouterLink>
         </div>
       </div>
-      <div class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
+      <div id="navigation-bottom" class="flex flex-col ml-3.5 mb-3.5 text-xl leading-loose">
         <div class="flex items-center">
           <IconCog />
           <RouterLink to="/settings" @click="closeMenu" class="mx-3">
