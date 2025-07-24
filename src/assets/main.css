@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+/* This allows us to use the dark mode via a class on the html element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 /* Save values of safe-area-inset into variables so it can be read by JS */
 :root {
     --sat: env(safe-area-inset-top);
