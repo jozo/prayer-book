@@ -1,0 +1,2 @@
+### Fixed
+- Fix manual selection of theme broken
