@@ -1,0 +1,35 @@
+title = "Cantique de Daniel"
+categories = ["basic"]
+
+[[versions]]
+name = "Traditionnelle"
+content = """
+Maintenant, ô Maître souverain, +
+tu peux laisser ton serviteur s'en aller
+en paix, selon ta parole.
+
+Car mes yeux ont vu le salut
+que tu préparais à la face des peuples :
+
+lumière qui se révèle aux nations
+et donne gloire à ton peuple Israël.
+"""
+
+[[versions]]
+name = "Chantée"
+content = """
+**℟.** Maintenant, Seigneur,
+Tu peux me laisser m'en aller dans la paix
+Maintenant, Seigneur,
+Tu peux me laisser reposer.
+
+1 - Tu peux laisser s'en aller ton serviteur
+En paix selon ta parole,
+Car mes yeux ont vu le salut que tu prépares
+A la face des peuples.
+
+2 - Lumière pour éclairer les nations
+Et gloire d'Israël ton peuple.
+Gloire au père, et au Fils, et au Saint Esprit
+Pour les siècles des siècles.
+"""
