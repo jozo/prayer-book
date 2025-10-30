@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update JS packages
 
+### Fixed
+- Fix EN version of Memorare
 
 ## [0.10.2] - 2025-07-24
 ### Fixed
