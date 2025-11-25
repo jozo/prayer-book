@@ -56,7 +56,7 @@ function changeTheme(theme) {
         <p>
           <strong>Prayer Book</strong>
         </p>
-        <p>0.10.2</p>
+        <p>0.10.3</p>
         <p>hi@jozo.io</p>
         <p class="mb-6">
           <a href="https://codeberg.org/jozo/prayer-book" target="_blank"

@@ -1,0 +1,8 @@
+### Added
+- Added Daniel and Symeon Canticles
+
+### Changed
+- Update JS packages
+
+### Fixed
+- Fix EN version of Memorare
