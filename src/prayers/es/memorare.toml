@@ -1,8 +1,8 @@
-title = "Memorare"
+title = "Acuérdate (Memorare)"
 categories = ["basic"]
 
 [[versions]]
-name = ""
+name = "Version 1"
 content = """
 Acordaos, oh piadosísima Virgen María!,
 que jamás se ha oído decir
@@ -16,4 +16,21 @@ me atrevo a comparecer ante Vos.
 Madre de Dios,
 no desechéis mis súplicas,
 antes bien, escuchadlas y acogedlas benignamente. Amén.
+"""
+
+[[versions]]
+name = "Version 2"
+content = """
+Acuérdate, oh piadosísima Virgen María,
+que jamás se ha oído decir
+que ninguno de los que han acudido a tu protección,
+implorado tu auxilio,
+o buscado tu intercesión, haya sido desamparado.
+Animado con esta confianza, a ti también acudo,
+oh Virgen de las vírgenes, mi Madre;
+a ti vengo,
+ante ti me presento, pecador y contrito.
+Oh Madre del Verbo Encarnado,
+no desprecies mis súplicas,
+antes bien, óyelas y acógelas benignamente. Amén.
 """
