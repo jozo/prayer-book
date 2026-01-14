@@ -10,20 +10,20 @@ const messages = {
       saints: "Saints",
       other: "Others",
       custom: "Custom",
-      bookmarks: "Bookmarks",
+      bookmarks: "Bookmarks"
     },
     menu: {
       settings: "Settings",
-      suggestions: "Suggestions for improvement",
+      suggestions: "Suggestions for improvement"
     },
     settings: {
       theme: {
         title: "Theme",
         auto: "Auto",
         light: "Light",
-        dark: "Dark",
+        dark: "Dark"
       },
-      language: "Language",
+      language: "Language"
     },
     prayer: {
       addPageTitle: "Add prayer",
@@ -36,7 +36,7 @@ const messages = {
       confirmDelete: "Are you sure you want to delete this prayer?",
       notFound: "Prayers not found…",
       bookmark: "Bookmark",
-      unbookmark: "Unbookmark",
+      unbookmark: "Unbookmark"
     }
   },
   es: {
@@ -50,20 +50,20 @@ const messages = {
       saints: "Santos",
       other: "Otros",
       custom: "Personalizado",
-      bookmarks: "Marcadores",
+      bookmarks: "Marcadores"
     },
     menu: {
       settings: "Ajustes",
-      suggestions: "Sugerencias de mejora",
+      suggestions: "Sugerencias de mejora"
     },
     settings: {
       theme: {
         title: "Tema",
         auto: "Automático",
         light: "Claro",
-        dark: "Oscuro",
+        dark: "Oscuro"
       },
-      language: "Idioma",
+      language: "Idioma"
     },
     prayer: {
       addPageTitle: "Agregar oración",
@@ -76,7 +76,7 @@ const messages = {
       confirmDelete: "¿Estás seguro de que deseas eliminar esta oración?",
       notFound: "Oraciones no encontradas…",
       bookmark: "Marcar",
-      unbookmark: "Desmarcar",
+      unbookmark: "Desmarcar"
     }
   },
   fr: {
@@ -90,20 +90,20 @@ const messages = {
       saints: "Prières aux Saints",
       other: "Autres",
       custom: "Personnalisé",
-      bookmarks: "Signets",
+      bookmarks: "Signets"
     },
     menu: {
       settings: "Paramètres",
-      suggestions: "Suggérer une amélioration",
+      suggestions: "Suggérer une amélioration"
     },
     settings: {
       theme: {
         title: "Thème",
         auto: "Auto",
         light: "Clair",
-        dark: "Sombre",
+        dark: "Sombre"
       },
-      language: "Langue",
+      language: "Langue"
     },
     prayer: {
       addPageTitle: "Ajouter une prière",
@@ -116,7 +116,7 @@ const messages = {
       confirmDelete: "Êtes-vous sûr de vouloir supprimer cette prière ?",
       notFound: "Prières non trouvées…",
       bookmark: "Ajouter aux signets",
-      unbookmark: "Supprimer des signets",
+      unbookmark: "Supprimer des signets"
     }
   },
   it: {
@@ -130,20 +130,20 @@ const messages = {
       saints: "Preghiere ai santi",
       other: "Altre",
       custom: "Personalizzate",
-      bookmarks: "Segnalibri",
+      bookmarks: "Segnalibri"
     },
     menu: {
       settings: "Impostazioni",
-      suggestions: "Suggerimenti per il miglioramento",
+      suggestions: "Suggerimenti per il miglioramento"
     },
     settings: {
       theme: {
         title: "Tema",
         auto: "Auto",
         light: "Chiaro",
-        dark: "Scuro",
+        dark: "Scuro"
       },
-      language: "Lingua",
+      language: "Lingua"
     },
     prayer: {
       addPageTitle: "Aggiungi preghiera",
@@ -156,7 +156,7 @@ const messages = {
       confirmDelete: "Sei sicuro di voler eliminare questa preghiera?",
       notFound: "Preghiere non trovate...",
       bookmark: "Aggiungi ai segnalibri",
-      unbookmark: "Rimuovi dai segnalibri",
+      unbookmark: "Rimuovi dai segnalibri"
     }
   },
   pl: {
@@ -170,20 +170,20 @@ const messages = {
       saints: "Święci",
       other: "Inne",
       custom: "Własne",
-      bookmarks: "Zakładki",
+      bookmarks: "Zakładki"
     },
     menu: {
       settings: "Ustawienia",
-      suggestions: "Sugestie poprawek",
+      suggestions: "Sugestie poprawek"
     },
     settings: {
       theme: {
         title: "Motyw",
         auto: "Automatyczny",
         light: "Jasny",
-        dark: "Ciemny",
+        dark: "Ciemny"
       },
-      language: "Język",
+      language: "Język"
     },
     prayer: {
       addPageTitle: "Dodaj modlitwę",
@@ -196,7 +196,7 @@ const messages = {
       confirmDelete: "Czy na pewno chcesz usunąć tę modlitwę?",
       notFound: "Modlitwy nie znaleziono…",
       bookmark: "Dodaj do zakładek",
-      unbookmark: "Usuń z zakładek",
+      unbookmark: "Usuń z zakładek"
     }
   },
   pt: {
@@ -210,20 +210,20 @@ const messages = {
       saints: "Santos",
       other: "Outros",
       custom: "Personalizadas",
-      bookmarks: "Favoritos",
+      bookmarks: "Favoritos"
     },
     menu: {
       settings: "Configurações",
-      suggestions: "Sugestões de melhoria",
+      suggestions: "Sugestões de melhoria"
     },
     settings: {
       theme: {
         title: "Tema",
         auto: "Automático",
         light: "Claro",
-        dark: "Escuro",
+        dark: "Escuro"
       },
-      language: "Idioma",
+      language: "Idioma"
     },
     prayer: {
       addPageTitle: "Adicionar oração",
@@ -236,7 +236,7 @@ const messages = {
       confirmDelete: "Tem certeza de que deseja excluir esta oração?",
       notFound: "Orações não encontradas…",
       bookmark: "Adicionar aos favoritos",
-      unbookmark: "Remover dos favoritos",
+      unbookmark: "Remover dos favoritos"
     }
   },
   ro: {
@@ -250,20 +250,20 @@ const messages = {
       saints: "Rugăciuni către sfinți",
       other: "Altele",
       custom: null,
-      bookmarks: null,
+      bookmarks: null
     },
     menu: {
       settings: "Setări",
-      suggestions: "Sugerați o ameliorare",
+      suggestions: "Sugerați o ameliorare"
     },
     settings: {
       theme: {
         title: null,
         auto: null,
         light: null,
-        dark: null,
+        dark: null
       },
-      language: null,
+      language: null
     },
     prayer: {
       addPageTitle: null,
@@ -276,7 +276,7 @@ const messages = {
       confirmDelete: null,
       notFound: null,
       bookmark: null,
-      unbookmark: null,
+      unbookmark: null
     }
   },
   sk: {
@@ -290,20 +290,20 @@ const messages = {
       saints: "Svätí",
       other: "Ostatné",
       custom: "Vlastné",
-      bookmarks: "Obľúbené",
+      bookmarks: "Obľúbené"
     },
     menu: {
       settings: "Nastavenia",
-      suggestions: "Návrhy na zlepšenie",
+      suggestions: "Návrhy na zlepšenie"
     },
     settings: {
       theme: {
         title: "Téma",
         auto: "Automatická",
         light: "Svetlá",
-        dark: "Tmavá",
+        dark: "Tmavá"
       },
-      language: "Jazyk",
+      language: "Jazyk"
     },
     prayer: {
       addPageTitle: "Pridať modlitbu",
@@ -316,10 +316,49 @@ const messages = {
       confirmDelete: "Naozaj chcete vymazať túto modlitbu?",
       notFound: "Modlitby sa nenašli…",
       bookmark: "Pridať do obľúbených",
-      unbookmark: "Odstrániť z obľúbených",
+      unbookmark: "Odstrániť z obľúbených"
+    }
+  },
+  sw: {
+    prayerBook: "Kitabu cha Sala",
+    search: "Tafuta…",
+    category: {
+      all: "Zote",
+      basic: "Msingi",
+      rosary: "Rosario",
+      litany: "Litania",
+      saints: "Watakatifu",
+      other: "Nyingine",
+      custom: "Maalum",
+      bookmarks: "Alamisho"
+    },
+    menu: {
+      settings: "Mipangilio",
+      suggestions: "Mapendekezo ya uboreshaji"
+    },
+    settings: {
+      theme: {
+        title: "Mandhari",
+        auto: "Kiotomatiki",
+        light: "Mwanga",
+        dark: "Giza"
+      },
+      language: "Lugha"
+    },
+    prayer: {
+      addPageTitle: "Ongeza sala",
+      editPageTitle: "Hariri sala",
+      title: "Kichwa",
+      text: "Maandishi ya sala (tumia Markdown kwa umbizo)",
+      save: "Hifadhi",
+      edit: "Hariri",
+      delete: "Futa",
+      confirmDelete: "Je, una uhakika unataka kufuta sala hii?",
+      notFound: "Sala hazijapatikana…",
+      bookmark: "Weka alama",
+      unbookmark: "Ondoa alama"
     }
   }
 }
-
 
 export default messages

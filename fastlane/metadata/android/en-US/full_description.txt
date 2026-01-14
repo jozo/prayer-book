@@ -11,4 +11,5 @@ Prayers are translated into multiple languages:
 - Portuguese,
 - Romanian,
 - Slovak,
-- Spanish.
+- Spanish,
+- Swahili.

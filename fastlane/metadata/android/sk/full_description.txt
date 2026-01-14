@@ -11,4 +11,5 @@ Aktuálne v jazykoch:
 - portugalský,
 - rumunský,
 - slovenský,
+- swahilčina,
 - španielsky.
