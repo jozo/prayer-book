@@ -325,7 +325,7 @@ const messages = {
     category: {
       all: "Zote",
       basic: "Msingi",
-      rosary: "Rosario",
+      rosary: "Rozari",
       litany: "Litania",
       saints: "Watakatifu",
       other: "Nyingine",

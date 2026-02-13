@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add 19 more ES prayers
 - Add 26 SW prayers (and SW translation of the app)
 
+### Changed
+- Update JS packages
+
+### Fixed
+- Fix SW name of the Rosary category
+
+
 ## [0.10.3] - 2025-11-25
 ### Added
 - Added Daniel and Symeon Canticles
