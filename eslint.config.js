@@ -1,22 +1,52 @@
-import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-import globals from 'globals'
+import js from "@eslint/js";
+import pluginVue from "eslint-plugin-vue";
+import stylistic from "@stylistic/eslint-plugin";
+import globals from "globals";
 
 export default [
   {
-    ignores: ['dist/**', 'android/**', 'public/*.json', 'node_modules/**']
+    ignores: ["dist/**", "android/**", "public/*.json", "node_modules/**"]
   },
 
   js.configs.recommended,
-  // In eslint-plugin-vue 10, Vue 3 is the default: 'flat/essential' replaces 'vue3-essential'
-  ...pluginVue.configs['flat/essential'],
+  // In eslint-plugin-vue 10, Vue 3 is the default (no 'vue3-' prefix).
+  ...pluginVue.configs["flat/recommended"],
+
+  // Script-block formatting. ESLint 10 dropped the core formatting rules, so this comes from
+  // @stylistic. Settings match the existing codebase rather than the deleted .prettierrc.json,
+  // which the source never actually followed.
+  stylistic.configs.customize({
+    indent: 2,
+    quotes: "double",
+    semi: true,
+    commaDangle: "never",
+    braceStyle: "1tbs"
+  }),
 
   {
-    files: ['**/*.{js,mjs,cjs,vue}'],
+    rules: {
+      // This repo writes import and object braces unspaced: import {ref} from "vue"
+      "@stylistic/object-curly-spacing": ["error", "never"],
+      // Leave existing key quoting alone; the store deliberately uses {"custom": {}}
+      "@stylistic/quote-props": "off"
+    }
+  },
+
+  {
+    // Inside SFCs, @stylistic/indent fights vue-eslint-parser. vue/script-indent is the
+    // parser-aware equivalent.
+    files: ["**/*.vue"],
+    rules: {
+      "@stylistic/indent": "off",
+      "vue/script-indent": ["error", 2, {baseIndent: 0}]
+    }
+  },
+
+  {
+    files: ["**/*.{js,mjs,cjs,vue}"],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
         ...globals.browser
       }
@@ -25,9 +55,9 @@ export default [
 
   // CommonJS Node files (build script, postcss config)
   {
-    files: ['compilePrayers.js', 'postcss.config.js', '**/*.cjs'],
+    files: ["compilePrayers.js", "postcss.config.js", "**/*.cjs"],
     languageOptions: {
-      sourceType: 'commonjs',
+      sourceType: "commonjs",
       globals: {
         ...globals.node
       }
@@ -36,14 +66,12 @@ export default [
 
   // ESM Node files (vite/eslint config)
   {
-    files: ['vite.config.js', 'eslint.config.js'],
+    files: ["vite.config.js", "eslint.config.js"],
     languageOptions: {
-      sourceType: 'module',
+      sourceType: "module",
       globals: {
         ...globals.node
       }
     }
-  },
-
-  skipFormatting
-]
+  }
+];

@@ -10,5 +10,5 @@ export const Lang = {
   Romanian: "ro",
   Slovak: "sk",
   Spanish: "es",
-  Swahili: "sw",
+  Swahili: "sw"
 };

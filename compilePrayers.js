@@ -1,9 +1,9 @@
 // convertToml.js
 
-const fs = require('fs').promises;
-const path = require('path');
-const toml = require('toml');
-const commonmark = require('commonmark'); // Import the 'commonmark' library
+const fs = require("fs").promises;
+const path = require("path");
+const toml = require("toml");
+const commonmark = require("commonmark"); // Import the 'commonmark' library
 
 // Initialize the CommonMark parser and renderer
 const parser = new commonmark.Parser();
@@ -24,19 +24,19 @@ function validateTomlStructure(parsedToml, filePath) {
     throw new Error(`The "versions" field in file ${filePath} is not an array.`);
   }
 
-  if (typeof parsedToml.title === 'undefined') {
+  if (typeof parsedToml.title === "undefined") {
     throw new Error(`Prayer in file ${filePath} is missing the "title" field.`);
   }
 
-  if (typeof parsedToml.categories === 'undefined') {
+  if (typeof parsedToml.categories === "undefined") {
     throw new Error(`Prayer in file ${filePath} is missing the "categories" field.`);
   }
 
   parsedToml.versions.forEach((prayer, index) => {
-    if (typeof prayer.name === 'undefined') {
+    if (typeof prayer.name === "undefined") {
       throw new Error(`Prayer at index ${index} in file ${filePath} is missing the "version" field.`);
     }
-    if (typeof prayer.content === 'undefined') {
+    if (typeof prayer.content === "undefined") {
       throw new Error(`Prayer at index ${index} in file ${filePath} is missing the "content" field.`);
     }
   });
@@ -61,10 +61,10 @@ function convertMarkdownToHTML(markdown) {
 async function convertTomlFiles(inputDir, outputDir) {
   try {
     // Ensure the output directory exists
-    await fs.mkdir(outputDir, { recursive: true });
+    await fs.mkdir(outputDir, {recursive: true});
 
     // Read the contents of the input directory
-    const languages = await fs.readdir(inputDir, { withFileTypes: true });
+    const languages = await fs.readdir(inputDir, {withFileTypes: true});
 
     // Iterate through each language directory
     for (const langDirent of languages) {
@@ -73,16 +73,16 @@ async function convertTomlFiles(inputDir, outputDir) {
         const langPath = path.join(inputDir, lang);
 
         // Read all files in the language directory
-        const files = await fs.readdir(langPath, { withFileTypes: true });
+        const files = await fs.readdir(langPath, {withFileTypes: true});
 
         const prayersInLanguage = [];
 
         for (const fileDirent of files) {
-          if (fileDirent.isFile() && path.extname(fileDirent.name) === '.toml') {
+          if (fileDirent.isFile() && path.extname(fileDirent.name) === ".toml") {
             const filePath = path.join(langPath, fileDirent.name);
 
             try {
-              const fileContent = await fs.readFile(filePath, 'utf-8');
+              const fileContent = await fs.readFile(filePath, "utf-8");
               const parsed = toml.parse(fileContent);
 
               // Validate the structure of the TOML content
@@ -99,7 +99,7 @@ async function convertTomlFiles(inputDir, outputDir) {
               // Replace the original prayer_versions with converted prayer_versions
               prayersInLanguage.push({
                 ...parsed,
-                id: fileDirent.name.replace('.toml', ''),
+                id: fileDirent.name.replace(".toml", ""),
                 versions: convertedVersions
               });
             } catch (err) {
@@ -112,7 +112,7 @@ async function convertTomlFiles(inputDir, outputDir) {
         // Group the prayers by categories
         const categories = {};
         for (const prayer of prayersInLanguage) {
-          prayer.categories.forEach(category => {
+          prayer.categories.forEach((category) => {
             if (!categories[category]) {
               categories[category] = [];
             }
@@ -131,7 +131,7 @@ async function convertTomlFiles(inputDir, outputDir) {
           const outputFilePath = path.join(outputDir, `${lang}.json`);
           try {
             const finalData = {prayers: prayersById, categories: categories};
-            await fs.writeFile(outputFilePath, JSON.stringify(finalData), 'utf-8');
+            await fs.writeFile(outputFilePath, JSON.stringify(finalData), "utf-8");
             console.log(`Successfully saved: ${outputFilePath}`);
           } catch (err) {
             console.error(`Error saving file ${outputFilePath}:`, err.message);
@@ -142,16 +142,16 @@ async function convertTomlFiles(inputDir, outputDir) {
       }
     }
 
-    console.log('Conversion completed.');
+    console.log("Conversion completed.");
   } catch (err) {
-    console.error('Error:', err.message);
+    console.error("Error:", err.message);
   }
 }
 
 // Retrieve input and output directories from command-line arguments
 const args = process.argv.slice(2);
-const inputDirectory = args[0] || path.join(__dirname, 'src/prayers'); // Default input directory
-const outputDirectory = args[1] || path.join(__dirname, 'public'); // Default output directory
+const inputDirectory = args[0] || path.join(__dirname, "src/prayers"); // Default input directory
+const outputDirectory = args[1] || path.join(__dirname, "public"); // Default output directory
 
 // Execute the main function
 convertTomlFiles(inputDirectory, outputDirectory);

@@ -359,6 +359,6 @@ const messages = {
       unbookmark: "Ondoa alama"
     }
   }
-}
+};
 
-export default messages
+export default messages;
