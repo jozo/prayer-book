@@ -89,7 +89,7 @@ async function convertTomlFiles(inputDir, outputDir) {
               validateTomlStructure(parsed, filePath);
 
               // Convert 'content' from CommonMark to HTML for each prayer
-              const convertedVersions = parsed.versions.map((version, index) => {
+              const convertedVersions = parsed.versions.map((version) => {
                 return {
                   ...version,
                   content: convertMarkdownToHTML(version.content) // Convert Markdown to HTML
