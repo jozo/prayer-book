@@ -1,46 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="256" cy="256" r="362" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0d8ba6"/>
+      <stop offset="0.2" stop-color="#16b0cc"/>
+      <stop offset="0.72" stop-color="#2fdcf2"/>
+      <stop offset="1" stop-color="#2fdcf2"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="256" cy="300" r="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a3c" stop-opacity="0.5"/>
+      <stop offset="0.55" stop-color="#ff6a2a" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ff6a2a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flame" x1="256" y1="94" x2="256" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff0bf"/>
+      <stop offset="0.3" stop-color="#ffd24a"/>
+      <stop offset="0.66" stop-color="#f6a623"/>
+      <stop offset="1" stop-color="#e07b16"/>
+    </linearGradient>
+    <filter id="ds" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#6e3608" flood-opacity="0.3"/>
+    </filter>
+    <radialGradient id="halo" cx="256" cy="304" r="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7e0" stop-opacity="0.92"/>
+      <stop offset="0.42" stop-color="#ffe9b0" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="xcross" x1="256" y1="238" x2="256" y2="372" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.55" stop-color="#fff7e4"/>
+      <stop offset="1" stop-color="#ffe7a8"/>
+    </linearGradient>
+    <clipPath id="tile">
+      <rect x="0" y="0" width="512" height="512" />
+    </clipPath>
+  </defs>
 
-<svg
-   width="106.49239mm"
-   height="106.49239mm"
-   viewBox="0 0 106.49239 106.49239"
-   version="1.1"
-   id="svg1"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
-  <g
-     id="layer1"
-     transform="translate(-31.389944,-16.41646)">
-    <rect
-       style="fill:#38bdf8;fill-opacity:1;stroke-width:0.264583"
-       id="rect1"
-       width="106.49239"
-       height="106.49239"
-       x="31.389944"
-       y="16.41646" />
-    <g
-       id="g2"
-       transform="translate(6.2163295)">
-      <rect
-         style="fill:#fed7aa;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
-         id="rect2"
-         width="12.248861"
-         height="88.287392"
-         x="72.29538"
-         y="25.518961"
-         ry="6.1244307" />
-      <rect
-         style="fill:#fed7aa;fill-opacity:1;stroke-width:0.229093"
-         id="rect2-5"
-         width="12.248861"
-         height="66.190651"
-         x="50.454681"
-         y="-111.51514"
-         transform="rotate(90)"
-         ry="6.1244307" />
+  <g clip-path="url(#tile)">
+    <rect x="0" y="0" width="512" height="512" fill="url(#bg)"/>
+
+    <g transform="translate(256 256) scale(1.2) translate(-256 -256)">
+    <!-- outer three-tongue Pentecost flame (symmetric) -->
+    <path fill="url(#flame)" d="
+      M 256 408
+      C 300 404, 350 360, 356 300
+      C 360 250, 344 205, 330 170
+      C 322 192, 312 206, 298 212
+      C 280 188, 268 150, 256 94
+      C 244 150, 232 188, 214 212
+      C 200 206, 190 192, 182 170
+      C 168 205, 152 250, 156 300
+      C 162 360, 212 404, 256 408
+      Z"/>
+
+    <!-- luminous halo behind the cross -->
+    <circle cx="256" cy="304" r="118" fill="url(#halo)"/>
+
+    <!-- bright cross at the heart of the flame, with a tight raised shadow -->
+    <g fill="url(#xcross)" filter="url(#ds)">
+      <rect x="241" y="240" width="30" height="132" rx="9"/>
+      <rect x="208" y="282" width="96" height="30" rx="9"/>
+    </g>
     </g>
   </g>
 </svg>
