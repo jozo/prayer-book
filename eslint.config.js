@@ -5,7 +5,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: ["dist/**", "android/**", "public/*.json", "node_modules/**"]
+    ignores: ["dist/**", "android/**", "public/*.json", "node_modules/**", "test-results/**", "playwright-report/**"]
   },
 
   js.configs.recommended,
@@ -64,9 +64,9 @@ export default [
     }
   },
 
-  // ESM Node files (vite/eslint config)
+  // ESM Node files (vite/eslint/playwright config, e2e tests)
   {
-    files: ["vite.config.js", "eslint.config.js"],
+    files: ["vite.config.js", "eslint.config.js", "playwright.config.js", "e2e/**/*.js"],
     languageOptions: {
       sourceType: "module",
       globals: {

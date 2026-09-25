@@ -1,0 +1,215 @@
+import {test, expect} from "@playwright/test";
+import {getPreference, heading, prayerList, prayerText, seedStorage} from "./helpers.js";
+
+function customPrayer(id, title, content) {
+  return {id, title, categories: ["custom"], versions: [{name: "", content}], lang: "custom"};
+}
+
+test.describe("Custom prayers", () => {
+  test("the custom category is empty at first and offers to add a prayer", async ({page}) => {
+    await page.goto("/category/custom");
+
+    await expect(heading(page)).toHaveText("Custom");
+    await expect(page.getByText("Prayers not found…")).toBeVisible();
+
+    await page.getByRole("button", {name: "Add prayer"}).click();
+
+    await expect(page).toHaveURL(/\/prayer\/add\/?$/);
+    await expect(heading(page)).toHaveText("Add prayer");
+  });
+
+  test("saving is disabled until both title and text are filled in", async ({page}) => {
+    await page.goto("/prayer/add/");
+    const save = page.getByRole("button", {name: "Save"});
+
+    await expect(save).toBeDisabled();
+
+    await page.getByPlaceholder("Title").fill("My prayer");
+    await expect(save).toBeDisabled();
+
+    await page.getByPlaceholder("Text of the prayer (use Markdown for formatting)").fill("Amen.");
+    await expect(save).toBeEnabled();
+
+    await page.getByPlaceholder("Title").fill("");
+    await expect(save).toBeDisabled();
+  });
+
+  test("adding a prayer saves it and lists it in the custom category", async ({page}) => {
+    await page.goto("/category/custom");
+    await page.getByRole("button", {name: "Add prayer"}).click();
+
+    await page.getByPlaceholder("Title").fill("Morning Offering");
+    await page.getByPlaceholder("Text of the prayer (use Markdown for formatting)")
+      .fill("O Jesus, through the **Immaculate Heart** of Mary,\n\nI offer You my prayers.");
+    await page.getByRole("button", {name: "Save"}).click();
+
+    await expect(page).toHaveURL("/category/custom");
+    await expect(prayerList(page)).toHaveText(["Morning Offering"]);
+
+    await expect.poll(() => getPreference(page, "customPrayers")).toEqual({
+      "custom-0": customPrayer("custom-0", "Morning Offering",
+        "O Jesus, through the **Immaculate Heart** of Mary,\n\nI offer You my prayers.")
+    });
+
+    await page.reload();
+    await expect(prayerList(page)).toHaveText(["Morning Offering"]);
+  });
+
+  test("a custom prayer is rendered from Markdown", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Formatted", "First *line*\n\n**Second** line\n\n- one\n- two")
+    }}});
+    await page.goto("/category/custom");
+
+    await page.getByRole("button", {name: "Formatted"}).click();
+
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+    await expect(heading(page)).toHaveText("Formatted");
+    await expect(prayerText(page).locator("em")).toHaveText("line");
+    await expect(prayerText(page).locator("strong")).toHaveText("Second");
+    await expect(prayerText(page).locator("li")).toHaveText(["one", "two"]);
+    await expect(page.getByRole("button", {name: "Edit"})).toBeVisible();
+    await expect(page.getByRole("button", {name: "Delete"})).toBeVisible();
+  });
+
+  test("editing a prayer updates its title and text", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Old title", "Old text")
+    }}});
+    await page.goto("/prayer/view/custom/custom-0");
+
+    await page.getByRole("button", {name: "Edit"}).click();
+
+    await expect(page).toHaveURL("/prayer/edit/custom-0");
+    await expect(heading(page)).toHaveText("Edit prayer");
+    const title = page.getByPlaceholder("Title");
+    const text = page.getByPlaceholder("Text of the prayer (use Markdown for formatting)");
+    await expect(title).toHaveValue("Old title");
+    await expect(text).toHaveValue("Old text");
+
+    await title.fill("New title");
+    await text.fill("New **text**");
+    await page.getByRole("button", {name: "Save"}).click();
+
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+    await expect(heading(page)).toHaveText("New title");
+    await expect(prayerText(page).locator("strong")).toHaveText("text");
+    await expect.poll(() => getPreference(page, "customPrayers"))
+      .toEqual({"custom-0": customPrayer("custom-0", "New title", "New **text**")});
+  });
+
+  test("editing opens directly from a URL after a reload", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Stored prayer", "Stored text")
+    }}});
+    await page.goto("/prayer/edit/custom-0");
+
+    await expect(page.getByPlaceholder("Title")).toHaveValue("Stored prayer");
+  });
+
+  test("saving an edit is disabled when a field is emptied", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Title", "Text")
+    }}});
+    await page.goto("/prayer/edit/custom-0");
+
+    await page.getByPlaceholder("Text of the prayer (use Markdown for formatting)").fill("");
+
+    await expect(page.getByRole("button", {name: "Save"})).toBeDisabled();
+  });
+
+  test("deleting a prayer asks for confirmation", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Keep me", "Text")
+    }}});
+    await page.goto("/prayer/view/custom/custom-0");
+
+    page.once("dialog", async (dialog) => {
+      expect(dialog.type()).toBe("confirm");
+      expect(dialog.message()).toBe("Are you sure you want to delete this prayer?");
+      await dialog.dismiss();
+    });
+    await page.getByRole("button", {name: "Delete"}).click();
+
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+    await expect(heading(page)).toHaveText("Keep me");
+  });
+
+  test("deleting a prayer removes it and its bookmark", async ({page}) => {
+    await seedStorage(page, {preferences: {
+      customPrayers: {
+        "custom-0": customPrayer("custom-0", "Delete me", "Text"),
+        "custom-1": customPrayer("custom-1", "Keep me", "Text")
+      },
+      bookmarks: {custom: {"custom-0": true}}
+    }});
+    await page.goto("/category/custom");
+    await page.getByRole("button", {name: "Delete me"}).click();
+    await expect(page.getByRole("button", {name: "Unbookmark"})).toBeVisible();
+
+    page.once("dialog", dialog => dialog.accept());
+    await page.getByRole("button", {name: "Delete"}).click();
+
+    await expect(page).toHaveURL("/category/custom");
+    await expect(prayerList(page)).toHaveText(["Keep me"]);
+    await expect.poll(() => getPreference(page, "customPrayers"))
+      .toEqual({"custom-1": customPrayer("custom-1", "Keep me", "Text")});
+    await expect.poll(() => getPreference(page, "bookmarks")).toEqual({custom: {}});
+  });
+
+  test("custom prayers can be bookmarked", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "My bookmark", "Text")
+    }}});
+    await page.goto("/prayer/view/custom/custom-0");
+
+    await page.getByRole("button", {name: "Bookmark"}).click();
+    await expect.poll(() => getPreference(page, "bookmarks")).toEqual({custom: {"custom-0": true}});
+
+    await page.goto("/category/bookmarks");
+    await page.getByRole("button", {name: "My bookmark"}).click();
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+  });
+
+  // Known bug: opening a custom prayer directly by URL loads only the custom prayers, not the
+  // bookmarks, so the prayer looks unbookmarked and bookmarking it overwrites all saved bookmarks.
+  test("opening a bookmarked custom prayer by URL shows it as bookmarked", async ({page}) => {
+    test.fail();
+    await seedStorage(page, {preferences: {
+      customPrayers: {"custom-0": customPrayer("custom-0", "Bookmarked", "Text")},
+      bookmarks: {custom: {"custom-0": true}}
+    }});
+    await page.goto("/prayer/view/custom/custom-0");
+
+    await expect(page.getByRole("button", {name: "Unbookmark"})).toBeVisible({timeout: 2000});
+  });
+
+  test("custom prayers are included in \"All\" and its search", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Zzz my own prayer", "Text")
+    }}});
+    await page.goto("/category/all");
+
+    await expect(prayerList(page).last()).toHaveText("Zzz my own prayer");
+
+    await page.getByPlaceholder("Search…").fill("own prayer");
+    await expect(prayerList(page)).toHaveText(["Zzz my own prayer"]);
+
+    await prayerList(page).first().click();
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+  });
+
+  test("custom prayers saved in the legacy array format are still loaded", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: [
+      {title: "Legacy one", categories: ["custom"], versions: [{name: "", content: "First"}]},
+      {title: "Legacy two", categories: ["custom"], versions: [{name: "", content: "Second"}]}
+    ]}});
+    await page.goto("/category/custom");
+
+    await expect(prayerList(page)).toHaveText(["Legacy one", "Legacy two"]);
+
+    await page.getByRole("button", {name: "Legacy two"}).click();
+    await expect(page).toHaveURL("/prayer/view/custom/custom-1");
+    await expect(prayerText(page)).toHaveText("Second");
+  });
+});

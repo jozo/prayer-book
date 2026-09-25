@@ -62,3 +62,9 @@ public/*.json
 
 # Vim swap files
 *.swp
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

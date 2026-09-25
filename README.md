@@ -49,5 +49,14 @@ Create a PR and I will add it to the app.
 Follow the steps in: 
 https://codeberg.org/jozo/prayer-book/wiki/Home
 
+### End-to-end tests
+The web app is covered by [Playwright](https://playwright.dev) tests in the `e2e/` directory.
+They build the app and run it with `vite preview` in a phone-sized Chromium.
+
+```shell
+npx playwright install chromium  # first time only
+npm run test:e2e
+```
+
 ## Icons
 https://heroicons.com
