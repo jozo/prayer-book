@@ -13,8 +13,15 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
   const allPrayers = ref({"custom": {}, "bookmarks": {}});
 
   async function loadPrayer(id, lang) {
-    if (lang === "custom" && isEmpty(allPrayers.value.custom)) {
-      await loadCustomPrayers();
+    if (lang === "custom") {
+      // Bookmarks are needed to show the bookmark state, and saving a bookmark before they are
+      // loaded would overwrite all stored bookmarks.
+      if (isEmpty(allPrayers.value.bookmarks)) {
+        await loadBookmarks();
+      }
+      if (isEmpty(allPrayers.value.custom)) {
+        await loadCustomPrayers();
+      }
     } else if (allPrayers.value[lang] === undefined) {
       await loadPrayers(lang);
     }
@@ -43,7 +50,13 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
           console.error("Error:", response);
           continue;
         }
-        allPrayers.value[language] = await response.json();
+        // A missing file can be answered with the SPA's index.html, which is not valid JSON.
+        // Skip that language instead of failing to load the others.
+        try {
+          allPrayers.value[language] = await response.json();
+        } catch (error) {
+          console.error(`Error loading prayers for "${language}":`, error);
+        }
       }
     }
   }

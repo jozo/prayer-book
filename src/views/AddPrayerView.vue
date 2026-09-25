@@ -3,6 +3,7 @@ import {useI18n} from "vue-i18n";
 import {ref} from "vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
+import {isEmpty} from "@/utils";
 
 const {t} = useI18n({useScope: "global"});
 const prayerTitle = ref("");
@@ -14,7 +15,16 @@ function isSaveDisabled() {
 }
 
 async function savePrayer() {
-  let nextId = Object.keys(prayerDataStore.allPrayers.custom).length;
+  // The page can be opened directly, so make sure existing prayers are loaded and not overwritten
+  if (isEmpty(prayerDataStore.allPrayers.custom)) {
+    await prayerDataStore.loadCustomPrayers();
+  }
+
+  // Use one more than the highest existing number
+  const usedIds = Object.keys(prayerDataStore.allPrayers.custom)
+    .map(id => parseInt(id.replace("custom-", ""), 10))
+    .filter(id => !isNaN(id));
+  const nextId = usedIds.length ? Math.max(...usedIds) + 1 : 0;
   const newPrayer = {
     id: `custom-${nextId}`,
     title: prayerTitle.value,

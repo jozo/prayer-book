@@ -62,6 +62,17 @@ test.describe("Bookmarks", () => {
     await expect(prayerList(page)).toHaveText(["Otčenáš", "Our Father"]);
   });
 
+  test("bookmarks of prayers that no longer exist are skipped", async ({page}) => {
+    await seedStorage(page, {preferences: {bookmarks: {
+      en: {ourFather: true, removedPrayer: true},
+      xx: {unknownLanguage: true},
+      custom: {"custom-9": true}
+    }}});
+    await page.goto("/category/bookmarks");
+
+    await expect(prayerList(page)).toHaveText(["Our Father"]);
+  });
+
   test("bookmarks can be searched", async ({page}) => {
     await seedStorage(page, {preferences: {bookmarks: {en: {ourFather: true, gloryBe: true, hailMary: true}}}});
     await page.goto("/category/bookmarks");

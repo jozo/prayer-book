@@ -171,17 +171,62 @@ test.describe("Custom prayers", () => {
     await expect(page).toHaveURL("/prayer/view/custom/custom-0");
   });
 
-  // Known bug: opening a custom prayer directly by URL loads only the custom prayers, not the
-  // bookmarks, so the prayer looks unbookmarked and bookmarking it overwrites all saved bookmarks.
   test("opening a bookmarked custom prayer by URL shows it as bookmarked", async ({page}) => {
-    test.fail();
     await seedStorage(page, {preferences: {
       customPrayers: {"custom-0": customPrayer("custom-0", "Bookmarked", "Text")},
       bookmarks: {custom: {"custom-0": true}}
     }});
     await page.goto("/prayer/view/custom/custom-0");
 
-    await expect(page.getByRole("button", {name: "Unbookmark"})).toBeVisible({timeout: 2000});
+    await expect(page.getByRole("button", {name: "Unbookmark"})).toBeVisible();
+  });
+
+  test("bookmarking a custom prayer opened by URL keeps the other bookmarks", async ({page}) => {
+    await seedStorage(page, {preferences: {
+      customPrayers: {"custom-0": customPrayer("custom-0", "New bookmark", "Text")},
+      bookmarks: {en: {ourFather: true}}
+    }});
+    await page.goto("/prayer/view/custom/custom-0");
+
+    await page.getByRole("button", {name: "Bookmark"}).click();
+
+    await expect.poll(() => getPreference(page, "bookmarks"))
+      .toEqual({en: {ourFather: true}, custom: {"custom-0": true}});
+  });
+
+  test("a prayer added after a deletion does not overwrite an existing one", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-1": customPrayer("custom-1", "Existing", "Text")
+    }}});
+    await page.goto("/category/custom");
+    await page.getByRole("button", {name: "Add prayer"}).click();
+
+    await page.getByPlaceholder("Title").fill("Added");
+    await page.getByPlaceholder("Text of the prayer (use Markdown for formatting)").fill("New text");
+    await page.getByRole("button", {name: "Save"}).click();
+
+    await expect(prayerList(page)).toHaveText(["Added", "Existing"]);
+    await expect.poll(() => getPreference(page, "customPrayers")).toEqual({
+      "custom-1": customPrayer("custom-1", "Existing", "Text"),
+      "custom-2": customPrayer("custom-2", "Added", "New text")
+    });
+  });
+
+  test("adding a prayer from a directly opened add page keeps the existing prayers", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Existing", "Text")
+    }}});
+    await page.goto("/prayer/add/");
+
+    await page.getByPlaceholder("Title").fill("Added");
+    await page.getByPlaceholder("Text of the prayer (use Markdown for formatting)").fill("New text");
+    await page.getByRole("button", {name: "Save"}).click();
+
+    await expect(prayerList(page)).toHaveText(["Added", "Existing"]);
+    await expect.poll(() => getPreference(page, "customPrayers")).toEqual({
+      "custom-0": customPrayer("custom-0", "Existing", "Text"),
+      "custom-1": customPrayer("custom-1", "Added", "New text")
+    });
   });
 
   test("custom prayers are included in \"All\" and its search", async ({page}) => {

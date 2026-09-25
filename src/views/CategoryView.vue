@@ -82,7 +82,11 @@ function getBookmarkedPrayers() {
       if (lang === "custom") {
         prayer = allPrayers.value.custom[prayerId];
       } else {
-        prayer = allPrayers.value[lang].prayers[prayerId];
+        prayer = allPrayers.value[lang]?.prayers?.[prayerId];
+      }
+      // Skip bookmarks of prayers that no longer exist, e.g. removed or renamed in an app update
+      if (!prayer) {
+        continue;
       }
       prayer.lang = lang;
       prayers.push(prayer);
