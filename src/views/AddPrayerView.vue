@@ -1,5 +1,6 @@
 <script setup>
 import {useI18n} from "vue-i18n";
+import HeaderBackground from "@/components/HeaderBackground.vue";
 import {ref} from "vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
@@ -41,30 +42,31 @@ async function savePrayer() {
 
 <template>
   <div
-    class="w-screen z-10 rounded-b-2xl bg-linear-to-b from-cyan-500 to-blue-500
-              dark:from-cyan-800 dark:to-blue-800"
+    class="w-screen z-10 px-safe"
   >
+    <HeaderBackground />
     <h1
-      class="mt-12 mb-12 mx-5 text-4xl text-center text-white font-bold
+      class="mb-12 mx-5 text-4xl text-center text-white font-bold
                dark:text-gray-300"
+      style="margin-top: calc(48px + env(safe-area-inset-top));"
     >
       {{ t('prayer.addPageTitle') }}
     </h1>
   </div>
-  <form class="flex flex-col grow items-center h-full space-y-8 mt-8 p-6">
+  <form class="flex flex-col grow items-center h-full space-y-8 mt-8 mx-6 py-6 px-safe">
     <input
       v-model="prayerTitle"
       type="text"
       :placeholder="t('prayer.title')"
       class="flex w-full p-3 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)]
-                  text-lg placeholder:italic dark:bg-neutral-500 dark:text-gray-300"
+                  text-lg placeholder:italic bg-neutral-100 dark:bg-neutral-500 dark:text-gray-300"
       required
     >
     <textarea
       v-model="prayerText"
       :placeholder="t('prayer.text')"
       class="flex grow w-full p-3 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)]
-                    text-lg placeholder:italic dark:bg-neutral-500 dark:text-gray-300"
+                    text-lg placeholder:italic bg-neutral-100 dark:bg-neutral-500 dark:text-gray-300"
       required
     />
     <button

@@ -50,8 +50,11 @@ function openMenu() {
   // so it can be scrolled. The fixed element can be scrolled only if it has a height set.
   const navigationTop = document.querySelector("#navigation-top");
   const navigationBottom = document.querySelector("#navigation-bottom");
-  const safeAreaInsetTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sat"), 10);
-  const navigationHeight = navigationTop.offsetHeight + navigationBottom.offsetHeight + safeAreaInsetTop;
+  const rootStyle = getComputedStyle(document.documentElement);
+  const safeAreaInsetTop = parseInt(rootStyle.getPropertyValue("--sat"), 10);
+  const safeAreaInsetBottom = parseInt(rootStyle.getPropertyValue("--sab"), 10);
+  const navigationHeight = navigationTop.offsetHeight + navigationBottom.offsetHeight
+    + safeAreaInsetTop + safeAreaInsetBottom;
   if (navigationHeight > window.innerHeight) {
     document.querySelector("#navigation-wrapper").style.height = navigationHeight + "px";
   }
@@ -72,17 +75,18 @@ function closeMenu() {
     @click="toggleMenu"
   >
     <IconHamburger
-      class="absolute z-30 ml-3.5 text-gray-100"
-      style="margin-top: calc(14px + env(safe-area-inset-top));"
+      class="absolute z-30 text-gray-100"
+      style="margin-top: calc(14px + env(safe-area-inset-top)); margin-left: calc(14px + env(safe-area-inset-left));"
     />
   </button>
 
-  <nav :class="['fixed flex flex-row h-full w-full z-20 overflow-scroll', { 'invisible': !menuVisible }]">
+  <nav :class="['fixed flex flex-row h-full w-full z-40 overflow-scroll', { 'invisible': !menuVisible }]">
     <div
       id="navigation-wrapper"
       class="flex flex-col justify-between min-w-[250px] max-w-[90%] bg-sky-500 text-gray-100
                 dark:bg-sky-700 dark:text-gray-300"
-      style="padding-top: env(safe-area-inset-top); padding-left: env(safe-area-inset-left);"
+      style="padding-top: env(safe-area-inset-top); padding-left: env(safe-area-inset-left);
+             padding-bottom: env(safe-area-inset-bottom);"
     >
       <div
         id="navigation-top"

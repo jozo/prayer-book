@@ -78,3 +78,73 @@ export function prayerList(page) {
 export function prayerText(page) {
   return page.locator(".prayer-text");
 }
+
+// Insets of a phone with a status bar and a gesture bar, and of the same phone turned to landscape
+// where the camera cutout and the gesture area end up on the sides
+export const PORTRAIT_INSETS = {top: 48, right: 0, bottom: 34, left: 0};
+export const LANDSCAPE_INSETS = {top: 0, right: 48, bottom: 24, left: 48};
+
+/**
+ * Make env(safe-area-inset-*) return the given values, as on an edge-to-edge Android phone.
+ * Device descriptors do not include insets, so this uses the Chromium DevTools protocol.
+ *
+ * @param {import("@playwright/test").Page} page
+ * @param {{top: number, right: number, bottom: number, left: number}} insets
+ */
+export async function emulateSafeArea(page, insets) {
+  const session = await page.context().newCDPSession(page);
+  await session.send("Emulation.setSafeAreaInsetsOverride", {insets});
+}
+
+/**
+ * Scroll the page, or the given scrollable element, to its start or its end.
+ *
+ * @param {import("@playwright/test").Page} page
+ * @param {"start"|"end"} position
+ * @param {string} [selector]
+ */
+export async function scrollTo(page, position, selector) {
+  await page.evaluate(([pos, sel]) => {
+    const element = sel ? document.querySelector(sel) : document.scrollingElement;
+    element.scrollTop = pos === "start" ? 0 : element.scrollHeight;
+  }, [position, selector]);
+}
+
+/**
+ * Describe visible content under `root` that reaches into the safe-area insets on the given edges.
+ * Returns an empty array when everything is inside the safe area.
+ *
+ * @param {import("@playwright/test").Page} page
+ * @param {{top: number, right: number, bottom: number, left: number}} insets
+ * @param {{root?: string, edges: Array<"top"|"right"|"bottom"|"left">}} options
+ */
+export async function safeAreaViolations(page, insets, {root = "#app", edges}) {
+  return page.evaluate(([ins, sel, checkedEdges]) => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const content = "h1, h2, h3, p, li, a, button, input, textarea, select, svg";
+    const violations = [];
+    for (const element of document.querySelector(sel).querySelectorAll(content)) {
+      const rect = element.getBoundingClientRect();
+      const hidden = getComputedStyle(element).visibility === "hidden";
+      // Skip hidden elements and those scrolled completely out of view
+      if (hidden || !rect.width || !rect.height || rect.bottom <= 0 || rect.top >= height) {
+        continue;
+      }
+      const overlap = {
+        top: ins.top - rect.top,
+        right: rect.right - (width - ins.right),
+        bottom: rect.bottom - (height - ins.bottom),
+        left: ins.left - rect.left
+      };
+      for (const edge of checkedEdges) {
+        // Allow a fraction of a pixel for rounding
+        if (overlap[edge] > 0.5) {
+          const label = (element.textContent || element.placeholder || "").trim().slice(0, 30);
+          violations.push(`<${element.tagName.toLowerCase()}> "${label}" reaches ${Math.round(overlap[edge])}px into the ${edge} inset`);
+        }
+      }
+    }
+    return [...new Set(violations)];
+  }, [insets, root, edges]);
+}

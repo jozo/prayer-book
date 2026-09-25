@@ -1,6 +1,7 @@
 <script setup>
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconGlobe from "@/components/icons/IconGlobe.vue";
+import HeaderBackground from "@/components/HeaderBackground.vue";
 import {useI18n} from "vue-i18n";
 import router from "@/router";
 import {Lang} from "@/constants";
@@ -15,10 +16,10 @@ function goToSearch() {
 
 <template>
   <div
-    class="flex flex-col justify-center content-center min-h-[40vh] py-5 mb-16
-             rounded-b-2xl bg-linear-to-b from-cyan-500 to-blue-500
-             dark:from-cyan-800 dark:to-blue-800"
+    class="flex flex-col justify-center content-center min-h-[40vh] pb-5 mb-16 px-safe"
+    style="padding-top: calc(1.25rem + env(safe-area-inset-top));"
   >
+    <HeaderBackground />
     <!--  word-spacing is used to break after every word  -->
     <h1
       class="text-5xl text-center text-white font-bold [word-spacing:100vw]
@@ -27,7 +28,7 @@ function goToSearch() {
       {{ t("prayerBook") }}
     </h1>
   </div>
-  <div class="flex flex-col grow mx-5">
+  <div class="flex flex-col grow mx-5 px-safe">
     <div class="flex justify-center my-4 mx-8">
       <div class="relative">
         <input

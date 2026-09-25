@@ -12,6 +12,12 @@
     --sal: env(safe-area-inset-left);
 }
 
+/* Keep content out of the camera cutout and the gesture area on the sides in landscape */
+@utility px-safe {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
 
 .prayer-text p {
     margin-bottom: 1rem;
