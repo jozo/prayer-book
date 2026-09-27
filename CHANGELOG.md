@@ -6,15 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.10.4] - 2026-09-27
 ### Added
 - Add 19 more ES prayers
 - Add 26 SW prayers (and SW translation of the app)
+- Add Chaplet of Divine Mercy in PL, EN, SK
+- Add E2E tests
 
 ### Changed
 - Update JS packages
+- Update Android sdk version
 
 ### Fixed
 - Fix SW name of the Rosary category
+- Fix contrasts on search inputs
+- Fix bookmark bugs
 
 
 ## [0.10.3] - 2025-11-25
