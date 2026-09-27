@@ -34,11 +34,12 @@ function goToSearch() {
         <input
           type="text"
           class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
-                      text-lg text-center placeholder:italic dark:bg-neutral-500 dark:text-gray-300"
+                      bg-white text-lg text-center text-gray-700 placeholder:italic placeholder:text-gray-500
+                      outline-none focus:ring-2 focus:ring-sky-500 dark:bg-neutral-700 dark:text-gray-100 dark:placeholder:text-neutral-400"
           :placeholder="t('search')"
           @click="goToSearch()"
         >
-        <IconMagnifyingGlass class="absolute top-[11px] left-[8px]" />
+        <IconMagnifyingGlass class="absolute top-[11px] left-[8px] pointer-events-none text-gray-500 dark:text-neutral-400" />
       </div>
     </div>
 
