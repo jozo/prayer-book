@@ -14,7 +14,7 @@ const messages = {
     },
     menu: {
       settings: "Settings",
-      suggestions: "Suggestions for improvement",
+      feedback: "Feedback & Ideas",
       open: "Open menu",
       close: "Close menu"
     },
@@ -26,6 +26,23 @@ const messages = {
         dark: "Dark"
       },
       language: "Language"
+    },
+    feedback: {
+      intro: "Do you have an idea how to make Prayer Book better, or did you find a mistake? We would love to hear from you.",
+      votu: {
+        recommended: "Recommended",
+        title: "Votu board",
+        description: "Share your ideas and vote for the ones you like.",
+        button: "Open Votu"
+      },
+      email: {
+        title: "Email",
+        description: "Prefer to write to us directly? Send us a message."
+      },
+      matrix: {
+        title: "Chat on Matrix",
+        description: "Join our community chat room."
+      }
     },
     prayer: {
       addPageTitle: "Add prayer",
@@ -56,7 +73,7 @@ const messages = {
     },
     menu: {
       settings: "Ajustes",
-      suggestions: "Sugerencias de mejora",
+      feedback: "Comentarios e ideas",
       open: "Abrir menú",
       close: "Cerrar menú"
     },
@@ -68,6 +85,23 @@ const messages = {
         dark: "Oscuro"
       },
       language: "Idioma"
+    },
+    feedback: {
+      intro: "¿Tienes una idea para mejorar el Libro de Oraciones o has encontrado un error? Nos encantaría saber de ti.",
+      votu: {
+        recommended: "Recomendado",
+        title: "Tablero de Votu",
+        description: "Comparte tus ideas y vota por las que te gusten.",
+        button: "Abrir Votu"
+      },
+      email: {
+        title: "Correo electrónico",
+        description: "¿Prefieres escribirnos directamente? Envíanos un mensaje."
+      },
+      matrix: {
+        title: "Chat en Matrix",
+        description: "Únete a nuestra sala de chat de la comunidad."
+      }
     },
     prayer: {
       addPageTitle: "Agregar oración",
@@ -98,7 +132,7 @@ const messages = {
     },
     menu: {
       settings: "Paramètres",
-      suggestions: "Suggérer une amélioration",
+      feedback: "Avis et idées",
       open: "Ouvrir le menu",
       close: "Fermer le menu"
     },
@@ -110,6 +144,23 @@ const messages = {
         dark: "Sombre"
       },
       language: "Langue"
+    },
+    feedback: {
+      intro: "Vous avez une idée pour améliorer le Livret de Prières ou vous avez trouvé une erreur ? Nous serions ravis de vous lire.",
+      votu: {
+        recommended: "Recommandé",
+        title: "Tableau Votu",
+        description: "Partagez vos idées et votez pour celles qui vous plaisent.",
+        button: "Ouvrir Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Vous préférez nous écrire directement ? Envoyez-nous un message."
+      },
+      matrix: {
+        title: "Discuter sur Matrix",
+        description: "Rejoignez le salon de discussion de notre communauté."
+      }
     },
     prayer: {
       addPageTitle: "Ajouter une prière",
@@ -140,7 +191,7 @@ const messages = {
     },
     menu: {
       settings: "Impostazioni",
-      suggestions: "Suggerimenti per il miglioramento",
+      feedback: "Opinioni e idee",
       open: "Apri il menu",
       close: "Chiudi il menu"
     },
@@ -152,6 +203,23 @@ const messages = {
         dark: "Scuro"
       },
       language: "Lingua"
+    },
+    feedback: {
+      intro: "Hai un'idea per migliorare il Libro di Preghiere o hai trovato un errore? Ci farebbe piacere sentirti.",
+      votu: {
+        recommended: "Consigliato",
+        title: "Bacheca Votu",
+        description: "Condividi le tue idee e vota quelle che ti piacciono.",
+        button: "Apri Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Preferisci scriverci direttamente? Inviaci un messaggio."
+      },
+      matrix: {
+        title: "Chat su Matrix",
+        description: "Unisciti alla chat della nostra comunità."
+      }
     },
     prayer: {
       addPageTitle: "Aggiungi preghiera",
@@ -182,7 +250,7 @@ const messages = {
     },
     menu: {
       settings: "Ustawienia",
-      suggestions: "Sugestie poprawek",
+      feedback: "Opinie i pomysły",
       open: "Otwórz menu",
       close: "Zamknij menu"
     },
@@ -194,6 +262,23 @@ const messages = {
         dark: "Ciemny"
       },
       language: "Język"
+    },
+    feedback: {
+      intro: "Masz pomysł, jak ulepszyć Modlitewnik, albo znalazłeś błąd? Chętnie Cię wysłuchamy.",
+      votu: {
+        recommended: "Polecane",
+        title: "Tablica Votu",
+        description: "Dziel się pomysłami i głosuj na te, które Ci się podobają.",
+        button: "Otwórz Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Wolisz napisać do nas bezpośrednio? Wyślij nam wiadomość."
+      },
+      matrix: {
+        title: "Czat na Matrix",
+        description: "Dołącz do czatu naszej społeczności."
+      }
     },
     prayer: {
       addPageTitle: "Dodaj modlitwę",
@@ -224,7 +309,7 @@ const messages = {
     },
     menu: {
       settings: "Configurações",
-      suggestions: "Sugestões de melhoria",
+      feedback: "Opiniões e ideias",
       open: "Abrir menu",
       close: "Fechar menu"
     },
@@ -236,6 +321,23 @@ const messages = {
         dark: "Escuro"
       },
       language: "Idioma"
+    },
+    feedback: {
+      intro: "Tem uma ideia para melhorar o Livro de Orações ou encontrou um erro? Adoraríamos ouvir você.",
+      votu: {
+        recommended: "Recomendado",
+        title: "Quadro do Votu",
+        description: "Compartilhe suas ideias e vote nas que você gosta.",
+        button: "Abrir Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Prefere nos escrever diretamente? Envie-nos uma mensagem."
+      },
+      matrix: {
+        title: "Chat no Matrix",
+        description: "Participe da sala de chat da nossa comunidade."
+      }
     },
     prayer: {
       addPageTitle: "Adicionar oração",
@@ -266,7 +368,7 @@ const messages = {
     },
     menu: {
       settings: "Setări",
-      suggestions: "Sugerați o ameliorare",
+      feedback: "Păreri și idei",
       open: "Deschide meniul",
       close: "Închide meniul"
     },
@@ -278,6 +380,23 @@ const messages = {
         dark: null
       },
       language: null
+    },
+    feedback: {
+      intro: "Aveți o idee despre cum să îmbunătățim Cartea de rugăciuni sau ați găsit o greșeală? Ne-ar face plăcere să vă auzim.",
+      votu: {
+        recommended: "Recomandat",
+        title: "Panoul Votu",
+        description: "Împărtășiți-vă ideile și votați-le pe cele care vă plac.",
+        button: "Deschide Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Preferați să ne scrieți direct? Trimiteți-ne un mesaj."
+      },
+      matrix: {
+        title: "Chat pe Matrix",
+        description: "Alăturați-vă camerei de chat a comunității noastre."
+      }
     },
     prayer: {
       addPageTitle: null,
@@ -308,7 +427,7 @@ const messages = {
     },
     menu: {
       settings: "Nastavenia",
-      suggestions: "Návrhy na zlepšenie",
+      feedback: "Spätná väzba a nápady",
       open: "Otvoriť menu",
       close: "Zavrieť menu"
     },
@@ -320,6 +439,23 @@ const messages = {
         dark: "Tmavá"
       },
       language: "Jazyk"
+    },
+    feedback: {
+      intro: "Máte nápad, ako vylepšiť Modlitebnú knižku, alebo ste našli chybu? Radi si vás vypočujeme.",
+      votu: {
+        recommended: "Odporúčané",
+        title: "Nástenka Votu",
+        description: "Podeľte sa o svoje nápady a hlasujte za tie, ktoré sa vám páčia.",
+        button: "Otvoriť Votu"
+      },
+      email: {
+        title: "E-mail",
+        description: "Chcete nám napísať priamo? Pošlite nám správu."
+      },
+      matrix: {
+        title: "Chat na Matrixe",
+        description: "Pridajte sa do chatu našej komunity."
+      }
     },
     prayer: {
       addPageTitle: "Pridať modlitbu",
@@ -350,7 +486,7 @@ const messages = {
     },
     menu: {
       settings: "Mipangilio",
-      suggestions: "Mapendekezo ya uboreshaji",
+      feedback: "Maoni na mawazo",
       open: "Fungua menyu",
       close: "Funga menyu"
     },
@@ -362,6 +498,23 @@ const messages = {
         dark: "Giza"
       },
       language: "Lugha"
+    },
+    feedback: {
+      intro: "Una wazo la kuboresha Kitabu cha Sala, au umepata kosa? Tungependa kusikia kutoka kwako.",
+      votu: {
+        recommended: "Inapendekezwa",
+        title: "Ubao wa Votu",
+        description: "Shiriki mawazo yako na upigie kura yale unayoyapenda.",
+        button: "Fungua Votu"
+      },
+      email: {
+        title: "Barua pepe",
+        description: "Ungependa kutuandikia moja kwa moja? Tutumie ujumbe."
+      },
+      matrix: {
+        title: "Gumzo kwenye Matrix",
+        description: "Jiunge na chumba cha gumzo cha jumuiya yetu."
+      }
     },
     prayer: {
       addPageTitle: "Ongeza sala",

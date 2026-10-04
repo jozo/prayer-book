@@ -84,26 +84,13 @@ function changeTheme(theme) {
         </p>
         <p>0.10.4</p>
         <p>hi@jozo.io</p>
-        <p class="mb-6">
+        <p>
           <a
             href="https://codeberg.org/jozo/prayer-book"
             target="_blank"
             class="text-sky-600"
           >
             codeberg.org/jozo/prayer-book
-          </a>
-        </p>
-        <p>
-          <strong>Chat - Matrix</strong>
-        </p>
-        <p>
-          <a
-            href="https://matrix.to/#/#prayer-book:matrix.org"
-            rel="noopener"
-            target="_blank"
-            class="text-sky-600"
-          >
-            <pre>#prayer-book:matrix.org</pre>
           </a>
         </p>
       </div>

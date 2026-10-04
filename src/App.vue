@@ -197,12 +197,13 @@ function closeMenu() {
         </div>
         <div class="flex items-center">
           <IconChat />
-          <a
-            href="mailto:hi@jozo.io"
+          <RouterLink
+            to="/feedback"
             class="mx-3"
+            @click="closeMenu"
           >
-            {{ $t("menu.suggestions") }}
-          </a>
+            {{ $t("menu.feedback") }}
+          </RouterLink>
         </div>
       </div>
     </div>

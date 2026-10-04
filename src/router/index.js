@@ -16,6 +16,11 @@ const router = createRouter({
       component: SettingsView
     },
     {
+      path: "/feedback",
+      name: "feedback",
+      component: () => import("../views/FeedbackView.vue")
+    },
+    {
       path: "/category/:categoryName",
       name: "category",
       // route level code-splitting
