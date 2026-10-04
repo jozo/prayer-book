@@ -1,6 +1,6 @@
 <script setup>
 import {useRoute} from "vue-router";
-import {computed, onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, useTemplateRef, watch} from "vue";
 import IconMagnifyingGlass from "@/components/icons/IconMagnifyingGlass.vue";
 import IconChevronRight from "@/components/icons/IconChevronRight.vue";
 import BgWithHeader from "@/components/BgWithHeader.vue";
@@ -14,8 +14,10 @@ const lang = locale.value;
 const route = useRoute();
 const prayerDataStore = usePrayerDataStore();
 
-const allPrayers = ref({});
+const allPrayers = computed(() => prayerDataStore.allPrayers);
 const searchText = ref("");
+const searchInput = useTemplateRef("searchInput");
+const isLoading = ref(true);
 
 const categoryName = computed(() => route.params.categoryName);
 
@@ -33,21 +35,37 @@ const prayersInCategory = computed(() => {
   } else if (categoryName.value === "custom") {
     prayers = getCustomPrayers();
   } else {
-    if (allPrayers.value[lang]?.categories?.[categoryName.value]) {
-      prayers = allPrayers.value[lang].categories[categoryName.value];
-    }
+    prayers = allPrayers.value[lang].categories?.[categoryName.value] ?? [];
   }
 
   if (searchText.value !== "") {
-    prayers = prayers.filter(item => (clean(item.title).indexOf(clean(searchText.value)) >= 0));
+    const search = clean(searchText.value);
+    prayers = prayers.filter(item => clean(item.title).includes(search));
   }
-  // sort by title by locale/language conventions
-  return prayers.sort((a, b) => a.title.localeCompare(b.title, locale.value));
+  // Sort a copy by title by locale/language conventions, the store's arrays must stay untouched
+  return [...prayers].sort((a, b) => a.title.localeCompare(b.title, locale.value));
 });
 
-onMounted(async () => {
-  await prayerDataStore.loadPrayers(locale.value);
-  allPrayers.value = prayerDataStore.allPrayers;
+// The view stays mounted when navigating between categories, so load on every category change
+watch(categoryName, async (name) => {
+  searchText.value = "";
+  isLoading.value = true;
+  if (name === "bookmarks") {
+    // Bookmarks can point to other languages, which are loaded only for this list
+    await Promise.all([prayerDataStore.loadPrayers(lang), prayerDataStore.loadBookmarkedPrayers()]);
+  } else {
+    await prayerDataStore.loadPrayers(lang);
+  }
+  isLoading.value = false;
+}, {immediate: true});
+
+onMounted(() => {
+  // Set when coming from the search box on the home page
+  if (history.state?.focusSearch) {
+    searchInput.value.focus();
+    // Focus only once, not again when returning to this page with the back button
+    history.replaceState({...history.state, focusSearch: false}, "");
+  }
 });
 
 function clean(value) {
@@ -57,16 +75,14 @@ function clean(value) {
 }
 
 function getPrayersFromAllCategories() {
+  // A prayer can be in several categories, keep it only once
   const prayers = {};
   for (const category in allPrayers.value[lang].categories) {
     for (const prayer of allPrayers.value[lang].categories[category]) {
-      prayers[prayer.title] = prayer;
+      prayers[prayer.id] = prayer;
     }
   }
-  for (const prayerId in allPrayers.value.custom) {
-    prayers[prayerId] = allPrayers.value.custom[prayerId];
-  }
-  return Object.values(prayers);
+  return [...Object.values(prayers), ...getCustomPrayers()];
 }
 
 function getCustomPrayers() {
@@ -88,16 +104,11 @@ function getBookmarkedPrayers() {
       if (!prayer) {
         continue;
       }
-      prayer.lang = lang;
-      prayers.push(prayer);
+      prayers.push({id: prayer.id, title: prayer.title, lang});
     }
   }
   return prayers;
 }
-
-watch(() => route.params.name, async () => {
-  searchText.value = "";
-});
 
 function navigateToPrayer(prayer) {
   const language = prayer.lang || lang;
@@ -111,6 +122,7 @@ function navigateToPrayer(prayer) {
       <div class="flex justify-center content-center mb-6 mx-8">
         <div class="relative">
           <input
+            ref="searchInput"
             v-model="searchText"
             type="text"
             class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
@@ -133,7 +145,7 @@ function navigateToPrayer(prayer) {
           </button>
 
           <div
-            v-if="prayersInCategory.length === 0"
+            v-if="!isLoading && prayersInCategory.length === 0"
             class="text-center text-xl py-5 italic"
           >
             {{ t('prayer.notFound') }}
@@ -141,7 +153,7 @@ function navigateToPrayer(prayer) {
           <div v-else>
             <div
               v-for="prayer in prayersInCategory"
-              :key="prayer.title"
+              :key="`${prayer.lang || lang}/${prayer.id}`"
               class="group flex items-center text-xl"
             >
               <button

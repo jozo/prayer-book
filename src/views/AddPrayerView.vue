@@ -4,7 +4,6 @@ import HeaderBackground from "@/components/HeaderBackground.vue";
 import {ref} from "vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
-import {isEmpty} from "@/utils";
 
 const {t} = useI18n({useScope: "global"});
 const prayerTitle = ref("");
@@ -17,9 +16,7 @@ function isSaveDisabled() {
 
 async function savePrayer() {
   // The page can be opened directly, so make sure existing prayers are loaded and not overwritten
-  if (isEmpty(prayerDataStore.allPrayers.custom)) {
-    await prayerDataStore.loadCustomPrayers();
-  }
+  await prayerDataStore.loadUserData();
 
   // Use one more than the highest existing number
   const usedIds = Object.keys(prayerDataStore.allPrayers.custom)

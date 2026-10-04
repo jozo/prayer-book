@@ -10,7 +10,8 @@ import {changeLanguage} from "@/utils";
 const {t, locale} = useI18n({useScope: "global"});
 
 function goToSearch() {
-  router.push("category/all/");
+  // Ask the search view to focus its input, so the user can start typing right away
+  router.push({name: "category", params: {categoryName: "all"}, state: {focusSearch: true}});
 }
 </script>
 
@@ -31,8 +32,10 @@ function goToSearch() {
   <div class="flex flex-col grow mx-5 px-safe">
     <div class="flex justify-center my-4 mx-8">
       <div class="relative">
+        <!-- Read-only, so tapping it does not open the keyboard before the search view is shown -->
         <input
           type="text"
+          readonly
           class="flex p-2 rounded-l-full rounded-r-full shadow-[0_0_15px_rgba(0,0,0,0.2)]
                       bg-white text-lg text-center text-gray-700 placeholder:italic placeholder:text-gray-500
                       outline-none focus:ring-2 focus:ring-sky-500 dark:bg-neutral-700 dark:text-gray-100 dark:placeholder:text-neutral-400"
@@ -48,6 +51,7 @@ function goToSearch() {
         <IconGlobe class="mt-0.5 mr-1" />
         <select
           v-model="locale"
+          :aria-label="t('settings.language')"
           class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center"
           @change="changeLanguage($event.target.value)"
         >

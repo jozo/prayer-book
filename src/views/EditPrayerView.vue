@@ -5,7 +5,6 @@ import {computed, onMounted, ref} from "vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
 import {useRoute} from "vue-router";
-import {isEmpty} from "@/utils";
 
 const {t} = useI18n({useScope: "global"});
 const route = useRoute();
@@ -15,8 +14,11 @@ const prayerTitle = ref();
 const prayerText = ref();
 
 onMounted(async () => {
-  if (isEmpty(prayerDataStore.allPrayers.custom)) {
-    await prayerDataStore.loadCustomPrayers();
+  await prayerDataStore.loadUserData();
+  if (!prayer.value) {
+    // The prayer was deleted or the URL is wrong
+    await router.replace({name: "category", params: {categoryName: "custom"}});
+    return;
   }
   prayerTitle.value = prayer.value.title;
   prayerText.value = prayer.value.versions[0].content;

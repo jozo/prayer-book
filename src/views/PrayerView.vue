@@ -4,10 +4,8 @@ import RoundMain from "@/components/RoundMain.vue";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import {useI18n} from "vue-i18n";
 import router from "@/router";
-import {Parser, HtmlRenderer} from "commonmark";
 import {useRoute} from "vue-router";
-import {computed, onMounted} from "vue";
-import {Preferences} from "@capacitor/preferences";
+import {computed, onMounted, shallowRef} from "vue";
 import IconBookmark from "@/components/icons/IconBookmark.vue";
 import IconBookmarkSlash from "@/components/icons/IconBookmarkSlash.vue";
 
@@ -24,22 +22,25 @@ const prayer = computed(() => {
   }
   return prayerDataStore.allPrayers[lang]?.prayers?.[prayerId];
 });
-const isBookmarked = computed(() => {
-  return prayerDataStore.allPrayers.bookmarks[lang]?.[prayerId] !== undefined;
-});
+const isBookmarked = computed(() => prayerDataStore.isBookmarked(lang, prayerId));
+// Markdown renderer of custom prayers. Built-in prayers are compiled to HTML at build time, so
+// commonmark is a separate chunk, loaded only when a custom prayer is shown.
+const renderMarkdown = shallowRef(null);
+const isReady = computed(() => prayer.value && (!isCustom || renderMarkdown.value));
 
 onMounted(async () => {
-  await prayerDataStore.loadPrayer(prayerId, lang);
+  await Promise.all([prayerDataStore.loadPrayer(prayerId, lang), isCustom && loadMarkdownRenderer()]);
 });
 
+async function loadMarkdownRenderer() {
+  const {Parser, HtmlRenderer} = await import("commonmark");
+  const parser = new Parser();
+  const writer = new HtmlRenderer();
+  renderMarkdown.value = text => writer.render(parser.parse(text));
+}
+
 function convertMarkdown(text) {
-  if (prayer.value.categories.includes("custom")) {
-    const parser = new Parser();
-    const writer = new HtmlRenderer();
-    const parsed = parser.parse(text);
-    return writer.render(parsed);
-  }
-  return text;
+  return isCustom ? renderMarkdown.value(text) : text;
 }
 
 async function deletePrayer() {
@@ -54,24 +55,13 @@ async function deletePrayer() {
 }
 
 async function toggleBookmark() {
-  const bookmarks = prayerDataStore.allPrayers.bookmarks;
-
-  if (isBookmarked.value) {
-    delete bookmarks[lang][prayerId];
-  } else {
-    if (!bookmarks[lang]) {
-      bookmarks[lang] = {};
-    }
-    bookmarks[lang][prayerId] = true;
-  }
-
-  await Preferences.set({key: "bookmarks", value: JSON.stringify(bookmarks)});
+  await prayerDataStore.toggleBookmark(lang, prayerId);
 }
 </script>
 
 <template>
   <BgWithHeader
-    v-if="prayer"
+    v-if="isReady"
     :title="prayer.title"
   >
     <RoundMain>

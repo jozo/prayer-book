@@ -21,7 +21,3 @@ export async function getLanguage() {
 export async function changeLanguage(language) {
   await Preferences.set({key: "language", value: language});
 }
-
-export function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
-}

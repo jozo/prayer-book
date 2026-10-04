@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Faster loading of prayers
+- Focus search input when opening search from the home page
+- Improve accessibility
+
+### Fixed
+- Fix search not cleared when switching categories
+- Fix editing of a deleted custom prayer
+
 
 ## [0.10.4] - 2026-09-27
 ### Added

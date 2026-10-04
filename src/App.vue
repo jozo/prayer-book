@@ -70,14 +70,15 @@ function closeMenu() {
 </script>
 
 <template>
+  <!-- The padding makes a 48px touch target, the margins keep the icon 14px from the edges -->
   <button
     v-show="!menuVisible"
+    :aria-label="$t('menu.open')"
+    class="absolute top-0 left-0 z-30 p-3 text-gray-100"
+    style="margin-top: calc(2px + env(safe-area-inset-top)); margin-left: calc(2px + env(safe-area-inset-left));"
     @click="toggleMenu"
   >
-    <IconHamburger
-      class="absolute z-30 text-gray-100"
-      style="margin-top: calc(14px + env(safe-area-inset-top)); margin-left: calc(14px + env(safe-area-inset-left));"
-    />
+    <IconHamburger />
   </button>
 
   <nav :class="['fixed flex flex-row h-full w-full z-40 overflow-scroll', { 'invisible': !menuVisible }]">
@@ -92,7 +93,10 @@ function closeMenu() {
         id="navigation-top"
         class="flex flex-col ml-3.5 pb-10 text-2xl leading-loose"
       >
-        <button @click="toggleMenu">
+        <button
+          :aria-label="$t('menu.close')"
+          @click="toggleMenu"
+        >
           <IconHamburger class="z-30 mt-3.5 mb-6 text-gray-100" />
         </button>
 
@@ -208,5 +212,7 @@ function closeMenu() {
     />
   </nav>
 
-  <RouterView />
+  <main class="flex flex-col grow">
+    <RouterView />
+  </main>
 </template>

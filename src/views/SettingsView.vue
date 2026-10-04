@@ -32,10 +32,14 @@ function changeTheme(theme) {
       <div class="text-base text-center">
         <div class="flex flex-col space-y-4 mb-10">
           <div class="flex justify-center">
-            <div class="mr-2 font-bold">
+            <label
+              for="theme-select"
+              class="mr-2 font-bold"
+            >
               {{ t('settings.theme.title') }}:
-            </div>
+            </label>
             <select
+              id="theme-select"
               class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center"
               @change="changeTheme($event.target.value)"
             >
@@ -52,10 +56,14 @@ function changeTheme(theme) {
           </div>
 
           <div class="flex justify-center">
-            <div class="mr-2 font-bold">
+            <label
+              for="language-select"
+              class="mr-2 font-bold"
+            >
               {{ t('settings.language') }}:
-            </div>
+            </label>
             <select
+              id="language-select"
               v-model="locale"
               class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center"
               @change="changeLanguage($event.target.value)"

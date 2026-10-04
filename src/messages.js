@@ -14,7 +14,9 @@ const messages = {
     },
     menu: {
       settings: "Settings",
-      suggestions: "Suggestions for improvement"
+      suggestions: "Suggestions for improvement",
+      open: "Open menu",
+      close: "Close menu"
     },
     settings: {
       theme: {
@@ -54,7 +56,9 @@ const messages = {
     },
     menu: {
       settings: "Ajustes",
-      suggestions: "Sugerencias de mejora"
+      suggestions: "Sugerencias de mejora",
+      open: "Abrir menú",
+      close: "Cerrar menú"
     },
     settings: {
       theme: {
@@ -94,7 +98,9 @@ const messages = {
     },
     menu: {
       settings: "Paramètres",
-      suggestions: "Suggérer une amélioration"
+      suggestions: "Suggérer une amélioration",
+      open: "Ouvrir le menu",
+      close: "Fermer le menu"
     },
     settings: {
       theme: {
@@ -134,7 +140,9 @@ const messages = {
     },
     menu: {
       settings: "Impostazioni",
-      suggestions: "Suggerimenti per il miglioramento"
+      suggestions: "Suggerimenti per il miglioramento",
+      open: "Apri il menu",
+      close: "Chiudi il menu"
     },
     settings: {
       theme: {
@@ -174,7 +182,9 @@ const messages = {
     },
     menu: {
       settings: "Ustawienia",
-      suggestions: "Sugestie poprawek"
+      suggestions: "Sugestie poprawek",
+      open: "Otwórz menu",
+      close: "Zamknij menu"
     },
     settings: {
       theme: {
@@ -214,7 +224,9 @@ const messages = {
     },
     menu: {
       settings: "Configurações",
-      suggestions: "Sugestões de melhoria"
+      suggestions: "Sugestões de melhoria",
+      open: "Abrir menu",
+      close: "Fechar menu"
     },
     settings: {
       theme: {
@@ -254,7 +266,9 @@ const messages = {
     },
     menu: {
       settings: "Setări",
-      suggestions: "Sugerați o ameliorare"
+      suggestions: "Sugerați o ameliorare",
+      open: "Deschide meniul",
+      close: "Închide meniul"
     },
     settings: {
       theme: {
@@ -294,7 +308,9 @@ const messages = {
     },
     menu: {
       settings: "Nastavenia",
-      suggestions: "Návrhy na zlepšenie"
+      suggestions: "Návrhy na zlepšenie",
+      open: "Otvoriť menu",
+      close: "Zavrieť menu"
     },
     settings: {
       theme: {
@@ -334,7 +350,9 @@ const messages = {
     },
     menu: {
       settings: "Mipangilio",
-      suggestions: "Mapendekezo ya uboreshaji"
+      suggestions: "Mapendekezo ya uboreshaji",
+      open: "Fungua menyu",
+      close: "Funga menyu"
     },
     settings: {
       theme: {
