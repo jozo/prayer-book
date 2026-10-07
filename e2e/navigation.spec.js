@@ -9,7 +9,7 @@ test.describe("Navigation menu", () => {
     await openMenu(page);
 
     for (const name of ["Prayer Book", "Basic", "Rosary", "Litany", "Saints", "Others", "Custom", "Bookmarks", "Lists",
-      "Settings", "Suggestions for improvement"]) {
+      "Settings", "Feedback & Ideas"]) {
       await expect(menu(page).getByRole("link", {name, exact: true})).toBeVisible();
     }
   });
@@ -43,7 +43,8 @@ test.describe("Navigation menu", () => {
     {link: "Custom", url: "/category/custom", title: "Custom"},
     {link: "Bookmarks", url: "/list/bookmarks", title: "Bookmarks"},
     {link: "Lists", url: "/lists", title: "Lists"},
-    {link: "Settings", url: "/settings", title: "Settings"}
+    {link: "Settings", url: "/settings", title: "Settings"},
+    {link: "Feedback & Ideas", url: "/feedback", title: "Feedback & Ideas"}
   ];
 
   for (const {link, url, title} of destinations) {
@@ -64,14 +65,6 @@ test.describe("Navigation menu", () => {
 
     await expect(page).toHaveURL("/");
     await expect(page.getByRole("combobox")).toBeVisible();
-  });
-
-  test("suggestions link opens an email to the author", async ({page}) => {
-    await page.goto("/");
-    await openMenu(page);
-
-    await expect(menu(page).getByRole("link", {name: "Suggestions for improvement"}))
-      .toHaveAttribute("href", "mailto:hi@jozo.io");
   });
 
   test("page scrolling is locked while the menu is open", async ({page}) => {

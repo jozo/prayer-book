@@ -32,12 +32,11 @@ test.describe("Prayer page", () => {
     await expect(prayerText(page).locator("em", {hasText: "Deliver me, Jesus."}).first()).toBeVisible();
   });
 
-  test("built-in prayers cannot be edited or deleted", async ({page}) => {
+  test("built-in prayers cannot be edited", async ({page}) => {
     await page.goto("/prayer/view/en/ourFather");
 
     await expect(page.getByRole("button", {name: "Bookmark"})).toBeVisible();
     await expect(page.getByRole("button", {name: "Edit"})).toHaveCount(0);
-    await expect(page.getByRole("button", {name: "Delete"})).toHaveCount(0);
   });
 
   test("prayers are available in other languages via the URL", async ({page}) => {

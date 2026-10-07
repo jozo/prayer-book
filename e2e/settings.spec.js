@@ -21,8 +21,6 @@ test.describe("Settings page", () => {
     await expect(page.getByText("hi@jozo.io")).toBeVisible();
     await expect(page.getByRole("link", {name: "codeberg.org/jozo/prayer-book"}))
       .toHaveAttribute("href", "https://codeberg.org/jozo/prayer-book");
-    await expect(page.getByRole("link", {name: "#prayer-book:matrix.org"}))
-      .toHaveAttribute("href", "https://matrix.to/#/#prayer-book:matrix.org");
   });
 
   test.describe("theme", () => {

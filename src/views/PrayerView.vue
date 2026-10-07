@@ -7,7 +7,7 @@ import router from "@/router";
 import {useRoute} from "vue-router";
 import {computed, onMounted, shallowRef} from "vue";
 import IconBookmark from "@/components/icons/IconBookmark.vue";
-import IconBookmarkSlash from "@/components/icons/IconBookmarkSlash.vue";
+import IconPencil from "@/components/icons/IconPencil.vue";
 
 const {t} = useI18n({useScope: "global"});
 const route = useRoute();
@@ -43,15 +43,6 @@ function convertMarkdown(text) {
   return isCustom ? renderMarkdown.value(text) : text;
 }
 
-async function deletePrayer() {
-  if (confirm(t("prayer.confirmDelete"))) {
-    await prayerDataStore.removePrayerFromLists(lang, prayerId);
-    delete prayerDataStore.allPrayers.custom[prayerId];
-    await prayerDataStore.saveCustomPrayers();
-    await router.push({name: "category", params: {categoryName: "custom"}});
-  }
-}
-
 async function toggleBookmark() {
   await prayerDataStore.toggleBookmark(lang, prayerId);
 }
@@ -85,40 +76,26 @@ async function toggleBookmark() {
         <!-- eslint-enable vue/no-v-html -->
       </div>
 
+      <!-- Quiet text buttons below a divider, so the actions don't compete with the prayer -->
       <div
-        v-if="isCustom"
-        class="flex flex-wrap justify-center space-x-4 mb-4"
+        class="flex justify-center gap-2 pt-3 border-t border-neutral-200 text-sky-600
+               dark:border-neutral-700 dark:text-sky-400"
       >
         <button
-          class="mt-4 py-2 px-10 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700
-                       text-lg text-center text-white"
-          @click.prevent="router.push({name: 'edit-prayer', params: {prayerId: prayer.id}})"
+          :aria-pressed="isBookmarked"
+          class="flex items-center gap-2 px-4 py-2 rounded-full active:bg-sky-500/10"
+          @click="toggleBookmark()"
         >
-          {{ t("prayer.edit") }}
-        </button>
-        <button
-          class="mt-4 py-2 px-10 rounded-l-full rounded-r-full bg-red-500 dark:bg-red-800
-                       text-lg text-center text-white"
-          @click.prevent="deletePrayer()"
-        >
-          {{ t("prayer.delete") }}
-        </button>
-      </div>
-      <div class="flex flex-wrap justify-center space-x-4 mb-4">
-        <button
-          class="flex items-center mt-4 py-2 px-8 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700
-                       text-lg text-center text-white"
-          @click.prevent="toggleBookmark()"
-        >
-          <IconBookmarkSlash
-            v-if="isBookmarked"
-            class="inline-block mr-2"
-          />
-          <IconBookmark
-            v-else
-            class="inline-block mr-2"
-          />
+          <IconBookmark :fill="isBookmarked ? 'currentColor' : 'none'" />
           {{ isBookmarked ? t("prayer.unbookmark") : t("prayer.bookmark") }}
+        </button>
+        <button
+          v-if="isCustom"
+          class="flex items-center gap-2 px-4 py-2 rounded-full active:bg-sky-500/10"
+          @click="router.push({name: 'edit-prayer', params: {prayerId: prayer.id}})"
+        >
+          <IconPencil />
+          {{ t("prayer.edit") }}
         </button>
       </div>
     </RoundMain>

@@ -69,7 +69,6 @@ test.describe("Custom prayers", () => {
     await expect(prayerText(page).locator("strong")).toHaveText("Second");
     await expect(prayerText(page).locator("li")).toHaveText(["one", "two"]);
     await expect(page.getByRole("button", {name: "Edit"})).toBeVisible();
-    await expect(page.getByRole("button", {name: "Delete"})).toBeVisible();
   });
 
   test("editing a prayer updates its title and text", async ({page}) => {
@@ -122,7 +121,7 @@ test.describe("Custom prayers", () => {
     await seedStorage(page, {preferences: {customPrayers: {
       "custom-0": customPrayer("custom-0", "Keep me", "Text")
     }}});
-    await page.goto("/prayer/view/custom/custom-0");
+    await page.goto("/prayer/edit/custom-0");
 
     page.once("dialog", async (dialog) => {
       expect(dialog.type()).toBe("confirm");
@@ -131,8 +130,8 @@ test.describe("Custom prayers", () => {
     });
     await page.getByRole("button", {name: "Delete"}).click();
 
-    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
-    await expect(heading(page)).toHaveText("Keep me");
+    await expect(page).toHaveURL("/prayer/edit/custom-0");
+    await expect(page.getByPlaceholder("Title")).toHaveValue("Keep me");
   });
 
   test("deleting a prayer removes it from the bookmarks and lists", async ({page}) => {
@@ -149,6 +148,7 @@ test.describe("Custom prayers", () => {
     await page.goto("/category/custom");
     await page.getByRole("button", {name: "Delete me"}).click();
     await expect(page.getByRole("button", {name: "Unbookmark"})).toBeVisible();
+    await page.getByRole("button", {name: "Edit"}).click();
 
     page.once("dialog", dialog => dialog.accept());
     await page.getByRole("button", {name: "Delete"}).click();

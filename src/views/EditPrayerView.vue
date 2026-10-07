@@ -34,6 +34,16 @@ async function savePrayer() {
   await prayerDataStore.saveCustomPrayers();
   await router.push({name: "view-prayer", params: {prayerId: prayer.value.id, lang: "custom"}});
 }
+
+async function deletePrayer() {
+  if (confirm(t("prayer.confirmDelete"))) {
+    const prayerId = prayer.value.id;
+    await prayerDataStore.removePrayerFromLists("custom", prayerId);
+    delete prayerDataStore.allPrayers.custom[prayerId];
+    await prayerDataStore.saveCustomPrayers();
+    await router.push({name: "category", params: {categoryName: "custom"}});
+  }
+}
 </script>
 
 <template>
@@ -65,13 +75,22 @@ async function savePrayer() {
                     text-lg placeholder:italic bg-neutral-100 dark:bg-neutral-500 dark:text-gray-300"
       required
     />
-    <button
-      :disabled="isSaveDisabled()"
-      class="flex justify-center min-w-[70%] py-3 px-12 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700
-                   text-xl text-white disabled:opacity-50"
-      @click.prevent="savePrayer()"
-    >
-      {{ t("prayer.save") }}
-    </button>
+    <div class="flex flex-col items-center w-full">
+      <button
+        :disabled="isSaveDisabled()"
+        class="flex justify-center min-w-[70%] py-3 px-12 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700
+                     text-xl text-white disabled:opacity-50"
+        @click.prevent="savePrayer()"
+      >
+        {{ t("prayer.save") }}
+      </button>
+      <!-- A plain text button, so the destructive action doesn't compete with saving -->
+      <button
+        class="mt-3 py-2 px-6 text-lg text-red-600 dark:text-red-400"
+        @click.prevent="deletePrayer()"
+      >
+        {{ t("prayer.delete") }}
+      </button>
+    </div>
   </form>
 </template>
