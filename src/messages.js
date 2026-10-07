@@ -56,6 +56,20 @@ const messages = {
       notFound: "Prayers not found…",
       bookmark: "Bookmark",
       unbookmark: "Unbookmark"
+    },
+    list: {
+      title: "Lists",
+      new: "New list",
+      namePlaceholder: "Name of the list",
+      edit: "Edit",
+      done: "Done",
+      addPrayers: "Add prayers",
+      delete: "Delete list",
+      confirmDelete: "Are you sure you want to delete this list?",
+      empty: "This list is empty…",
+      noLists: "You have no lists yet…",
+      remove: "Remove from list",
+      drag: "Drag to reorder"
     }
   },
   es: {
@@ -115,6 +129,20 @@ const messages = {
       notFound: "Oraciones no encontradas…",
       bookmark: "Marcar",
       unbookmark: "Desmarcar"
+    },
+    list: {
+      title: "Listas",
+      new: "Nueva lista",
+      namePlaceholder: "Nombre de la lista",
+      edit: "Editar",
+      done: "Listo",
+      addPrayers: "Agregar oraciones",
+      delete: "Eliminar lista",
+      confirmDelete: "¿Estás seguro de que deseas eliminar esta lista?",
+      empty: "Esta lista está vacía…",
+      noLists: "Todavía no tienes listas…",
+      remove: "Quitar de la lista",
+      drag: "Arrastrar para reordenar"
     }
   },
   fr: {
@@ -174,6 +202,20 @@ const messages = {
       notFound: "Prières non trouvées…",
       bookmark: "Ajouter aux signets",
       unbookmark: "Supprimer des signets"
+    },
+    list: {
+      title: "Listes",
+      new: "Nouvelle liste",
+      namePlaceholder: "Nom de la liste",
+      edit: "Modifier",
+      done: "Terminé",
+      addPrayers: "Ajouter des prières",
+      delete: "Supprimer la liste",
+      confirmDelete: "Êtes-vous sûr de vouloir supprimer cette liste ?",
+      empty: "Cette liste est vide…",
+      noLists: "Vous n’avez encore aucune liste…",
+      remove: "Retirer de la liste",
+      drag: "Glisser pour réorganiser"
     }
   },
   it: {
@@ -233,6 +275,20 @@ const messages = {
       notFound: "Preghiere non trovate...",
       bookmark: "Aggiungi ai segnalibri",
       unbookmark: "Rimuovi dai segnalibri"
+    },
+    list: {
+      title: "Liste",
+      new: "Nuova lista",
+      namePlaceholder: "Nome della lista",
+      edit: "Modifica",
+      done: "Fatto",
+      addPrayers: "Aggiungi preghiere",
+      delete: "Elimina lista",
+      confirmDelete: "Sei sicuro di voler eliminare questa lista?",
+      empty: "Questa lista è vuota…",
+      noLists: "Non hai ancora nessuna lista…",
+      remove: "Rimuovi dalla lista",
+      drag: "Trascina per riordinare"
     }
   },
   pl: {
@@ -292,6 +348,20 @@ const messages = {
       notFound: "Modlitwy nie znaleziono…",
       bookmark: "Dodaj do zakładek",
       unbookmark: "Usuń z zakładek"
+    },
+    list: {
+      title: "Listy",
+      new: "Nowa lista",
+      namePlaceholder: "Nazwa listy",
+      edit: "Edytuj",
+      done: "Gotowe",
+      addPrayers: "Dodaj modlitwy",
+      delete: "Usuń listę",
+      confirmDelete: "Czy na pewno chcesz usunąć tę listę?",
+      empty: "Ta lista jest pusta…",
+      noLists: "Nie masz jeszcze żadnych list…",
+      remove: "Usuń z listy",
+      drag: "Przeciągnij, aby zmienić kolejność"
     }
   },
   pt: {
@@ -351,6 +421,20 @@ const messages = {
       notFound: "Orações não encontradas…",
       bookmark: "Adicionar aos favoritos",
       unbookmark: "Remover dos favoritos"
+    },
+    list: {
+      title: "Listas",
+      new: "Nova lista",
+      namePlaceholder: "Nome da lista",
+      edit: "Editar",
+      done: "Concluído",
+      addPrayers: "Adicionar orações",
+      delete: "Excluir lista",
+      confirmDelete: "Tem certeza de que deseja excluir esta lista?",
+      empty: "Esta lista está vazia…",
+      noLists: "Você ainda não tem listas…",
+      remove: "Remover da lista",
+      drag: "Arraste para reordenar"
     }
   },
   ro: {
@@ -410,6 +494,20 @@ const messages = {
       notFound: null,
       bookmark: null,
       unbookmark: null
+    },
+    list: {
+      title: "Liste",
+      new: "Listă nouă",
+      namePlaceholder: "Numele listei",
+      edit: "Editează",
+      done: "Gata",
+      addPrayers: "Adaugă rugăciuni",
+      delete: "Șterge lista",
+      confirmDelete: "Sigur doriți să ștergeți această listă?",
+      empty: "Această listă este goală…",
+      noLists: "Încă nu aveți liste…",
+      remove: "Elimină din listă",
+      drag: "Trageți pentru a reordona"
     }
   },
   sk: {
@@ -469,6 +567,20 @@ const messages = {
       notFound: "Modlitby sa nenašli…",
       bookmark: "Pridať do obľúbených",
       unbookmark: "Odstrániť z obľúbených"
+    },
+    list: {
+      title: "Zoznamy",
+      new: "Nový zoznam",
+      namePlaceholder: "Názov zoznamu",
+      edit: "Upraviť",
+      done: "Hotovo",
+      addPrayers: "Pridať modlitby",
+      delete: "Vymazať zoznam",
+      confirmDelete: "Naozaj chcete vymazať tento zoznam?",
+      empty: "Tento zoznam je prázdny…",
+      noLists: "Zatiaľ nemáte žiadne zoznamy…",
+      remove: "Odstrániť zo zoznamu",
+      drag: "Potiahnutím zmeníte poradie"
     }
   },
   sw: {
@@ -528,6 +640,20 @@ const messages = {
       notFound: "Sala hazijapatikana…",
       bookmark: "Weka alama",
       unbookmark: "Ondoa alama"
+    },
+    list: {
+      title: "Orodha",
+      new: "Orodha mpya",
+      namePlaceholder: "Jina la orodha",
+      edit: "Hariri",
+      done: "Tayari",
+      addPrayers: "Ongeza sala",
+      delete: "Futa orodha",
+      confirmDelete: "Je, una uhakika unataka kufuta orodha hii?",
+      empty: "Orodha hii haina kitu…",
+      noLists: "Bado huna orodha yoyote…",
+      remove: "Ondoa kwenye orodha",
+      drag: "Buruta ili kupanga upya"
     }
   }
 };

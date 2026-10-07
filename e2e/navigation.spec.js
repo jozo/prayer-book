@@ -8,7 +8,7 @@ test.describe("Navigation menu", () => {
     await expect(menu(page)).toBeHidden();
     await openMenu(page);
 
-    for (const name of ["Prayer Book", "Basic", "Rosary", "Litany", "Saints", "Others", "Custom", "Bookmarks",
+    for (const name of ["Prayer Book", "Basic", "Rosary", "Litany", "Saints", "Others", "Custom", "Bookmarks", "Lists",
       "Settings", "Suggestions for improvement"]) {
       await expect(menu(page).getByRole("link", {name, exact: true})).toBeVisible();
     }
@@ -41,7 +41,8 @@ test.describe("Navigation menu", () => {
     {link: "Saints", url: "/category/saints", title: "Saints"},
     {link: "Others", url: "/category/other", title: "Others"},
     {link: "Custom", url: "/category/custom", title: "Custom"},
-    {link: "Bookmarks", url: "/category/bookmarks", title: "Bookmarks"},
+    {link: "Bookmarks", url: "/list/bookmarks", title: "Bookmarks"},
+    {link: "Lists", url: "/lists", title: "Lists"},
     {link: "Settings", url: "/settings", title: "Settings"}
   ];
 

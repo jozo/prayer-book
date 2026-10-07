@@ -21,3 +21,10 @@ export async function getLanguage() {
 export async function changeLanguage(language) {
   await Preferences.set({key: "language", value: language});
 }
+
+// Lowercase without diacritics, so a search for "otcenas" finds "Otčenáš"
+export function normalizeForSearch(value, locale) {
+  return value.normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLocaleLowerCase(locale);
+}

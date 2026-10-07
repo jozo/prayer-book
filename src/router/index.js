@@ -21,12 +21,32 @@ const router = createRouter({
       component: () => import("../views/FeedbackView.vue")
     },
     {
+      // Bookmarks used to be a virtual category, keep its old address working
+      path: "/category/bookmarks",
+      redirect: {name: "list", params: {listId: "bookmarks"}}
+    },
+    {
       path: "/category/:categoryName",
       name: "category",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/CategoryView.vue")
+    },
+    {
+      path: "/lists",
+      name: "lists",
+      component: () => import("../views/ListsView.vue")
+    },
+    {
+      path: "/list/:listId",
+      name: "list",
+      component: () => import("../views/ListView.vue")
+    },
+    {
+      path: "/list/:listId/add",
+      name: "list-add",
+      component: () => import("../views/ListAddView.vue")
     },
     {
       path: "/prayer/view/:lang/:prayerId",

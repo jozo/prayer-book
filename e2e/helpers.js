@@ -45,6 +45,40 @@ export async function getPreference(page, key) {
   }
 }
 
+/**
+ * A list for the "lists" preference. Items are written as "lang/prayerId".
+ *
+ * @param {string} id
+ * @param {string|null} name
+ * @param {string[]} items
+ */
+export function list(id, name, items = []) {
+  return {
+    id,
+    name,
+    items: items.map((item, index) => {
+      const [lang, prayerId] = item.split("/");
+      return {id: `item-${id}-${index}`, lang, prayerId};
+    })
+  };
+}
+
+export function bookmarksList(items = []) {
+  return list("bookmarks", null, items);
+}
+
+/**
+ * The items of a saved list as "lang/prayerId", in order, or null when there is no such list.
+ *
+ * @param {import("@playwright/test").Page} page
+ * @param {string} listId
+ */
+export async function getListItems(page, listId) {
+  const lists = await getPreference(page, "lists");
+  const found = lists?.find(l => l.id === listId);
+  return found ? found.items.map(item => `${item.lang}/${item.prayerId}`) : null;
+}
+
 export function heading(page) {
   return page.locator("h1");
 }
@@ -147,4 +181,33 @@ export async function safeAreaViolations(page, insets, {root = "#app", edges}) {
     }
     return [...new Set(violations)];
   }, [insets, root, edges]);
+}
+
+/**
+ * Drag one element onto another with a finger, as on a phone. Playwright's dragTo() uses the mouse,
+ * which a touch device does not have, so this sends touch events through the DevTools protocol.
+ *
+ * @param {import("@playwright/test").Page} page
+ * @param {import("@playwright/test").Locator} source
+ * @param {import("@playwright/test").Locator} target
+ */
+export async function touchDrag(page, source, target) {
+  const from = await source.boundingBox();
+  const to = await target.boundingBox();
+  const start = {x: from.x + from.width / 2, y: from.y + from.height / 2};
+  const end = {x: to.x + to.width / 2, y: to.y + to.height / 2};
+  const session = await page.context().newCDPSession(page);
+  const touch = (type, point) => session.send("Input.dispatchTouchEvent", {
+    type,
+    touchPoints: point ? [{x: point.x, y: point.y}] : []
+  });
+
+  await touch("touchStart", start);
+  const steps = 10;
+  for (let i = 1; i <= steps; i++) {
+    await touch("touchMove", {x: start.x + (end.x - start.x) * i / steps, y: start.y + (end.y - start.y) * i / steps});
+    await page.waitForTimeout(20);
+  }
+  await touch("touchEnd");
+  await session.detach();
 }

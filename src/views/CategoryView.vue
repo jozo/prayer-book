@@ -8,6 +8,7 @@ import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import router from "@/router";
+import {normalizeForSearch} from "@/utils";
 
 const {t, locale} = useI18n({useScope: "global"});
 const lang = locale.value;
@@ -29,9 +30,7 @@ const prayersInCategory = computed(() => {
   }
 
   if (categoryName.value === "all") {
-    prayers = getPrayersFromAllCategories();
-  } else if (categoryName.value === "bookmarks") {
-    prayers = getBookmarkedPrayers();
+    prayers = prayerDataStore.getAllPrayers(lang);
   } else if (categoryName.value === "custom") {
     prayers = getCustomPrayers();
   } else {
@@ -39,23 +38,18 @@ const prayersInCategory = computed(() => {
   }
 
   if (searchText.value !== "") {
-    const search = clean(searchText.value);
-    prayers = prayers.filter(item => clean(item.title).includes(search));
+    const search = normalizeForSearch(searchText.value, locale.value);
+    prayers = prayers.filter(item => normalizeForSearch(item.title, locale.value).includes(search));
   }
   // Sort a copy by title by locale/language conventions, the store's arrays must stay untouched
   return [...prayers].sort((a, b) => a.title.localeCompare(b.title, locale.value));
 });
 
 // The view stays mounted when navigating between categories, so load on every category change
-watch(categoryName, async (name) => {
+watch(categoryName, async () => {
   searchText.value = "";
   isLoading.value = true;
-  if (name === "bookmarks") {
-    // Bookmarks can point to other languages, which are loaded only for this list
-    await Promise.all([prayerDataStore.loadPrayers(lang), prayerDataStore.loadBookmarkedPrayers()]);
-  } else {
-    await prayerDataStore.loadPrayers(lang);
-  }
+  await prayerDataStore.loadPrayers(lang);
   isLoading.value = false;
 }, {immediate: true});
 
@@ -68,46 +62,8 @@ onMounted(() => {
   }
 });
 
-function clean(value) {
-  return value.normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")
-    .toLocaleLowerCase(locale.value);
-}
-
-function getPrayersFromAllCategories() {
-  // A prayer can be in several categories, keep it only once
-  const prayers = {};
-  for (const category in allPrayers.value[lang].categories) {
-    for (const prayer of allPrayers.value[lang].categories[category]) {
-      prayers[prayer.id] = prayer;
-    }
-  }
-  return [...Object.values(prayers), ...getCustomPrayers()];
-}
-
 function getCustomPrayers() {
   return Object.values(allPrayers.value.custom);
-}
-
-function getBookmarkedPrayers() {
-  const prayers = [];
-  for (const lang in allPrayers.value.bookmarks) {
-    for (const prayerId in allPrayers.value.bookmarks[lang]) {
-      let prayer;
-
-      if (lang === "custom") {
-        prayer = allPrayers.value.custom[prayerId];
-      } else {
-        prayer = allPrayers.value[lang]?.prayers?.[prayerId];
-      }
-      // Skip bookmarks of prayers that no longer exist, e.g. removed or renamed in an app update
-      if (!prayer) {
-        continue;
-      }
-      prayers.push({id: prayer.id, title: prayer.title, lang});
-    }
-  }
-  return prayers;
 }
 
 function navigateToPrayer(prayer) {

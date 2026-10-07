@@ -45,9 +45,7 @@ function convertMarkdown(text) {
 
 async function deletePrayer() {
   if (confirm(t("prayer.confirmDelete"))) {
-    if (isBookmarked.value) {
-      await toggleBookmark();
-    }
+    await prayerDataStore.removePrayerFromLists(lang, prayerId);
     delete prayerDataStore.allPrayers.custom[prayerId];
     await prayerDataStore.saveCustomPrayers();
     await router.push({name: "category", params: {categoryName: "custom"}});

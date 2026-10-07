@@ -1,5 +1,5 @@
 import {test, expect} from "@playwright/test";
-import {getPreference, heading, prayerList, prayerText, seedStorage} from "./helpers.js";
+import {bookmarksList, getListItems, getPreference, heading, list, prayerList, prayerText, seedStorage} from "./helpers.js";
 
 function customPrayer(id, title, content) {
   return {id, title, categories: ["custom"], versions: [{name: "", content}], lang: "custom"};
@@ -135,13 +135,16 @@ test.describe("Custom prayers", () => {
     await expect(heading(page)).toHaveText("Keep me");
   });
 
-  test("deleting a prayer removes it and its bookmark", async ({page}) => {
+  test("deleting a prayer removes it from the bookmarks and lists", async ({page}) => {
     await seedStorage(page, {preferences: {
       customPrayers: {
         "custom-0": customPrayer("custom-0", "Delete me", "Text"),
         "custom-1": customPrayer("custom-1", "Keep me", "Text")
       },
-      bookmarks: {custom: {"custom-0": true}}
+      lists: [
+        bookmarksList(["custom/custom-0"]),
+        list("list-1", "Meeting", ["custom/custom-0", "en/ourFather", "custom/custom-0"])
+      ]
     }});
     await page.goto("/category/custom");
     await page.getByRole("button", {name: "Delete me"}).click();
@@ -154,7 +157,8 @@ test.describe("Custom prayers", () => {
     await expect(prayerList(page)).toHaveText(["Keep me"]);
     await expect.poll(() => getPreference(page, "customPrayers"))
       .toEqual({"custom-1": customPrayer("custom-1", "Keep me", "Text")});
-    await expect.poll(() => getPreference(page, "bookmarks")).toEqual({custom: {}});
+    await expect.poll(() => getListItems(page, "bookmarks")).toEqual([]);
+    await expect.poll(() => getListItems(page, "list-1")).toEqual(["en/ourFather"]);
   });
 
   test("custom prayers can be bookmarked", async ({page}) => {
@@ -164,7 +168,7 @@ test.describe("Custom prayers", () => {
     await page.goto("/prayer/view/custom/custom-0");
 
     await page.getByRole("button", {name: "Bookmark"}).click();
-    await expect.poll(() => getPreference(page, "bookmarks")).toEqual({custom: {"custom-0": true}});
+    await expect.poll(() => getListItems(page, "bookmarks")).toEqual(["custom/custom-0"]);
 
     await page.goto("/category/bookmarks");
     await page.getByRole("button", {name: "My bookmark"}).click();
@@ -190,8 +194,7 @@ test.describe("Custom prayers", () => {
 
     await page.getByRole("button", {name: "Bookmark"}).click();
 
-    await expect.poll(() => getPreference(page, "bookmarks"))
-      .toEqual({en: {ourFather: true}, custom: {"custom-0": true}});
+    await expect.poll(() => getListItems(page, "bookmarks")).toEqual(["en/ourFather", "custom/custom-0"]);
   });
 
   test("a prayer added after a deletion does not overwrite an existing one", async ({page}) => {
