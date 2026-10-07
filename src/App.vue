@@ -3,13 +3,13 @@ import {RouterLink, RouterView} from "vue-router";
 import {App} from "@capacitor/app";
 import {ref} from "vue";
 import IconHamburger from "@/components/icons/IconHamburger.vue";
-import IconHomeModern from "@/components/icons/IconHomeModern.vue";
-import IconBolt from "@/components/icons/IconBolt.vue";
-import IconListBullet from "@/components/icons/IconListBullet.vue";
-import IconLightBulb from "@/components/icons/IconLightBulb.vue";
+import IconCross from "@/components/icons/IconCross.vue";
+import IconRosary from "@/components/icons/IconRosary.vue";
+import IconLitany from "@/components/icons/IconLitany.vue";
+import IconSaint from "@/components/icons/IconSaint.vue";
+import IconEllipsisCircle from "@/components/icons/IconEllipsisCircle.vue";
 import IconCog from "@/components/icons/IconCog.vue";
 import IconChat from "@/components/icons/IconChat.vue";
-import IconCloud from "@/components/icons/IconCloud.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
 import IconBookmark from "@/components/icons/IconBookmark.vue";
 import IconQueueList from "@/components/icons/IconQueueList.vue";
@@ -112,7 +112,7 @@ function closeMenu() {
         </div>
 
         <div class="flex items-center">
-          <IconHomeModern />
+          <IconCross />
           <RouterLink
             to="/category/basic"
             class="mx-3"
@@ -122,7 +122,7 @@ function closeMenu() {
           </RouterLink>
         </div>
         <div class="flex items-center">
-          <IconBolt />
+          <IconRosary />
           <RouterLink
             to="/category/rosary"
             class="mx-3"
@@ -132,7 +132,7 @@ function closeMenu() {
           </RouterLink>
         </div>
         <div class="flex items-center">
-          <IconListBullet />
+          <IconLitany />
           <RouterLink
             to="/category/litany"
             class="mx-3"
@@ -142,7 +142,7 @@ function closeMenu() {
           </RouterLink>
         </div>
         <div class="flex items-center">
-          <IconCloud />
+          <IconSaint />
           <RouterLink
             to="/category/saints"
             class="mx-3"
@@ -152,7 +152,7 @@ function closeMenu() {
           </RouterLink>
         </div>
         <div class="flex items-center">
-          <IconLightBulb />
+          <IconEllipsisCircle />
           <RouterLink
             to="/category/other"
             class="mx-3"
