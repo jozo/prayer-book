@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "prebuild": "node compilePrayers.js",
+    "prebuild": "node compilePrayers.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",

@@ -1,13 +1,11 @@
-// convertToml.js
-
-const fs = require("fs").promises;
-const path = require("path");
-const toml = require("toml");
-const commonmark = require("commonmark"); // Import the 'commonmark' library
+import fs from "node:fs/promises";
+import path from "node:path";
+import toml from "toml";
+import {HtmlRenderer, Parser} from "commonmark";
 
 // Initialize the CommonMark parser and renderer
-const parser = new commonmark.Parser();
-const writer = new commonmark.HtmlRenderer();
+const parser = new Parser();
+const writer = new HtmlRenderer();
 
 /**
  * Function to validate the structure of the parsed TOML content.
@@ -135,6 +133,7 @@ async function convertTomlFiles(inputDir, outputDir) {
             console.log(`Successfully saved: ${outputFilePath}`);
           } catch (err) {
             console.error(`Error saving file ${outputFilePath}:`, err.message);
+            process.exitCode = 1;
           }
         } else {
           console.warn(`No valid files found for language "${lang}" or all files failed validation.`);
@@ -145,13 +144,14 @@ async function convertTomlFiles(inputDir, outputDir) {
     console.log("Conversion completed.");
   } catch (err) {
     console.error("Error:", err.message);
+    process.exitCode = 1;
   }
 }
 
 // Retrieve input and output directories from command-line arguments
 const args = process.argv.slice(2);
-const inputDirectory = args[0] || path.join(__dirname, "src/prayers"); // Default input directory
-const outputDirectory = args[1] || path.join(__dirname, "public"); // Default output directory
+const inputDirectory = args[0] || path.join(import.meta.dirname, "src/prayers"); // Default input directory
+const outputDirectory = args[1] || path.join(import.meta.dirname, "public"); // Default output directory
 
 // Execute the main function
-convertTomlFiles(inputDirectory, outputDirectory);
+await convertTomlFiles(inputDirectory, outputDirectory);

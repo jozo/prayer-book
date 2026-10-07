@@ -53,9 +53,9 @@ export default [
     }
   },
 
-  // CommonJS Node files (build script, postcss config)
+  // CommonJS Node files (postcss config)
   {
-    files: ["compilePrayers.js", "postcss.config.js", "**/*.cjs"],
+    files: ["postcss.config.js", "**/*.cjs"],
     languageOptions: {
       sourceType: "commonjs",
       globals: {
@@ -64,9 +64,9 @@ export default [
     }
   },
 
-  // ESM Node files (vite/eslint/playwright config, e2e tests)
+  // ESM Node files (build script, vite/eslint/playwright config, e2e tests)
   {
-    files: ["vite.config.js", "eslint.config.js", "playwright.config.js", "e2e/**/*.js"],
+    files: ["compilePrayers.mjs", "vite.config.mjs", "eslint.config.mjs", "playwright.config.mjs", "e2e/**/*.js"],
     languageOptions: {
       sourceType: "module",
       globals: {

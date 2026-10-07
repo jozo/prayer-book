@@ -10,7 +10,7 @@ export default defineConfig({
     vue(),
     watch({
       pattern: "src/prayers/**/*.toml",
-      command: "node compilePrayers.js"
+      command: "node compilePrayers.mjs"
     })
   ],
   resolve: {
