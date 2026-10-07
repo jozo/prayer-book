@@ -1,0 +1,11 @@
+### Added
+- Add "Feedback & Ideas" page with links to Votu, email and Matrix
+
+### Changed
+- Faster loading of prayers
+- Focus search input when opening search from the home page
+- Improve accessibility
+
+### Fixed
+- Fix search not cleared when switching categories
+- Fix editing of a deleted custom prayer
