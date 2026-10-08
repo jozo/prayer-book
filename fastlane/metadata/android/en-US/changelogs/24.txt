@@ -1,0 +1,6 @@
+### Added
+- Add lists feature
+- Add new icons
+
+### Changed
+- Change UI for bookmarking and editing custom prayers

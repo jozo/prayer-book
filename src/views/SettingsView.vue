@@ -82,7 +82,7 @@ function changeTheme(theme) {
         <p>
           <strong>Prayer Book</strong>
         </p>
-        <p>0.10.5</p>
+        <p>0.11.0</p>
         <p>hi@jozo.io</p>
         <p>
           <a
