@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add import/export for custom prayers
 
+### Changed
+- Update JS packages
+
 ## [0.11.0] - 2026-10-07
 ### Added
 - Add lists feature
