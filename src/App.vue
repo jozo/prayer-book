@@ -17,7 +17,11 @@ import IconQueueList from "@/components/icons/IconQueueList.vue";
 // https://ionic.io/blog/take-control-of-your-capacitor-app-state
 App.addListener("backButton", (data) => {
   console.log("back button click:", JSON.stringify(data));
-  if (data.canGoBack) {
+  // An open dialog, like the translations sheet, is closed before going back
+  const openDialog = document.querySelector("dialog[open]");
+  if (openDialog) {
+    openDialog.close();
+  } else if (data.canGoBack) {
     window.history.back();
   } else {
     // Maybe show alert before closing app?

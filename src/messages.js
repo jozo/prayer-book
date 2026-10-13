@@ -63,7 +63,8 @@ const messages = {
       confirmDelete: "Are you sure you want to delete this prayer?",
       notFound: "Prayers not found…",
       bookmark: "Bookmark",
-      unbookmark: "Unbookmark"
+      unbookmark: "Unbookmark",
+      translations: "Translations"
     },
     list: {
       title: "Lists",
@@ -144,7 +145,8 @@ const messages = {
       confirmDelete: "¿Estás seguro de que deseas eliminar esta oración?",
       notFound: "Oraciones no encontradas…",
       bookmark: "Marcar",
-      unbookmark: "Desmarcar"
+      unbookmark: "Desmarcar",
+      translations: "Traducciones"
     },
     list: {
       title: "Listas",
@@ -225,7 +227,8 @@ const messages = {
       confirmDelete: "Êtes-vous sûr de vouloir supprimer cette prière ?",
       notFound: "Prières non trouvées…",
       bookmark: "Ajouter aux signets",
-      unbookmark: "Supprimer des signets"
+      unbookmark: "Supprimer des signets",
+      translations: "Traductions"
     },
     list: {
       title: "Listes",
@@ -306,7 +309,8 @@ const messages = {
       confirmDelete: "Sei sicuro di voler eliminare questa preghiera?",
       notFound: "Preghiere non trovate...",
       bookmark: "Aggiungi ai segnalibri",
-      unbookmark: "Rimuovi dai segnalibri"
+      unbookmark: "Rimuovi dai segnalibri",
+      translations: "Traduzioni"
     },
     list: {
       title: "Liste",
@@ -387,7 +391,8 @@ const messages = {
       confirmDelete: "Czy na pewno chcesz usunąć tę modlitwę?",
       notFound: "Modlitwy nie znaleziono…",
       bookmark: "Dodaj do zakładek",
-      unbookmark: "Usuń z zakładek"
+      unbookmark: "Usuń z zakładek",
+      translations: "Tłumaczenia"
     },
     list: {
       title: "Listy",
@@ -468,7 +473,8 @@ const messages = {
       confirmDelete: "Tem certeza de que deseja excluir esta oração?",
       notFound: "Orações não encontradas…",
       bookmark: "Adicionar aos favoritos",
-      unbookmark: "Remover dos favoritos"
+      unbookmark: "Remover dos favoritos",
+      translations: "Traduções"
     },
     list: {
       title: "Listas",
@@ -549,7 +555,8 @@ const messages = {
       confirmDelete: "Sigur doriți să ștergeți această rugăciune?",
       notFound: "Nu s-au găsit rugăciuni…",
       bookmark: "Adaugă la marcaje",
-      unbookmark: "Elimină din marcaje"
+      unbookmark: "Elimină din marcaje",
+      translations: "Traduceri"
     },
     list: {
       title: "Liste",
@@ -630,7 +637,8 @@ const messages = {
       confirmDelete: "Naozaj chcete vymazať túto modlitbu?",
       notFound: "Modlitby sa nenašli…",
       bookmark: "Pridať do obľúbených",
-      unbookmark: "Odstrániť z obľúbených"
+      unbookmark: "Odstrániť z obľúbených",
+      translations: "Preklady"
     },
     list: {
       title: "Zoznamy",
@@ -711,7 +719,8 @@ const messages = {
       confirmDelete: "Je, una uhakika unataka kufuta sala hii?",
       notFound: "Sala hazijapatikana…",
       bookmark: "Weka alama",
-      unbookmark: "Ondoa alama"
+      unbookmark: "Ondoa alama",
+      translations: "Tafsiri"
     },
     list: {
       title: "Orodha",

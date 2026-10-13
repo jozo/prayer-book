@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add import/export for custom prayers
+- Add switching a prayer to another language
 
 ### Changed
 - Update JS packages

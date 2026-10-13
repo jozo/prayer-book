@@ -5,32 +5,45 @@ import {usePrayerDataStore} from "@/stores/prayerDataStore";
 import {useI18n} from "vue-i18n";
 import router from "@/router";
 import {useRoute} from "vue-router";
-import {computed, onMounted, shallowRef} from "vue";
+import {computed, ref, shallowRef, watch} from "vue";
 import IconBookmark from "@/components/icons/IconBookmark.vue";
+import IconGlobe from "@/components/icons/IconGlobe.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
+import TranslationSheet from "@/components/TranslationSheet.vue";
+import {LanguageNames} from "@/constants";
 
 const {t} = useI18n({useScope: "global"});
 const route = useRoute();
-const lang = route.params.lang;
-const isCustom = lang === "custom";
-const prayerId = route.params.prayerId;
+// Switching the translation keeps this view and changes only the route, so follow its params
+const lang = computed(() => route.params.lang);
+const isCustom = computed(() => lang.value === "custom");
+const prayerId = computed(() => route.params.prayerId);
 const prayerDataStore = usePrayerDataStore();
+const translationSheet = ref();
 
 const prayer = computed(() => {
-  if (isCustom) {
-    return prayerDataStore.allPrayers.custom?.[prayerId];
+  if (isCustom.value) {
+    return prayerDataStore.allPrayers.custom?.[prayerId.value];
   }
-  return prayerDataStore.allPrayers[lang]?.prayers?.[prayerId];
+  return prayerDataStore.allPrayers[lang.value]?.prayers?.[prayerId.value];
 });
-const isBookmarked = computed(() => prayerDataStore.isBookmarked(lang, prayerId));
+const isBookmarked = computed(() => prayerDataStore.isBookmarked(lang.value, prayerId.value));
+const hasTranslations = computed(() => Object.keys(prayer.value.translations ?? {}).length > 1);
 // Markdown renderer of custom prayers. Built-in prayers are compiled to HTML at build time, so
 // commonmark is a separate chunk, loaded only when a custom prayer is shown.
 const renderMarkdown = shallowRef(null);
-const isReady = computed(() => prayer.value && (!isCustom || renderMarkdown.value));
+const isReady = computed(() => prayer.value && (!isCustom.value || renderMarkdown.value));
 
-onMounted(async () => {
-  await Promise.all([prayerDataStore.loadPrayer(prayerId, lang), isCustom && loadMarkdownRenderer()]);
-});
+watch([prayerId, lang], async () => {
+  // The params are gone while this view is left for another route
+  if (!lang.value) {
+    return;
+  }
+  await Promise.all([
+    prayerDataStore.loadPrayer(prayerId.value, lang.value),
+    isCustom.value && !renderMarkdown.value && loadMarkdownRenderer()
+  ]);
+}, {immediate: true});
 
 async function loadMarkdownRenderer() {
   const {Parser, HtmlRenderer} = await import("commonmark");
@@ -40,11 +53,17 @@ async function loadMarkdownRenderer() {
 }
 
 function convertMarkdown(text) {
-  return isCustom ? renderMarkdown.value(text) : text;
+  return isCustom.value ? renderMarkdown.value(text) : text;
 }
 
 async function toggleBookmark() {
-  await prayerDataStore.toggleBookmark(lang, prayerId);
+  await prayerDataStore.toggleBookmark(lang.value, prayerId.value);
+}
+
+// A new history entry, so Back returns to the previous translation
+async function switchTranslation(newLang) {
+  await router.push({name: "view-prayer", params: {lang: newLang, prayerId: prayerId.value}});
+  window.scrollTo(0, 0);
 }
 </script>
 
@@ -97,7 +116,25 @@ async function toggleBookmark() {
           <IconPencil />
           {{ t("prayer.edit") }}
         </button>
+        <button
+          v-if="!isCustom && hasTranslations"
+          :aria-label="`${t('prayer.translations')}: ${LanguageNames[lang]}`"
+          aria-haspopup="dialog"
+          class="flex items-center gap-2 px-4 py-2 rounded-full active:bg-sky-500/10"
+          @click="translationSheet.open()"
+        >
+          <IconGlobe />
+          {{ LanguageNames[lang] }}
+        </button>
       </div>
+      <TranslationSheet
+        v-if="!isCustom && hasTranslations"
+        ref="translationSheet"
+        :title="t('prayer.translations')"
+        :translations="prayer.translations"
+        :current="lang"
+        @select="switchTranslation"
+      />
     </RoundMain>
   </BgWithHeader>
 </template>

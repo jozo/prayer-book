@@ -12,3 +12,6 @@ export const Lang = {
   Spanish: "es",
   Swahili: "sw"
 };
+
+// {"en": "English", "la": "Latin"}, the names shown on the home screen by language code
+export const LanguageNames = Object.fromEntries(Object.entries(Lang).map(([name, code]) => [code, name]));

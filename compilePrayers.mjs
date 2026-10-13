@@ -52,6 +52,50 @@ function convertMarkdownToHTML(markdown) {
 }
 
 /**
+ * Read and convert all valid prayers of one language. Invalid files are logged and skipped.
+ * @param {string} langPath - The directory with the language's TOML files.
+ * @returns {Promise<Object[]>} - The prayers with HTML content.
+ */
+async function readLanguage(langPath) {
+  const files = await fs.readdir(langPath, {withFileTypes: true});
+  const prayersInLanguage = [];
+
+  for (const fileDirent of files) {
+    if (fileDirent.isFile() && path.extname(fileDirent.name) === ".toml") {
+      const filePath = path.join(langPath, fileDirent.name);
+
+      try {
+        const fileContent = await fs.readFile(filePath, "utf-8");
+        const parsed = toml.parse(fileContent);
+
+        // Validate the structure of the TOML content
+        validateTomlStructure(parsed, filePath);
+
+        // Convert 'content' from CommonMark to HTML for each prayer
+        const convertedVersions = parsed.versions.map((version) => {
+          return {
+            ...version,
+            content: convertMarkdownToHTML(version.content) // Convert Markdown to HTML
+          };
+        });
+
+        // Replace the original prayer_versions with converted prayer_versions
+        prayersInLanguage.push({
+          ...parsed,
+          id: fileDirent.name.replace(".toml", ""),
+          versions: convertedVersions
+        });
+      } catch (err) {
+        console.error(`Error processing file ${filePath}:`, err.message);
+        // Continue with the next file
+      }
+    }
+  }
+
+  return prayersInLanguage;
+}
+
+/**
  * Main function to convert TOML files to JSON with HTML content.
  * @param {string} inputDir - The input directory containing language subdirectories.
  * @param {string} outputDir - The output directory to save JSON files.
@@ -64,80 +108,54 @@ async function convertTomlFiles(inputDir, outputDir) {
     // Read the contents of the input directory
     const languages = await fs.readdir(inputDir, {withFileTypes: true});
 
-    // Iterate through each language directory
+    // Parse every language first, each prayer lists the titles of all its translations
+    const prayersByLanguage = {};
     for (const langDirent of languages) {
       if (langDirent.isDirectory()) {
-        const lang = langDirent.name;
-        const langPath = path.join(inputDir, lang);
+        prayersByLanguage[langDirent.name] = await readLanguage(path.join(inputDir, langDirent.name));
+      }
+    }
 
-        // Read all files in the language directory
-        const files = await fs.readdir(langPath, {withFileTypes: true});
+    // {"ourFather": {"en": "Our Father", "la": "Pater Noster"}}
+    const translations = {};
+    for (const [lang, prayers] of Object.entries(prayersByLanguage)) {
+      for (const prayer of prayers) {
+        translations[prayer.id] ??= {};
+        translations[prayer.id][lang] = prayer.title;
+      }
+    }
 
-        const prayersInLanguage = [];
-
-        for (const fileDirent of files) {
-          if (fileDirent.isFile() && path.extname(fileDirent.name) === ".toml") {
-            const filePath = path.join(langPath, fileDirent.name);
-
-            try {
-              const fileContent = await fs.readFile(filePath, "utf-8");
-              const parsed = toml.parse(fileContent);
-
-              // Validate the structure of the TOML content
-              validateTomlStructure(parsed, filePath);
-
-              // Convert 'content' from CommonMark to HTML for each prayer
-              const convertedVersions = parsed.versions.map((version) => {
-                return {
-                  ...version,
-                  content: convertMarkdownToHTML(version.content) // Convert Markdown to HTML
-                };
-              });
-
-              // Replace the original prayer_versions with converted prayer_versions
-              prayersInLanguage.push({
-                ...parsed,
-                id: fileDirent.name.replace(".toml", ""),
-                versions: convertedVersions
-              });
-            } catch (err) {
-              console.error(`Error processing file ${filePath}:`, err.message);
-              // Continue with the next file
-            }
+    for (const [lang, prayersInLanguage] of Object.entries(prayersByLanguage)) {
+      // Group the prayers by categories
+      const categories = {};
+      for (const prayer of prayersInLanguage) {
+        prayer.categories.forEach((category) => {
+          if (!categories[category]) {
+            categories[category] = [];
           }
-        }
+          categories[category].push({id: prayer.id, title: prayer.title});
+        });
+      }
 
-        // Group the prayers by categories
-        const categories = {};
-        for (const prayer of prayersInLanguage) {
-          prayer.categories.forEach((category) => {
-            if (!categories[category]) {
-              categories[category] = [];
-            }
-            categories[category].push({id: prayer.id, title: prayer.title});
-          });
-        }
+      // Create object with ID as key and prayer as value
+      const prayersById = {};
+      for (const prayer of prayersInLanguage) {
+        prayersById[prayer.id] = {...prayer, translations: translations[prayer.id]};
+      }
 
-        // Create object with ID as key and prayer as value
-        const prayersById = {};
-        for (const prayer of prayersInLanguage) {
-          prayersById[prayer.id] = prayer;
+      // Save the converted data to a JSON file if there is any valid data
+      if (prayersInLanguage.length > 0) {
+        const outputFilePath = path.join(outputDir, `${lang}.json`);
+        try {
+          const finalData = {prayers: prayersById, categories: categories};
+          await fs.writeFile(outputFilePath, JSON.stringify(finalData), "utf-8");
+          console.log(`Successfully saved: ${outputFilePath}`);
+        } catch (err) {
+          console.error(`Error saving file ${outputFilePath}:`, err.message);
+          process.exitCode = 1;
         }
-
-        // Save the converted data to a JSON file if there is any valid data
-        if (Object.keys(prayersInLanguage).length > 0) {
-          const outputFilePath = path.join(outputDir, `${lang}.json`);
-          try {
-            const finalData = {prayers: prayersById, categories: categories};
-            await fs.writeFile(outputFilePath, JSON.stringify(finalData), "utf-8");
-            console.log(`Successfully saved: ${outputFilePath}`);
-          } catch (err) {
-            console.error(`Error saving file ${outputFilePath}:`, err.message);
-            process.exitCode = 1;
-          }
-        } else {
-          console.warn(`No valid files found for language "${lang}" or all files failed validation.`);
-        }
+      } else {
+        console.warn(`No valid files found for language "${lang}" or all files failed validation.`);
       }
     }
 
