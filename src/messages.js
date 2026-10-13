@@ -25,7 +25,15 @@ const messages = {
         light: "Light",
         dark: "Dark"
       },
-      language: "Language"
+      language: "Language",
+      backup: {
+        title: "Backup",
+        description: "Save your custom prayers and lists to a file, or add them from a file, for example on another phone.",
+        export: "Export",
+        import: "Import",
+        imported: "Imported custom prayers: {prayers}, lists: {lists}, bookmarks: {bookmarks}.",
+        invalidFile: "This file is not a Prayer Book backup."
+      }
     },
     feedback: {
       intro: "Do you have an idea how to make Prayer Book better, or did you find a mistake? We would love to hear from you.",
@@ -98,7 +106,15 @@ const messages = {
         light: "Claro",
         dark: "Oscuro"
       },
-      language: "Idioma"
+      language: "Idioma",
+      backup: {
+        title: "Copia de seguridad",
+        description: "Guarda tus oraciones personalizadas y listas en un archivo, o añádelas desde un archivo, por ejemplo en otro teléfono.",
+        export: "Exportar",
+        import: "Importar",
+        imported: "Oraciones personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
+        invalidFile: "Este archivo no es una copia de seguridad del Libro de Oraciones."
+      }
     },
     feedback: {
       intro: "¿Tienes una idea para mejorar el Libro de Oraciones o has encontrado un error? Nos encantaría saber de ti.",
@@ -171,7 +187,15 @@ const messages = {
         light: "Clair",
         dark: "Sombre"
       },
-      language: "Langue"
+      language: "Langue",
+      backup: {
+        title: "Sauvegarde",
+        description: "Enregistrez vos prières personnalisées et vos listes dans un fichier, ou ajoutez-les depuis un fichier, par exemple sur un autre téléphone.",
+        export: "Exporter",
+        import: "Importer",
+        imported: "Prières personnalisées importées : {prayers}, listes : {lists}, signets : {bookmarks}.",
+        invalidFile: "Ce fichier n’est pas une sauvegarde du Livret de Prières."
+      }
     },
     feedback: {
       intro: "Vous avez une idée pour améliorer le Livret de Prières ou vous avez trouvé une erreur ? Nous serions ravis de vous lire.",
@@ -244,7 +268,15 @@ const messages = {
         light: "Chiaro",
         dark: "Scuro"
       },
-      language: "Lingua"
+      language: "Lingua",
+      backup: {
+        title: "Backup",
+        description: "Salva le tue preghiere personalizzate e le liste in un file, oppure aggiungile da un file, ad esempio su un altro telefono.",
+        export: "Esporta",
+        import: "Importa",
+        imported: "Preghiere personalizzate importate: {prayers}, liste: {lists}, segnalibri: {bookmarks}.",
+        invalidFile: "Questo file non è un backup del Libro di Preghiere."
+      }
     },
     feedback: {
       intro: "Hai un'idea per migliorare il Libro di Preghiere o hai trovato un errore? Ci farebbe piacere sentirti.",
@@ -317,7 +349,15 @@ const messages = {
         light: "Jasny",
         dark: "Ciemny"
       },
-      language: "Język"
+      language: "Język",
+      backup: {
+        title: "Kopia zapasowa",
+        description: "Zapisz swoje modlitwy i listy w pliku albo dodaj je z pliku, na przykład na innym telefonie.",
+        export: "Eksportuj",
+        import: "Importuj",
+        imported: "Zaimportowane własne modlitwy: {prayers}, listy: {lists}, zakładki: {bookmarks}.",
+        invalidFile: "Ten plik nie jest kopią zapasową Modlitewnika."
+      }
     },
     feedback: {
       intro: "Masz pomysł, jak ulepszyć Modlitewnik, albo znalazłeś błąd? Chętnie Cię wysłuchamy.",
@@ -390,7 +430,15 @@ const messages = {
         light: "Claro",
         dark: "Escuro"
       },
-      language: "Idioma"
+      language: "Idioma",
+      backup: {
+        title: "Cópia de segurança",
+        description: "Guarde as suas orações personalizadas e listas num ficheiro, ou adicione-as a partir de um ficheiro, por exemplo noutro telemóvel.",
+        export: "Exportar",
+        import: "Importar",
+        imported: "Orações personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
+        invalidFile: "Este ficheiro não é uma cópia de segurança do Livro de Orações."
+      }
     },
     feedback: {
       intro: "Tem uma ideia para melhorar o Livro de Orações ou encontrou um erro? Adoraríamos ouvir você.",
@@ -447,8 +495,8 @@ const messages = {
       litany: "Litanii",
       saints: "Rugăciuni către sfinți",
       other: "Altele",
-      custom: null,
-      bookmarks: null
+      custom: "Personalizate",
+      bookmarks: "Marcaje"
     },
     menu: {
       settings: "Setări",
@@ -458,12 +506,20 @@ const messages = {
     },
     settings: {
       theme: {
-        title: null,
-        auto: null,
-        light: null,
-        dark: null
+        title: "Temă",
+        auto: "Automată",
+        light: "Luminoasă",
+        dark: "Întunecată"
       },
-      language: null
+      language: "Limbă",
+      backup: {
+        title: "Copie de rezervă",
+        description: "Salvați rugăciunile personalizate și listele într-un fișier sau adăugați-le dintr-un fișier, de exemplu pe alt telefon.",
+        export: "Exportă",
+        import: "Importă",
+        imported: "Rugăciuni personalizate importate: {prayers}, liste: {lists}, marcaje: {bookmarks}.",
+        invalidFile: "Acest fișier nu este o copie de rezervă a Cărții de rugăciuni."
+      }
     },
     feedback: {
       intro: "Aveți o idee despre cum să îmbunătățim Cartea de rugăciuni sau ați găsit o greșeală? Ne-ar face plăcere să vă auzim.",
@@ -483,17 +539,17 @@ const messages = {
       }
     },
     prayer: {
-      addPageTitle: null,
-      editPageTitle: null,
-      title: null,
-      text: null,
-      save: null,
-      edit: null,
-      delete: null,
-      confirmDelete: null,
-      notFound: null,
-      bookmark: null,
-      unbookmark: null
+      addPageTitle: "Adaugă rugăciune",
+      editPageTitle: "Editează rugăciunea",
+      title: "Titlu",
+      text: "Textul rugăciunii (folosiți Markdown pentru formatare)",
+      save: "Salvează",
+      edit: "Editează",
+      delete: "Șterge",
+      confirmDelete: "Sigur doriți să ștergeți această rugăciune?",
+      notFound: "Nu s-au găsit rugăciuni…",
+      bookmark: "Adaugă la marcaje",
+      unbookmark: "Elimină din marcaje"
     },
     list: {
       title: "Liste",
@@ -536,7 +592,15 @@ const messages = {
         light: "Svetlá",
         dark: "Tmavá"
       },
-      language: "Jazyk"
+      language: "Jazyk",
+      backup: {
+        title: "Záloha",
+        description: "Uložte si vlastné modlitby a zoznamy do súboru alebo ich pridajte zo súboru, napríklad na inom telefóne.",
+        export: "Exportovať",
+        import: "Importovať",
+        imported: "Importované vlastné modlitby: {prayers}, zoznamy: {lists}, záložky: {bookmarks}.",
+        invalidFile: "Tento súbor nie je zálohou Modlitebnej knižky."
+      }
     },
     feedback: {
       intro: "Máte nápad, ako vylepšiť Modlitebnú knižku, alebo ste našli chybu? Radi si vás vypočujeme.",
@@ -609,7 +673,15 @@ const messages = {
         light: "Mwanga",
         dark: "Giza"
       },
-      language: "Lugha"
+      language: "Lugha",
+      backup: {
+        title: "Hifadhi nakala",
+        description: "Hifadhi sala zako binafsi na orodha kwenye faili, au uziongeze kutoka kwenye faili, kwa mfano kwenye simu nyingine.",
+        export: "Hamisha",
+        import: "Leta",
+        imported: "Sala binafsi zilizoletwa: {prayers}, orodha: {lists}, alamisho: {bookmarks}.",
+        invalidFile: "Faili hii si nakala ya Kitabu cha Sala."
+      }
     },
     feedback: {
       intro: "Una wazo la kuboresha Kitabu cha Sala, au umepata kosa? Tungependa kusikia kutoka kwako.",

@@ -4,6 +4,12 @@ import {Preferences} from "@capacitor/preferences";
 
 export const BOOKMARKS_LIST_ID = "bookmarks";
 
+// Identifies a backup file, the version changes when its format does
+const BACKUP_APP = "prayer-book";
+const BACKUP_VERSION = 1;
+
+export class InvalidBackupError extends Error {}
+
 // Unique enough for lists and list items, which are created one at a time on one device
 let idCounter = 0;
 function newId(prefix) {
@@ -271,6 +277,95 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
     await Preferences.set({key: "customPrayers", value: JSON.stringify(allPrayers.value.custom)});
   }
 
+  // Custom prayers and lists in the format the backup file stores
+  async function exportUserData() {
+    await loadUserData();
+    return {
+      app: BACKUP_APP,
+      version: BACKUP_VERSION,
+      exportedAt: new Date().toISOString(),
+      customPrayers: allPrayers.value.custom,
+      lists: lists.value
+    };
+  }
+
+  // Adds a backup to the existing data, nothing is overwritten. Prayers and lists that are already
+  // here are skipped, so importing the same backup twice does not duplicate them.
+  // Throws InvalidBackupError when the data is not a backup.
+  async function importUserData(data) {
+    if (data?.app !== BACKUP_APP || typeof data.customPrayers !== "object" || !Array.isArray(data.lists)) {
+      throw new InvalidBackupError();
+    }
+    await loadUserData();
+    const imported = {prayers: 0, lists: 0, bookmarks: 0};
+
+    // Imported prayers get new IDs, the backup's IDs can be taken by other prayers here
+    const prayerIds = {};
+    for (const [oldId, prayer] of Object.entries(data.customPrayers ?? {})) {
+      const content = prayer?.versions?.[0]?.content;
+      if (typeof prayer?.title !== "string" || typeof content !== "string") {
+        continue;
+      }
+      const existing = Object.values(allPrayers.value.custom)
+        .find(p => p.title === prayer.title && p.versions[0].content === content);
+      if (existing) {
+        prayerIds[oldId] = existing.id;
+        continue;
+      }
+      const id = nextCustomPrayerId();
+      allPrayers.value.custom[id] = {id, title: prayer.title, categories: ["custom"], versions: [{name: "", content}], lang: "custom"};
+      prayerIds[oldId] = id;
+      imported.prayers++;
+    }
+
+    for (const list of data.lists) {
+      const items = importListItems(list?.items, prayerIds);
+      if (list?.id === BOOKMARKS_LIST_ID) {
+        for (const item of items) {
+          if (!isBookmarked(item.lang, item.prayerId)) {
+            getList(BOOKMARKS_LIST_ID).items.push(item);
+            imported.bookmarks++;
+          }
+        }
+      } else if (typeof list?.name === "string" && !hasSameList(list.name, items)) {
+        lists.value.push({id: newId("list"), name: list.name, items});
+        imported.lists++;
+      }
+    }
+
+    await saveCustomPrayers();
+    await saveLists();
+    return imported;
+  }
+
+  // New items of a list from a backup. Items of custom prayers missing from the backup are left out.
+  function importListItems(items, prayerIds) {
+    const result = [];
+    for (const item of Array.isArray(items) ? items : []) {
+      if (typeof item?.lang !== "string" || typeof item.prayerId !== "string") {
+        continue;
+      }
+      const prayerId = item.lang === "custom" ? prayerIds[item.prayerId] : item.prayerId;
+      if (prayerId) {
+        result.push(newItem(item.lang, prayerId));
+      }
+    }
+    return result;
+  }
+
+  function hasSameList(name, items) {
+    const key = list => list.map(item => `${item.lang}/${item.prayerId}`).join("\n");
+    return lists.value.some(list => list.id !== BOOKMARKS_LIST_ID && list.name === name && key(list.items) === key(items));
+  }
+
+  // One more than the highest existing number
+  function nextCustomPrayerId() {
+    const usedIds = Object.keys(allPrayers.value.custom)
+      .map(id => parseInt(id.replace("custom-", ""), 10))
+      .filter(id => !isNaN(id));
+    return `custom-${usedIds.length ? Math.max(...usedIds) + 1 : 0}`;
+  }
+
   return {
     allPrayers,
     lists,
@@ -292,6 +387,9 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
     removeFromList,
     moveInList,
     removePrayerFromLists,
-    saveCustomPrayers
+    saveCustomPrayers,
+    nextCustomPrayerId,
+    exportUserData,
+    importUserData
   };
 });

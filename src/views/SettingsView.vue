@@ -3,9 +3,45 @@ import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
 import {Lang} from "@/constants";
-import {changeLanguage} from "@/utils";
+import {changeLanguage, saveFile} from "@/utils";
+import {ref} from "vue";
+import {InvalidBackupError, usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const {t, locale} = useI18n({useScope: "global"});
+const prayerDataStore = usePrayerDataStore();
+const backupStatus = ref("");
+const fileInput = ref();
+
+async function exportBackup() {
+  backupStatus.value = "";
+  const data = await prayerDataStore.exportUserData();
+  const date = data.exportedAt.slice(0, 10);
+  await saveFile(`prayer-book-backup-${date}.json`, JSON.stringify(data, null, 2));
+}
+
+async function importBackup(event) {
+  const file = event.target.files[0];
+  // Clear the input, so picking the same file again triggers another import
+  event.target.value = "";
+  if (!file) {
+    return;
+  }
+  try {
+    let data;
+    try {
+      data = JSON.parse(await file.text());
+    } catch {
+      throw new InvalidBackupError();
+    }
+    const imported = await prayerDataStore.importUserData(data);
+    backupStatus.value = t("settings.backup.imported", imported);
+  } catch (error) {
+    if (!(error instanceof InvalidBackupError)) {
+      console.error("Error importing backup:", error);
+    }
+    backupStatus.value = t("settings.backup.invalidFile");
+  }
+}
 
 function changeTheme(theme) {
   localStorage.setItem("theme", theme);
@@ -77,6 +113,42 @@ function changeTheme(theme) {
               </option>
             </select>
           </div>
+        </div>
+
+        <div class="flex flex-col items-center mb-10">
+          <h2 class="font-bold">
+            {{ t('settings.backup.title') }}
+          </h2>
+          <p class="mt-1 mb-4">
+            {{ t('settings.backup.description') }}
+          </p>
+          <div class="flex space-x-4">
+            <button
+              class="py-2 px-8 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
+              @click="exportBackup()"
+            >
+              {{ t('settings.backup.export') }}
+            </button>
+            <button
+              class="py-2 px-8 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
+              @click="fileInput.click()"
+            >
+              {{ t('settings.backup.import') }}
+            </button>
+          </div>
+          <!-- No accept filter: Android file pickers often report backups as a generic file type -->
+          <input
+            ref="fileInput"
+            type="file"
+            class="hidden"
+            @change="importBackup($event)"
+          >
+          <p
+            role="status"
+            class="mt-4 italic"
+          >
+            {{ backupStatus }}
+          </p>
         </div>
 
         <p>

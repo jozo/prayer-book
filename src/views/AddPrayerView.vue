@@ -18,13 +18,8 @@ async function savePrayer() {
   // The page can be opened directly, so make sure existing prayers are loaded and not overwritten
   await prayerDataStore.loadUserData();
 
-  // Use one more than the highest existing number
-  const usedIds = Object.keys(prayerDataStore.allPrayers.custom)
-    .map(id => parseInt(id.replace("custom-", ""), 10))
-    .filter(id => !isNaN(id));
-  const nextId = usedIds.length ? Math.max(...usedIds) + 1 : 0;
   const newPrayer = {
-    id: `custom-${nextId}`,
+    id: prayerDataStore.nextCustomPrayerId(),
     title: prayerTitle.value,
     categories: ["custom"],
     versions: [{name: "", content: prayerText.value}],
