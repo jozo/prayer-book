@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add import/export for custom prayers
 - Add switching a prayer to another language
+- Add styles for headings, quotes, code, links and horizontal rules in prayers
 
 ### Changed
 - Update JS packages

@@ -260,4 +260,35 @@ test.describe("Custom prayers", () => {
     await expect(page).toHaveURL("/prayer/view/custom/custom-1");
     await expect(prayerText(page)).toHaveText("Second");
   });
+
+  test("headings, quotes and code are styled", async ({page}) => {
+    const content = [
+      "# Morning",
+      "> Blessed are the pure in heart.",
+      "Pray `Amen` at the end. More at [vatican.va](https://www.vatican.va).",
+      "---",
+      "```\n" + "a very long line of the block ".repeat(10) + "\n```"
+    ].join("\n\n");
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Styled", content)
+    }}});
+    await page.goto("/prayer/view/custom/custom-0");
+    const text = prayerText(page);
+
+    await expect(text.locator("h1")).toHaveText("Morning");
+    await expect(text.locator("h1")).toHaveCSS("font-weight", "700");
+    await expect(text.locator("h1")).toHaveCSS("font-size", "20px");
+    await expect(text.locator("blockquote")).toHaveCSS("border-left-width", "4px");
+    await expect(text.locator("blockquote")).toHaveCSS("font-style", "italic");
+    await expect(text.locator("p code")).toHaveCSS("font-family", /mono/i);
+    await expect(text.locator("p code")).not.toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await expect(text.locator("a")).toHaveCSS("text-decoration-line", "underline");
+    // The rule has the colour of the divider above the prayer's buttons
+    const dividerColor = await page.locator(".border-t").evaluate(el => getComputedStyle(el).borderTopColor);
+    await expect(text.locator("hr")).toHaveCSS("border-top-color", dividerColor);
+    // A long code line wraps inside its block, so neither the block nor the page scrolls
+    expect(await text.locator("pre").evaluate(pre => pre.scrollWidth <= pre.clientWidth)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))
+      .toBe(true);
+  });
 });

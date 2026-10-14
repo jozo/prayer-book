@@ -42,3 +42,97 @@
 .prayer-text li {
     margin-bottom: 0.5rem;
 }
+
+.prayer-text ol,
+.prayer-text ul,
+.prayer-text blockquote,
+.prayer-text pre {
+    margin-bottom: 1rem;
+}
+
+.prayer-text ol:last-child,
+.prayer-text ul:last-child,
+.prayer-text blockquote:last-child,
+.prayer-text pre:last-child {
+    margin-bottom: 0;
+}
+
+/* Content headings stay smaller than the version name above them */
+.prayer-text :is(h1, h2, h3, h4, h5, h6) {
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.prayer-text :is(h1, h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
+}
+
+.prayer-text h1 {
+    font-size: 1.25rem;
+}
+
+.prayer-text h2 {
+    font-size: 1.125rem;
+}
+
+.prayer-text blockquote {
+    padding-left: 1rem;
+    border-left: 4px solid var(--color-sky-500);
+    color: var(--color-neutral-600);
+    font-style: italic;
+}
+
+.dark .prayer-text blockquote {
+    border-color: var(--color-sky-400);
+    color: var(--color-neutral-400);
+}
+
+.prayer-text code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+}
+
+.prayer-text :not(pre) > code {
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-neutral-200);
+}
+
+/* Code is one step darker (lighter in dark mode) than the card. Long lines wrap, even in
+   the middle of a word, so the block never widens the page */
+.prayer-text pre {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-neutral-200);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.dark .prayer-text :not(pre) > code,
+.dark .prayer-text pre {
+    background-color: var(--color-neutral-700);
+}
+
+/* Links match the app's text buttons */
+.prayer-text a {
+    color: var(--color-sky-600);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.dark .prayer-text a {
+    color: var(--color-sky-400);
+}
+
+/* Same light line as the divider above the prayer's buttons */
+.prayer-text hr {
+    margin: 1.5rem 0;
+    border-color: var(--color-neutral-200);
+}
+
+.dark .prayer-text hr {
+    border-color: var(--color-neutral-700);
+}
