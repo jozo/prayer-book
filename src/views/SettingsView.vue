@@ -154,7 +154,7 @@ function changeTheme(theme) {
         <p>
           <strong>Prayer Book</strong>
         </p>
-        <p>0.11.0</p>
+        <p>0.12.0</p>
         <p>hi@jozo.io</p>
         <p>
           <a

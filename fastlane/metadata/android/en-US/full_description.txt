@@ -1,15 +1,15 @@
-Contains collections of catholics prayers as you could see in a prayer book.
-Prayers are divided into several categories, and you can search in them.
-You can bookmark them and add your own prayers.
+A Catholic prayer book in your pocket. Basic prayers, the rosary, litanies, prayers to the saints and more, sorted into categories and easy to find.
 
-Prayers are translated into multiple languages:
-- English,
-- French,
-- Italian,
-- Latin,
-- Polish,
-- Portuguese,
-- Romanian,
-- Slovak,
-- Spanish,
-- Swahili.
+Features:
+• Search across all prayers (accents don't matter)
+• Bookmark your favorite prayers
+• Create your own lists, e.g. for morning or evening prayers
+• Add your own prayers, and back them up or move them to another phone
+• Switch a prayer to another language
+• Light and dark theme
+
+Works completely offline. No ads, no tracking, no account. Free and open source.
+
+Prayers are available in English, French, Italian, Latin, Polish, Portuguese, Romanian, Slovak, Spanish and Swahili. Not every prayer is available in every language.
+
+Missing a prayer or found a mistake? Send it through "Feedback & Ideas" in the app.
