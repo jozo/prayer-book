@@ -1,0 +1,136 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      android:
+        description: Build signed Android APK and AAB
+        type: boolean
+        default: true
+      create_codeberg_release:
+        description: Create a Codeberg release with the APK (tag = package.json version)
+        type: boolean
+        default: false
+      ios:
+        description: Build iOS app and upload it to TestFlight
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: 24
+
+jobs:
+  android:
+    if: inputs.android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build web app
+        run: |
+          npm ci
+          npm run build
+          npx cap sync android
+
+      - name: Read version
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Build signed APK and AAB
+        working-directory: android
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/release.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$ANDROID_KEYSTORE_PATH"
+          ./gradlew assembleRelease bundleRelease
+          rm "$ANDROID_KEYSTORE_PATH"
+
+      - name: Collect outputs
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p release
+          cp android/app/build/outputs/apk/release/app-release.apk "release/prayer-book-$VERSION.apk"
+          cp android/app/build/outputs/bundle/release/app-release.aab "release/prayer-book-$VERSION.aab"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-${{ steps.version.outputs.version }}
+          path: release/
+
+      - name: Create Codeberg release
+        if: inputs.create_codeberg_release
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+          API: https://codeberg.org/api/v1/repos/jozo/prayer-book
+        run: |
+          auth="Authorization: token $CODEBERG_TOKEN"
+          release_id=$(curl -sf -H "$auth" "$API/releases/tags/$VERSION" | jq -r '.id // empty' || true)
+          if [ -z "$release_id" ]; then
+            notes=$(awk -v v="$VERSION" '
+              $0 ~ "^## \\[" v "\\]" {found=1; next}
+              found && /^## \[/ {exit}
+              found {print}
+            ' CHANGELOG.md)
+            release_id=$(jq -n --arg tag "$VERSION" --arg sha "$GITHUB_SHA" --arg body "$notes" \
+                '{tag_name: $tag, target_commitish: $sha, name: $tag, body: $body}' \
+              | curl -sf -X POST -H "$auth" -H "Content-Type: application/json" -d @- "$API/releases" \
+              | jq -r '.id')
+          fi
+          curl -sf -X POST -H "$auth" \
+            -F "attachment=@release/prayer-book-$VERSION.apk" \
+            "$API/releases/$release_id/assets?name=prayer-book-$VERSION.apk"
+
+  ios:
+    if: inputs.ios
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build web app
+        run: |
+          npm ci
+          npm run build
+          npx cap sync ios
+
+      - name: Build and upload to TestFlight
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: bundle exec fastlane ios beta
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios
+          path: build/ios/*.ipa

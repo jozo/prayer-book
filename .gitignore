@@ -69,3 +69,10 @@ playwright-report/
 blob-report/
 playwright/.cache/
 .playwright-mcp/
+
+# Release signing and fastlane outputs
+keystore.properties
+fastlane/report.xml
+fastlane/README.md
+*.ipa
+*.dSYM.zip

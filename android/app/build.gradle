@@ -1,5 +1,16 @@
 apply plugin: 'com.android.application'
 
+// Release signing comes from environment variables (CI) or android/keystore.properties (local).
+// Without them the release build stays unsigned, e.g. for F-Droid.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+def signingValue = { String name -> System.getenv(name) ?: keystoreProperties.getProperty(name) }
+def hasReleaseSigning = ['ANDROID_KEYSTORE_PATH', 'ANDROID_KEYSTORE_PASSWORD', 'ANDROID_KEY_ALIAS', 'ANDROID_KEY_PASSWORD']
+    .every { signingValue(it) }
+
 android {
     namespace = "io.jozo.prayerbook"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -16,8 +27,21 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        if (hasReleaseSigning) {
+            release {
+                storeFile file(signingValue('ANDROID_KEYSTORE_PATH'))
+                storePassword signingValue('ANDROID_KEYSTORE_PASSWORD')
+                keyAlias signingValue('ANDROID_KEY_ALIAS')
+                keyPassword signingValue('ANDROID_KEY_PASSWORD')
+            }
+        }
+    }
     buildTypes {
         release {
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
