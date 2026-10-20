@@ -1,6 +1,6 @@
 {
   "appId": "io.jozo.prayerbook",
-  "appName": "prayer-book",
+  "appName": "Prayer Book",
   "webDir": "dist",
   "server": {
     "androidScheme": "https"
