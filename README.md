@@ -10,6 +10,9 @@ Mobile app with Catholic prayers.
 [<img src="https://i.imgur.com/6otF5jh.png"
      alt="Get it on Google Play"
      height="50">](https://play.google.com/store/apps/details?id=io.jozo.prayerbook)
+[<img src="https://i.imgur.com/F8prrqS.png"
+     alt="Download on the App Store"
+     height="50">](https://apps.apple.com/us/app/prayer-book-catholic-prayers/id6759986594)
 
 Or download the latest APK from the [Releases Section](https://codeberg.org/jozo/prayer-book/releases/latest).
 

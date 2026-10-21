@@ -66,7 +66,7 @@ export default [
 
   // ESM Node files (build script, vite/eslint/playwright config, e2e tests)
   {
-    files: ["compilePrayers.mjs", "vite.config.mjs", "eslint.config.mjs", "playwright.config.mjs", "e2e/**/*.js"],
+    files: ["compilePrayers.mjs", "vite.config.mjs", "eslint.config.mjs", "playwright.config.mjs", "e2e/**/*.js", "screenshots/**/*.js", "playwright.screenshots.config.mjs"],
     languageOptions: {
       sourceType: "module",
       globals: {

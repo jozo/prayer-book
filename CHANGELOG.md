@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add CI build of app packages
 
 ### Removed
-- gv1pRemove Slovak fastlane translation
+- Remove Slovak fastlane translation
 
 ## [0.12.0] - 2026-10-14
 ### Added
