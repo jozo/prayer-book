@@ -98,7 +98,10 @@ platform :ios do
       }
       FileUtils.mkdir_p(File.join(metadata_path, "en-US"))
       listing.each do |ios_file, android_file|
-        FileUtils.cp(File.join(ANDROID_METADATA, android_file), File.join(metadata_path, "en-US", ios_file))
+        # The App Store rejects emoji, so the emoji bullets become plain ones
+        text = File.read(File.join(ANDROID_METADATA, android_file))
+          .gsub(/[\p{Extended_Pictographic}\u{FE0F}]+ /, "• ")
+        File.write(File.join(metadata_path, "en-US", ios_file), text)
       end
 
       upload_to_app_store(
