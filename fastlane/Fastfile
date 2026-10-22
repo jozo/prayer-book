@@ -113,6 +113,8 @@ platform :ios do
         overwrite_screenshots: true,
         skip_binary_upload: true,
         submit_for_review: false,
+        # Precheck can't check in-app purchases with an API key, and nothing is submitted here
+        run_precheck_before_submit: false,
         # Don't wait for confirmation of the HTML preview
         force: true
       )
