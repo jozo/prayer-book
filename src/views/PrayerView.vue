@@ -43,6 +43,10 @@ watch([prayerId, lang], async () => {
     prayerDataStore.loadPrayer(prayerId.value, lang.value),
     isCustom.value && !renderMarkdown.value && loadMarkdownRenderer()
   ]);
+  // The custom prayer was deleted, e.g. this page was reached with Back after deleting it
+  if (isCustom.value && !prayer.value) {
+    await router.replace({name: "category", params: {categoryName: "custom"}});
+  }
 }, {immediate: true});
 
 async function loadMarkdownRenderer() {

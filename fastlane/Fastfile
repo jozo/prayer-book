@@ -25,6 +25,26 @@ def asc_api_key
   )
 end
 
+platform :android do
+  desc "Upload the signed AAB, listing, release notes and screenshots to Google Play"
+  lane :play_store do |options|
+    track = options.fetch(:track, "internal")
+    upload_to_play_store(
+      json_key_data: ENV.fetch("GOOGLE_PLAY_JSON_KEY"),
+      aab: "android/app/build/outputs/bundle/release/app-release.aab",
+      track: track,
+      # Internal testers get the build right away, like on TestFlight. On the other tracks the release
+      # waits as a draft to be rolled out in the Play Console.
+      release_status: track == "internal" ? "completed" : "draft",
+      # The same listing as F-Droid, with the changelog of the current versionCode as release notes
+      metadata_path: "fastlane/metadata/android",
+      # The icon (512x512, rendered from resources/icon.svg) and the screenshots (taken with
+      # "npm run screenshots"), uploading only the changed ones
+      sync_image_upload: true
+    )
+  end
+end
+
 platform :ios do
   desc "Build the iOS app, upload it to TestFlight and update the App Store listing"
   lane :beta do
@@ -68,8 +88,10 @@ platform :ios do
   lane :app_store_listing do
     Dir.mktmpdir do |metadata_path|
       # Share the listing with Google Play and F-Droid. Fields without an Android counterpart
-      # (name, subtitle, keywords, URLs) are left as they are in App Store Connect.
+      # (subtitle, keywords, URLs) are left as they are in App Store Connect. The name under the
+      # icon on the phone is CFBundleDisplayName, not this one.
       listing = {
+        "name.txt" => "title.txt",
         "description.txt" => "full_description.txt",
         "promotional_text.txt" => "short_description.txt",
         "release_notes.txt" => "changelogs/#{android_version_code}.txt"

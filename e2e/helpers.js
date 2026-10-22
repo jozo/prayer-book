@@ -88,10 +88,14 @@ export function menu(page) {
 }
 
 export async function openMenu(page) {
-  // The hamburger button is the only button outside of the navigation. The button itself has no
-  // size because its icon is absolutely positioned, so click the icon.
-  await page.locator("#app > button svg").click();
+  // Only top-level pages have the hamburger button, the others have a back button in its place.
+  // The button itself has no size because its icon is absolutely positioned, so click the icon.
+  await page.locator("#app > button[aria-label='Open menu'] svg").click();
   await expect(menu(page)).toBeVisible();
+}
+
+export function backButton(page) {
+  return page.locator("#app > button[aria-label='Back']");
 }
 
 export async function navigateViaMenu(page, linkName) {

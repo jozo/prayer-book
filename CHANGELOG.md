@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add iOS version
 - Add CI build of app packages
+- Add back button to prayers, lists and editing pages
+
+### Changed
+- Update store icon and screenshots
+
+### Fixed
+- Back after saving or deleting a custom prayer no longer returns to the edit page
 
 ### Removed
 - Remove Slovak fastlane translation

@@ -1,5 +1,5 @@
 import {test, expect} from "@playwright/test";
-import {heading, menu, navigateViaMenu, openMenu} from "./helpers.js";
+import {backButton, heading, menu, navigateViaMenu, openMenu} from "./helpers.js";
 
 test.describe("Navigation menu", () => {
   test("is hidden until the hamburger button is clicked", async ({page}) => {
@@ -76,4 +76,44 @@ test.describe("Navigation menu", () => {
     await menu(page).getByRole("button").click();
     await expect(page.locator("body")).toHaveCSS("overflow", "auto");
   });
+});
+
+test.describe("Back button", () => {
+  test("replaces the hamburger button below the top level", async ({page}) => {
+    await page.goto("/category/basic");
+    await expect(backButton(page)).toHaveCount(0);
+
+    await page.getByText("Our Father", {exact: true}).click();
+
+    await expect(page).toHaveURL("/prayer/view/en/ourFather");
+    await expect(backButton(page)).toBeVisible();
+    await expect(page.getByRole("button", {name: "Open menu"})).toHaveCount(0);
+  });
+
+  test("returns to the previous page", async ({page}) => {
+    await page.goto("/category/basic");
+    await page.getByText("Our Father", {exact: true}).click();
+    await expect(page).toHaveURL("/prayer/view/en/ourFather");
+
+    await backButton(page).locator("svg").click();
+
+    await expect(page).toHaveURL("/category/basic");
+    await expect(heading(page)).toHaveText("Basic");
+  });
+
+  const parents = [
+    {url: "/prayer/view/en/ourFather", parent: "/"},
+    {url: "/prayer/add/", parent: "/category/custom"},
+    {url: "/list/bookmarks", parent: "/lists"}
+  ];
+
+  for (const {url, parent} of parents) {
+    test(`goes from ${url} opened directly to ${parent}`, async ({page}) => {
+      await page.goto(url);
+
+      await backButton(page).locator("svg").click();
+
+      await expect(page).toHaveURL(parent);
+    });
+  }
 });

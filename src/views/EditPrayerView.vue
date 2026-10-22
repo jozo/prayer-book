@@ -32,7 +32,13 @@ async function savePrayer() {
   prayer.value.title = prayerTitle.value;
   prayer.value.versions[0].content = prayerText.value;
   await prayerDataStore.saveCustomPrayers();
-  await router.push({name: "view-prayer", params: {prayerId: prayer.value.id, lang: "custom"}});
+  // Return to the prayer the editing was opened from, so Back does not lead to the edit form again
+  const prayerRoute = {name: "view-prayer", params: {prayerId: prayer.value.id, lang: "custom"}};
+  if (window.history.state?.back === router.resolve(prayerRoute).fullPath) {
+    router.back();
+  } else {
+    await router.replace(prayerRoute);
+  }
 }
 
 async function deletePrayer() {
@@ -41,7 +47,8 @@ async function deletePrayer() {
     await prayerDataStore.removePrayerFromLists("custom", prayerId);
     delete prayerDataStore.allPrayers.custom[prayerId];
     await prayerDataStore.saveCustomPrayers();
-    await router.push({name: "category", params: {categoryName: "custom"}});
+    // Replace the edit form of the deleted prayer, Back leads to its page, which redirects too
+    await router.replace({name: "category", params: {categoryName: "custom"}});
   }
 }
 </script>

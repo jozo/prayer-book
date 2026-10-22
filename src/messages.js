@@ -16,7 +16,8 @@ const messages = {
       settings: "Settings",
       feedback: "Feedback & Ideas",
       open: "Open menu",
-      close: "Close menu"
+      close: "Close menu",
+      back: "Back"
     },
     settings: {
       theme: {
@@ -98,7 +99,8 @@ const messages = {
       settings: "Ajustes",
       feedback: "Comentarios e ideas",
       open: "Abrir menú",
-      close: "Cerrar menú"
+      close: "Cerrar menú",
+      back: "Atrás"
     },
     settings: {
       theme: {
@@ -180,7 +182,8 @@ const messages = {
       settings: "Paramètres",
       feedback: "Avis et idées",
       open: "Ouvrir le menu",
-      close: "Fermer le menu"
+      close: "Fermer le menu",
+      back: "Retour"
     },
     settings: {
       theme: {
@@ -262,7 +265,8 @@ const messages = {
       settings: "Impostazioni",
       feedback: "Opinioni e idee",
       open: "Apri il menu",
-      close: "Chiudi il menu"
+      close: "Chiudi il menu",
+      back: "Indietro"
     },
     settings: {
       theme: {
@@ -344,7 +348,8 @@ const messages = {
       settings: "Ustawienia",
       feedback: "Opinie i pomysły",
       open: "Otwórz menu",
-      close: "Zamknij menu"
+      close: "Zamknij menu",
+      back: "Wstecz"
     },
     settings: {
       theme: {
@@ -426,7 +431,8 @@ const messages = {
       settings: "Configurações",
       feedback: "Opiniões e ideias",
       open: "Abrir menu",
-      close: "Fechar menu"
+      close: "Fechar menu",
+      back: "Voltar"
     },
     settings: {
       theme: {
@@ -508,7 +514,8 @@ const messages = {
       settings: "Setări",
       feedback: "Păreri și idei",
       open: "Deschide meniul",
-      close: "Închide meniul"
+      close: "Închide meniul",
+      back: "Înapoi"
     },
     settings: {
       theme: {
@@ -590,7 +597,8 @@ const messages = {
       settings: "Nastavenia",
       feedback: "Spätná väzba a nápady",
       open: "Otvoriť menu",
-      close: "Zavrieť menu"
+      close: "Zavrieť menu",
+      back: "Späť"
     },
     settings: {
       theme: {
@@ -672,7 +680,8 @@ const messages = {
       settings: "Mipangilio",
       feedback: "Maoni na mawazo",
       open: "Fungua menyu",
-      close: "Funga menyu"
+      close: "Funga menyu",
+      back: "Rudi"
     },
     settings: {
       theme: {

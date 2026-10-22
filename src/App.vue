@@ -1,8 +1,9 @@
 <script setup>
-import {RouterLink, RouterView} from "vue-router";
+import {RouterLink, RouterView, useRoute, useRouter} from "vue-router";
 import {App} from "@capacitor/app";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import IconHamburger from "@/components/icons/IconHamburger.vue";
+import IconChevronLeft from "@/components/icons/IconChevronLeft.vue";
 import IconCross from "@/components/icons/IconCross.vue";
 import IconRosary from "@/components/icons/IconRosary.vue";
 import IconLitany from "@/components/icons/IconLitany.vue";
@@ -33,6 +34,22 @@ App.addListener("backButton", (data) => {
 screen.orientation.addEventListener("change", () => {
   closeMenu();
 });
+
+const route = useRoute();
+const router = useRouter();
+
+// Pages below the top level show a back button in place of the menu button
+const parentRoute = computed(() => route.meta.parent?.(route));
+
+function goBack() {
+  // vue-router keeps the previous page of the app in the history state. Without one, like after
+  // opening the app on this page, go to the parent page.
+  if (window.history.state?.back) {
+    router.back();
+  } else {
+    router.replace(parentRoute.value);
+  }
+}
 
 const menuVisible = ref(false);
 
@@ -77,6 +94,16 @@ function closeMenu() {
 <template>
   <!-- The padding makes a 48px touch target, the margins keep the icon 14px from the edges -->
   <button
+    v-if="parentRoute"
+    :aria-label="$t('menu.back')"
+    class="absolute top-0 left-0 z-30 p-3 text-gray-100"
+    style="margin-top: calc(2px + env(safe-area-inset-top)); margin-left: calc(2px + env(safe-area-inset-left));"
+    @click="goBack"
+  >
+    <IconChevronLeft />
+  </button>
+  <button
+    v-else
     v-show="!menuVisible"
     :aria-label="$t('menu.open')"
     class="absolute top-0 left-0 z-30 p-3 text-gray-100"

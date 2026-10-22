@@ -97,6 +97,35 @@ test.describe("Custom prayers", () => {
       .toEqual({"custom-0": customPrayer("custom-0", "New title", "New **text**")});
   });
 
+  test("Back after saving an edit returns to the page before the prayer", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Old title", "Text")
+    }}});
+    await page.goto("/category/custom");
+    await page.getByRole("button", {name: "Old title"}).click();
+    await page.getByRole("button", {name: "Edit"}).click();
+    await page.getByPlaceholder("Title").fill("New title");
+    await page.getByRole("button", {name: "Save"}).click();
+    await expect(heading(page)).toHaveText("New title");
+
+    await page.goBack();
+
+    await expect(page).toHaveURL("/category/custom");
+    await expect(prayerList(page)).toHaveText(["New title"]);
+  });
+
+  test("saving an edit opened directly from a URL shows the prayer", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Old title", "Text")
+    }}});
+    await page.goto("/prayer/edit/custom-0");
+    await page.getByPlaceholder("Title").fill("New title");
+    await page.getByRole("button", {name: "Save"}).click();
+
+    await expect(page).toHaveURL("/prayer/view/custom/custom-0");
+    await expect(heading(page)).toHaveText("New title");
+  });
+
   test("editing opens directly from a URL after a reload", async ({page}) => {
     await seedStorage(page, {preferences: {customPrayers: {
       "custom-0": customPrayer("custom-0", "Stored prayer", "Stored text")
@@ -159,6 +188,23 @@ test.describe("Custom prayers", () => {
       .toEqual({"custom-1": customPrayer("custom-1", "Keep me", "Text")});
     await expect.poll(() => getListItems(page, "bookmarks")).toEqual([]);
     await expect.poll(() => getListItems(page, "list-1")).toEqual(["en/ourFather"]);
+  });
+
+  test("Back after deleting a prayer does not show the deleted prayer", async ({page}) => {
+    await seedStorage(page, {preferences: {customPrayers: {
+      "custom-0": customPrayer("custom-0", "Delete me", "Text")
+    }}});
+    await page.goto("/");
+    await page.goto("/prayer/view/custom/custom-0");
+    await page.getByRole("button", {name: "Edit"}).click();
+    page.once("dialog", dialog => dialog.accept());
+    await page.getByRole("button", {name: "Delete"}).click();
+    await expect(page).toHaveURL("/category/custom");
+
+    await page.goBack();
+
+    await expect(page).toHaveURL("/category/custom");
+    await expect(heading(page)).toHaveText("Custom");
   });
 
   test("custom prayers can be bookmarked", async ({page}) => {

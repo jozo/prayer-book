@@ -11,6 +11,16 @@ on:
         description: Create a Codeberg release with the APK (tag = package.json version)
         type: boolean
         default: false
+      google_play_track:
+        description: Upload the AAB, listing and screenshots to this Google Play track
+        type: choice
+        options:
+          - none
+          - internal
+          - alpha
+          - beta
+          - production
+        default: internal
       ios:
         description: Build iOS app and upload it to TestFlight
         type: boolean
@@ -100,6 +110,19 @@ jobs:
           curl -sf -X POST -H "$auth" \
             -F "attachment=@release/prayer-book-$VERSION.apk" \
             "$API/releases/$release_id/assets?name=prayer-book-$VERSION.apk"
+
+      - uses: ruby/setup-ruby@v1
+        if: inputs.google_play_track != 'none'
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Upload to Google Play
+        if: inputs.google_play_track != 'none'
+        env:
+          GOOGLE_PLAY_JSON_KEY: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}
+          TRACK: ${{ inputs.google_play_track }}
+        run: bundle exec fastlane android play_store track:"$TRACK"
 
   ios:
     if: inputs.ios
