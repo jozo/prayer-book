@@ -48,7 +48,9 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        ...globals.browser
+        ...globals.browser,
+        // Replaced by Vite with the package.json version
+        __APP_VERSION__: "readonly"
       }
     }
   },

@@ -3,6 +3,7 @@ import {fileURLToPath, URL} from "node:url";
 import {defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue";
 import {watch} from "vite-plugin-watch";
+import packageJson from "./package.json" with {type: "json"};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,6 +14,9 @@ export default defineConfig({
       command: "node compilePrayers.mjs"
     })
   ],
+  define: {
+    __APP_VERSION__: JSON.stringify(packageJson.version)
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))

@@ -20,6 +20,8 @@ const messages = {
       back: "Back"
     },
     settings: {
+      appearance: "Appearance",
+      about: "About",
       theme: {
         title: "Theme",
         auto: "Auto",
@@ -113,6 +115,8 @@ const messages = {
       back: "Atrás"
     },
     settings: {
+      appearance: "Apariencia",
+      about: "Acerca de",
       theme: {
         title: "Tema",
         auto: "Automático",
@@ -206,6 +210,8 @@ const messages = {
       back: "Retour"
     },
     settings: {
+      appearance: "Apparence",
+      about: "À propos",
       theme: {
         title: "Thème",
         auto: "Auto",
@@ -299,6 +305,8 @@ const messages = {
       back: "Indietro"
     },
     settings: {
+      appearance: "Aspetto",
+      about: "Informazioni",
       theme: {
         title: "Tema",
         auto: "Auto",
@@ -392,6 +400,8 @@ const messages = {
       back: "Wstecz"
     },
     settings: {
+      appearance: "Wygląd",
+      about: "O aplikacji",
       theme: {
         title: "Motyw",
         auto: "Automatyczny",
@@ -485,6 +495,8 @@ const messages = {
       back: "Voltar"
     },
     settings: {
+      appearance: "Aparência",
+      about: "Sobre",
       theme: {
         title: "Tema",
         auto: "Automático",
@@ -578,6 +590,8 @@ const messages = {
       back: "Înapoi"
     },
     settings: {
+      appearance: "Aspect",
+      about: "Despre",
       theme: {
         title: "Temă",
         auto: "Automată",
@@ -671,6 +685,8 @@ const messages = {
       back: "Späť"
     },
     settings: {
+      appearance: "Vzhľad",
+      about: "O aplikácii",
       theme: {
         title: "Téma",
         auto: "Automatická",
@@ -764,6 +780,8 @@ const messages = {
       back: "Rudi"
     },
     settings: {
+      appearance: "Mwonekano",
+      about: "Kuhusu",
       theme: {
         title: "Mandhari",
         auto: "Kiotomatiki",

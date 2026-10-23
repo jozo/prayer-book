@@ -1,6 +1,8 @@
 <script setup>
 import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
+import IconChevronDown from "@/components/icons/IconChevronDown.vue";
+import IconChevronRight from "@/components/icons/IconChevronRight.vue";
 import {useI18n} from "vue-i18n";
 import {Lang, PrayerFontScales} from "@/constants";
 import {changeLanguage, changePrayerFontScale, getPrayerFontScale, saveFile} from "@/utils";
@@ -9,6 +11,9 @@ import {InvalidBackupError, usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const {t, locale} = useI18n({useScope: "global"});
 const prayerDataStore = usePrayerDataStore();
+const appVersion = __APP_VERSION__;
+const themes = ["auto", "light", "dark"];
+const theme = ref(localStorage.getItem("theme") ?? "auto");
 const backupStatus = ref("");
 const fileInput = ref();
 const prayerFontScale = ref(getPrayerFontScale());
@@ -52,16 +57,17 @@ async function importBackup(event) {
   }
 }
 
-function changeTheme(theme) {
-  localStorage.setItem("theme", theme);
+function changeTheme(newTheme) {
+  theme.value = newTheme;
+  localStorage.setItem("theme", newTheme);
 
-  if (theme === "auto") {
+  if (newTheme === "auto") {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  } else if (theme === "dark") {
+  } else if (newTheme === "dark") {
     if (!document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.add("dark");
     }
@@ -74,43 +80,103 @@ function changeTheme(theme) {
 <template>
   <BgWithHeader :title="t('menu.settings')">
     <RoundMain>
-      <div class="text-base text-center">
-        <div class="flex flex-col space-y-4 mb-10">
-          <div class="flex justify-center">
-            <label
-              for="theme-select"
-              class="mr-2 font-bold"
-            >
-              {{ t('settings.theme.title') }}:
-            </label>
-            <select
-              id="theme-select"
-              class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center"
-              @change="changeTheme($event.target.value)"
-            >
-              <option value="auto">
-                {{ t('settings.theme.auto') }}
-              </option>
-              <option value="light">
-                {{ t('settings.theme.light') }}
-              </option>
-              <option value="dark">
-                {{ t('settings.theme.dark') }}
-              </option>
-            </select>
-          </div>
+      <div class="text-base space-y-8">
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+            {{ t('settings.appearance') }}
+          </h2>
+          <div class="divide-y divide-gray-300 dark:divide-neutral-700">
+            <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-5">
+              <span id="theme-label">
+                {{ t('settings.theme.title') }}
+              </span>
+              <div
+                role="radiogroup"
+                aria-labelledby="theme-label"
+                class="flex p-0.5 rounded-full border border-sky-500/40"
+              >
+                <button
+                  v-for="themeOption in themes"
+                  :key="themeOption"
+                  role="radio"
+                  :aria-checked="theme === themeOption"
+                  class="px-3 py-1 rounded-full"
+                  :class="theme === themeOption
+                    ? 'bg-sky-500 dark:bg-sky-700 text-white'
+                    : 'text-sky-600 dark:text-sky-400 active:bg-sky-500/10'"
+                  @click="changeTheme(themeOption)"
+                >
+                  {{ t(`settings.theme.${themeOption}`) }}
+                </button>
+              </div>
+            </div>
 
-          <div class="flex justify-center">
-            <label
-              for="language-select"
-              class="mr-2 font-bold"
-            >
-              {{ t('settings.language') }}:
+            <div class="py-5">
+              <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                <span id="prayer-font-size-label">
+                  {{ t('settings.fontSize.title') }}
+                </span>
+                <div
+                  role="group"
+                  aria-labelledby="prayer-font-size-label"
+                  class="flex items-center"
+                >
+                  <button
+                    :aria-label="t('settings.fontSize.decrease')"
+                    :disabled="prayerFontScaleIndex <= 0"
+                    class="w-10 h-10 rounded-full border border-sky-500/40 text-sky-600 dark:text-sky-400 active:bg-sky-500/10
+                           disabled:border-neutral-300 disabled:text-neutral-400 dark:disabled:border-neutral-600
+                           dark:disabled:text-neutral-500"
+                    @click="stepPrayerFontScale(-1)"
+                  >
+                    <span class="text-sm">A</span>−
+                  </button>
+                  <span
+                    aria-live="polite"
+                    class="w-20 text-center tabular-nums"
+                  >
+                    {{ Math.round(prayerFontScale * 100) }} %
+                  </span>
+                  <button
+                    :aria-label="t('settings.fontSize.increase')"
+                    :disabled="prayerFontScaleIndex >= PrayerFontScales.length - 1"
+                    class="w-10 h-10 rounded-full border border-sky-500/40 text-sky-600 dark:text-sky-400 active:bg-sky-500/10
+                           disabled:border-neutral-300 disabled:text-neutral-400 dark:disabled:border-neutral-600
+                           dark:disabled:text-neutral-500"
+                    @click="stepPrayerFontScale(1)"
+                  >
+                    <span class="text-xl">A</span>+
+                  </button>
+                </div>
+              </div>
+              <!-- Shown like a prayer, so the size can be judged here, once the size is changed -->
+              <figure
+                v-if="showPreview"
+                class="mt-3 px-4 pt-2 pb-3 rounded-xl bg-white dark:bg-neutral-700/50"
+              >
+                <figcaption class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                  {{ t('settings.fontSize.previewLabel') }}
+                </figcaption>
+                <p class="leading-loose prayer-content">
+                  {{ t('settings.fontSize.preview') }}
+                </p>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+            <label for="language-select">
+              {{ t('settings.language') }}
             </label>
+          </h2>
+          <div class="relative mt-1">
             <select
               id="language-select"
               v-model="locale"
-              class="pb-px border-b-2 bg-transparent border-sky-500 appearance-none text-center"
+              class="w-full py-2 pl-4 pr-10 rounded-lg border border-sky-500/40 bg-transparent appearance-none
+                     dark:[color-scheme:dark]"
               @change="changeLanguage($event.target.value)"
             >
               <option
@@ -121,79 +187,29 @@ function changeTheme(theme) {
                 {{ langName }}
               </option>
             </select>
+            <IconChevronDown
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-5! h-5! pointer-events-none
+                     text-sky-600 dark:text-sky-400"
+            />
           </div>
+        </section>
 
-          <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center">
-              <span
-                id="prayer-font-size-label"
-                class="mr-2 font-bold"
-              >
-                {{ t('settings.fontSize.title') }}:
-              </span>
-              <div
-                role="group"
-                aria-labelledby="prayer-font-size-label"
-                class="flex items-center"
-              >
-                <button
-                  :aria-label="t('settings.fontSize.decrease')"
-                  :disabled="prayerFontScaleIndex <= 0"
-                  class="w-10 h-10 rounded-full text-sky-600 dark:text-sky-400 active:bg-sky-500/10
-                         disabled:text-neutral-400 dark:disabled:text-neutral-500"
-                  @click="stepPrayerFontScale(-1)"
-                >
-                  <span class="text-sm">A</span>−
-                </button>
-                <span
-                  aria-live="polite"
-                  class="w-14 tabular-nums"
-                >
-                  {{ Math.round(prayerFontScale * 100) }} %
-                </span>
-                <button
-                  :aria-label="t('settings.fontSize.increase')"
-                  :disabled="prayerFontScaleIndex >= PrayerFontScales.length - 1"
-                  class="w-10 h-10 rounded-full text-sky-600 dark:text-sky-400 active:bg-sky-500/10
-                         disabled:text-neutral-400 dark:disabled:text-neutral-500"
-                  @click="stepPrayerFontScale(1)"
-                >
-                  <span class="text-xl">A</span>+
-                </button>
-              </div>
-            </div>
-            <!-- Shown like a prayer, so the size can be judged here, once the size is changed -->
-            <figure
-              v-if="showPreview"
-              class="w-full mt-3 px-4 pt-2 pb-3 rounded-xl border-2 border-dashed border-neutral-300
-                     dark:border-neutral-600"
-            >
-              <figcaption class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-                {{ t('settings.fontSize.previewLabel') }}
-              </figcaption>
-              <p class="leading-loose prayer-content">
-                {{ t('settings.fontSize.preview') }}
-              </p>
-            </figure>
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center mb-10">
-          <h2 class="font-bold">
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
             {{ t('settings.backup.title') }}
           </h2>
-          <p class="mt-1 mb-4">
+          <p class="mt-1 mb-4 text-sm text-neutral-500 dark:text-neutral-400">
             {{ t('settings.backup.description') }}
           </p>
-          <div class="flex space-x-4">
+          <div class="flex gap-4">
             <button
-              class="py-2 px-8 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
+              class="flex-1 py-2 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
               @click="exportBackup()"
             >
               {{ t('settings.backup.export') }}
             </button>
             <button
-              class="py-2 px-8 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
+              class="flex-1 py-2 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white"
               @click="fileInput.click()"
             >
               {{ t('settings.backup.import') }}
@@ -208,24 +224,31 @@ function changeTheme(theme) {
           >
           <p
             role="status"
-            class="mt-4 italic"
+            class="italic"
+            :class="{'mt-4': backupStatus}"
           >
             {{ backupStatus }}
           </p>
-        </div>
+        </section>
 
-        <p>
-          <strong>Prayer Book</strong>
-        </p>
-        <p>0.13.0</p>
-        <p>
-          <RouterLink
-            :to="{name: 'changelog'}"
-            class="text-sky-600"
-          >
-            {{ t('changelog.title') }}
-          </RouterLink>
-        </p>
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+            {{ t('settings.about') }}
+          </h2>
+          <div class="divide-y divide-gray-300 dark:divide-neutral-700">
+            <p class="flex justify-between py-3">
+              <strong>Prayer Book</strong>
+              <span class="tabular-nums">{{ appVersion }}</span>
+            </p>
+            <RouterLink
+              :to="{name: 'changelog'}"
+              class="flex items-center justify-between py-3 text-sky-600 dark:text-sky-400"
+            >
+              {{ t('changelog.title') }}
+              <IconChevronRight class="w-5! h-5!" />
+            </RouterLink>
+          </div>
+        </section>
       </div>
     </RoundMain>
   </BgWithHeader>

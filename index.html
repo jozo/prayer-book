@@ -4,7 +4,7 @@
   <script>
     document.documentElement.classList.toggle(
       'dark',
-      localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      localStorage.theme === 'dark' || (localStorage.theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
     )
   </script>
   <meta charset="UTF-8">

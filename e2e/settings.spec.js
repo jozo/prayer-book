@@ -4,12 +4,12 @@ import packageJson from "../package.json";
 
 const {version} = packageJson;
 
-function themeSelect(page) {
-  return page.getByRole("combobox").first();
+function themeOption(page, name) {
+  return page.getByRole("radiogroup", {name: "Theme"}).getByRole("radio", {name});
 }
 
 function languageSelect(page) {
-  return page.getByRole("combobox").nth(1);
+  return page.getByRole("combobox");
 }
 
 test.describe("Settings page", () => {
@@ -26,13 +26,16 @@ test.describe("Settings page", () => {
     test("dark theme is applied and remembered", async ({page}) => {
       await page.goto("/settings");
 
-      await themeSelect(page).selectOption("dark");
+      await themeOption(page, "Dark").click();
 
       await expect(html(page)).toHaveClass(/\bdark\b/);
+      await expect(themeOption(page, "Dark")).toBeChecked();
       expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("dark");
 
       await page.reload();
       await expect(html(page)).toHaveClass(/\bdark\b/);
+      await expect(themeOption(page, "Dark")).toBeChecked();
+      await expect(themeOption(page, "Auto")).not.toBeChecked();
     });
 
     test("light theme is applied and remembered", async ({page}) => {
@@ -40,7 +43,7 @@ test.describe("Settings page", () => {
       await page.goto("/settings");
       await expect(html(page)).toHaveClass(/\bdark\b/);
 
-      await themeSelect(page).selectOption("light");
+      await themeOption(page, "Light").click();
 
       await expect(html(page)).not.toHaveClass(/\bdark\b/);
       await page.reload();
@@ -53,10 +56,18 @@ test.describe("Settings page", () => {
       await page.goto("/settings");
       await expect(html(page)).not.toHaveClass(/\bdark\b/);
 
-      await themeSelect(page).selectOption("auto");
+      await themeOption(page, "Auto").click();
 
       await expect(html(page)).toHaveClass(/\bdark\b/);
       expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("auto");
+
+      await page.reload();
+      await expect(html(page)).toHaveClass(/\bdark\b/);
+      await expect(themeOption(page, "Auto")).toBeChecked();
+
+      await page.emulateMedia({colorScheme: "light"});
+      await page.reload();
+      await expect(html(page)).not.toHaveClass(/\bdark\b/);
     });
 
     test("without a saved theme the system color scheme is used", async ({page}) => {
