@@ -2,15 +2,24 @@
 import BgWithHeader from "@/components/BgWithHeader.vue";
 import RoundMain from "@/components/RoundMain.vue";
 import {useI18n} from "vue-i18n";
-import {Lang} from "@/constants";
-import {changeLanguage, saveFile} from "@/utils";
-import {ref} from "vue";
+import {Lang, PrayerFontScales} from "@/constants";
+import {changeLanguage, changePrayerFontScale, getPrayerFontScale, saveFile} from "@/utils";
+import {computed, ref} from "vue";
 import {InvalidBackupError, usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const {t, locale} = useI18n({useScope: "global"});
 const prayerDataStore = usePrayerDataStore();
 const backupStatus = ref("");
 const fileInput = ref();
+const prayerFontScale = ref(getPrayerFontScale());
+const prayerFontScaleIndex = computed(() => PrayerFontScales.indexOf(prayerFontScale.value));
+const showPreview = ref(false);
+
+async function stepPrayerFontScale(step) {
+  showPreview.value = true;
+  prayerFontScale.value = PrayerFontScales[prayerFontScaleIndex.value + step];
+  await changePrayerFontScale(prayerFontScale.value);
+}
 
 async function exportBackup() {
   backupStatus.value = "";
@@ -113,6 +122,60 @@ function changeTheme(theme) {
               </option>
             </select>
           </div>
+
+          <div class="flex flex-col items-center">
+            <div class="flex items-center justify-center">
+              <span
+                id="prayer-font-size-label"
+                class="mr-2 font-bold"
+              >
+                {{ t('settings.fontSize.title') }}:
+              </span>
+              <div
+                role="group"
+                aria-labelledby="prayer-font-size-label"
+                class="flex items-center"
+              >
+                <button
+                  :aria-label="t('settings.fontSize.decrease')"
+                  :disabled="prayerFontScaleIndex <= 0"
+                  class="w-10 h-10 rounded-full text-sky-600 dark:text-sky-400 active:bg-sky-500/10
+                         disabled:text-neutral-400 dark:disabled:text-neutral-500"
+                  @click="stepPrayerFontScale(-1)"
+                >
+                  <span class="text-sm">A</span>−
+                </button>
+                <span
+                  aria-live="polite"
+                  class="w-14 tabular-nums"
+                >
+                  {{ Math.round(prayerFontScale * 100) }} %
+                </span>
+                <button
+                  :aria-label="t('settings.fontSize.increase')"
+                  :disabled="prayerFontScaleIndex >= PrayerFontScales.length - 1"
+                  class="w-10 h-10 rounded-full text-sky-600 dark:text-sky-400 active:bg-sky-500/10
+                         disabled:text-neutral-400 dark:disabled:text-neutral-500"
+                  @click="stepPrayerFontScale(1)"
+                >
+                  <span class="text-xl">A</span>+
+                </button>
+              </div>
+            </div>
+            <!-- Shown like a prayer, so the size can be judged here, once the size is changed -->
+            <figure
+              v-if="showPreview"
+              class="w-full mt-3 px-4 pt-2 pb-3 rounded-xl border-2 border-dashed border-neutral-300
+                     dark:border-neutral-600"
+            >
+              <figcaption class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                {{ t('settings.fontSize.previewLabel') }}
+              </figcaption>
+              <p class="leading-loose prayer-content">
+                {{ t('settings.fontSize.preview') }}
+              </p>
+            </figure>
+          </div>
         </div>
 
         <div class="flex flex-col items-center mb-10">
@@ -155,15 +218,13 @@ function changeTheme(theme) {
           <strong>Prayer Book</strong>
         </p>
         <p>0.13.0</p>
-        <p>hi@jozo.io</p>
         <p>
-          <a
-            href="https://codeberg.org/jozo/prayer-book"
-            target="_blank"
+          <RouterLink
+            :to="{name: 'changelog'}"
             class="text-sky-600"
           >
-            codeberg.org/jozo/prayer-book
-          </a>
+            {{ t('changelog.title') }}
+          </RouterLink>
         </p>
       </div>
     </RoundMain>

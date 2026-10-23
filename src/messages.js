@@ -27,6 +27,13 @@ const messages = {
         dark: "Dark"
       },
       language: "Language",
+      fontSize: {
+        title: "Prayer text size",
+        decrease: "Smaller prayer text",
+        increase: "Larger prayer text",
+        previewLabel: "Preview",
+        preview: "Our Father, who art in heaven, hallowed be thy name."
+      },
       backup: {
         title: "Backup",
         description: "Save your custom prayers and lists to a file, or add them from a file, for example on another phone.",
@@ -35,6 +42,9 @@ const messages = {
         imported: "Imported custom prayers: {prayers}, lists: {lists}, bookmarks: {bookmarks}.",
         invalidFile: "This file is not a Prayer Book backup."
       }
+    },
+    changelog: {
+      title: "What's new"
     },
     feedback: {
       intro: "Do you have an idea how to make Prayer Book better, or did you find a mistake? We would love to hear from you.",
@@ -110,6 +120,13 @@ const messages = {
         dark: "Oscuro"
       },
       language: "Idioma",
+      fontSize: {
+        title: "Tamaño del texto de las oraciones",
+        decrease: "Texto más pequeño",
+        increase: "Texto más grande",
+        previewLabel: "Vista previa",
+        preview: "Padre nuestro, que estás en el cielo, santificado sea tu Nombre."
+      },
       backup: {
         title: "Copia de seguridad",
         description: "Guarda tus oraciones personalizadas y listas en un archivo, o añádelas desde un archivo, por ejemplo en otro teléfono.",
@@ -118,6 +135,9 @@ const messages = {
         imported: "Oraciones personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
         invalidFile: "Este archivo no es una copia de seguridad del Libro de Oraciones."
       }
+    },
+    changelog: {
+      title: "Novedades"
     },
     feedback: {
       intro: "¿Tienes una idea para mejorar el Libro de Oraciones o has encontrado un error? Nos encantaría saber de ti.",
@@ -193,6 +213,13 @@ const messages = {
         dark: "Sombre"
       },
       language: "Langue",
+      fontSize: {
+        title: "Taille du texte des prières",
+        decrease: "Texte plus petit",
+        increase: "Texte plus grand",
+        previewLabel: "Aperçu",
+        preview: "Notre Père, qui es aux cieux, que ton nom soit sanctifié."
+      },
       backup: {
         title: "Sauvegarde",
         description: "Enregistrez vos prières personnalisées et vos listes dans un fichier, ou ajoutez-les depuis un fichier, par exemple sur un autre téléphone.",
@@ -201,6 +228,9 @@ const messages = {
         imported: "Prières personnalisées importées : {prayers}, listes : {lists}, signets : {bookmarks}.",
         invalidFile: "Ce fichier n’est pas une sauvegarde du Livret de Prières."
       }
+    },
+    changelog: {
+      title: "Nouveautés"
     },
     feedback: {
       intro: "Vous avez une idée pour améliorer le Livret de Prières ou vous avez trouvé une erreur ? Nous serions ravis de vous lire.",
@@ -276,6 +306,13 @@ const messages = {
         dark: "Scuro"
       },
       language: "Lingua",
+      fontSize: {
+        title: "Dimensione del testo delle preghiere",
+        decrease: "Testo più piccolo",
+        increase: "Testo più grande",
+        previewLabel: "Anteprima",
+        preview: "Padre nostro, che sei nei cieli, sia santificato il tuo nome."
+      },
       backup: {
         title: "Backup",
         description: "Salva le tue preghiere personalizzate e le liste in un file, oppure aggiungile da un file, ad esempio su un altro telefono.",
@@ -284,6 +321,9 @@ const messages = {
         imported: "Preghiere personalizzate importate: {prayers}, liste: {lists}, segnalibri: {bookmarks}.",
         invalidFile: "Questo file non è un backup del Libro di Preghiere."
       }
+    },
+    changelog: {
+      title: "Novità"
     },
     feedback: {
       intro: "Hai un'idea per migliorare il Libro di Preghiere o hai trovato un errore? Ci farebbe piacere sentirti.",
@@ -359,6 +399,13 @@ const messages = {
         dark: "Ciemny"
       },
       language: "Język",
+      fontSize: {
+        title: "Rozmiar tekstu modlitw",
+        decrease: "Mniejszy tekst",
+        increase: "Większy tekst",
+        previewLabel: "Podgląd",
+        preview: "Ojcze nasz, któryś jest w niebie, święć się imię Twoje."
+      },
       backup: {
         title: "Kopia zapasowa",
         description: "Zapisz swoje modlitwy i listy w pliku albo dodaj je z pliku, na przykład na innym telefonie.",
@@ -367,6 +414,9 @@ const messages = {
         imported: "Zaimportowane własne modlitwy: {prayers}, listy: {lists}, zakładki: {bookmarks}.",
         invalidFile: "Ten plik nie jest kopią zapasową Modlitewnika."
       }
+    },
+    changelog: {
+      title: "Co nowego"
     },
     feedback: {
       intro: "Masz pomysł, jak ulepszyć Modlitewnik, albo znalazłeś błąd? Chętnie Cię wysłuchamy.",
@@ -442,6 +492,13 @@ const messages = {
         dark: "Escuro"
       },
       language: "Idioma",
+      fontSize: {
+        title: "Tamanho do texto das orações",
+        decrease: "Texto menor",
+        increase: "Texto maior",
+        previewLabel: "Pré-visualização",
+        preview: "Pai nosso, que estais nos céus, santificado seja o vosso nome."
+      },
       backup: {
         title: "Cópia de segurança",
         description: "Guarde as suas orações personalizadas e listas num ficheiro, ou adicione-as a partir de um ficheiro, por exemplo noutro telemóvel.",
@@ -450,6 +507,9 @@ const messages = {
         imported: "Orações personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
         invalidFile: "Este ficheiro não é uma cópia de segurança do Livro de Orações."
       }
+    },
+    changelog: {
+      title: "Novidades"
     },
     feedback: {
       intro: "Tem uma ideia para melhorar o Livro de Orações ou encontrou um erro? Adoraríamos ouvir você.",
@@ -525,6 +585,13 @@ const messages = {
         dark: "Întunecată"
       },
       language: "Limbă",
+      fontSize: {
+        title: "Mărimea textului rugăciunilor",
+        decrease: "Text mai mic",
+        increase: "Text mai mare",
+        previewLabel: "Previzualizare",
+        preview: "Tatăl nostru, care ești în ceruri, sfințească-se numele tău."
+      },
       backup: {
         title: "Copie de rezervă",
         description: "Salvați rugăciunile personalizate și listele într-un fișier sau adăugați-le dintr-un fișier, de exemplu pe alt telefon.",
@@ -533,6 +600,9 @@ const messages = {
         imported: "Rugăciuni personalizate importate: {prayers}, liste: {lists}, marcaje: {bookmarks}.",
         invalidFile: "Acest fișier nu este o copie de rezervă a Cărții de rugăciuni."
       }
+    },
+    changelog: {
+      title: "Noutăți"
     },
     feedback: {
       intro: "Aveți o idee despre cum să îmbunătățim Cartea de rugăciuni sau ați găsit o greșeală? Ne-ar face plăcere să vă auzim.",
@@ -608,6 +678,13 @@ const messages = {
         dark: "Tmavá"
       },
       language: "Jazyk",
+      fontSize: {
+        title: "Veľkosť textu modlitieb",
+        decrease: "Menší text",
+        increase: "Väčší text",
+        previewLabel: "Ukážka",
+        preview: "Otče náš, ktorý si na nebesiach, posväť sa meno tvoje."
+      },
       backup: {
         title: "Záloha",
         description: "Uložte si vlastné modlitby a zoznamy do súboru alebo ich pridajte zo súboru, napríklad na inom telefóne.",
@@ -616,6 +693,9 @@ const messages = {
         imported: "Importované vlastné modlitby: {prayers}, zoznamy: {lists}, záložky: {bookmarks}.",
         invalidFile: "Tento súbor nie je zálohou Modlitebnej knižky."
       }
+    },
+    changelog: {
+      title: "Čo je nové"
     },
     feedback: {
       intro: "Máte nápad, ako vylepšiť Modlitebnú knižku, alebo ste našli chybu? Radi si vás vypočujeme.",
@@ -691,6 +771,13 @@ const messages = {
         dark: "Giza"
       },
       language: "Lugha",
+      fontSize: {
+        title: "Ukubwa wa maandishi ya sala",
+        decrease: "Maandishi madogo zaidi",
+        increase: "Maandishi makubwa zaidi",
+        previewLabel: "Onyesho la awali",
+        preview: "Baba yetu uliye mbinguni, jina lako litukuzwe."
+      },
       backup: {
         title: "Hifadhi nakala",
         description: "Hifadhi sala zako binafsi na orodha kwenye faili, au uziongeze kutoka kwenye faili, kwa mfano kwenye simu nyingine.",
@@ -699,6 +786,9 @@ const messages = {
         imported: "Sala binafsi zilizoletwa: {prayers}, orodha: {lists}, alamisho: {bookmarks}.",
         invalidFile: "Faili hii si nakala ya Kitabu cha Sala."
       }
+    },
+    changelog: {
+      title: "Mapya"
     },
     feedback: {
       intro: "Una wazo la kuboresha Kitabu cha Sala, au umepata kosa? Tungependa kusikia kutoka kwako.",

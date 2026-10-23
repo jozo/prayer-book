@@ -9,15 +9,17 @@ import {createPinia} from "pinia";
 import App from "./App.vue";
 import router from "./router";
 import messages from "@/messages";
-import {getLanguage} from "@/utils";
+import {getLanguage, loadPrayerFontScale} from "@/utils";
 import {usePrayerDataStore} from "@/stores/prayerDataStore";
 
 const app = createApp(App);
 
+const [language] = await Promise.all([getLanguage(), loadPrayerFontScale()]);
+
 const i18n = createI18n({
   legacy: false,
   mode: "composition",
-  locale: await getLanguage(),
+  locale: language,
   fallbackLocale: "en",
   messages
 });

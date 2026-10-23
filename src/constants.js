@@ -15,3 +15,6 @@ export const Lang = {
 
 // {"en": "English", "la": "Latin"}, the names shown on the home screen by language code
 export const LanguageNames = Object.fromEntries(Object.entries(Lang).map(([name, code]) => [code, name]));
+
+// Steps of the prayer text size setting, as multiples of the default size
+export const PrayerFontScales = [0.85, 1, 1.15, 1.3, 1.5, 1.75, 2];

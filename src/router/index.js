@@ -19,6 +19,12 @@ const router = createRouter({
       component: SettingsView
     },
     {
+      path: "/changelog",
+      name: "changelog",
+      component: () => import("../views/ChangelogView.vue"),
+      meta: {parent: () => ({name: "settings"})}
+    },
+    {
       path: "/feedback",
       name: "feedback",
       component: () => import("../views/FeedbackView.vue")

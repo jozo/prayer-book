@@ -1,5 +1,5 @@
 import {test, expect} from "@playwright/test";
-import {getPreference, heading, seedStorage} from "./helpers.js";
+import {getPreference, heading, prayerText, seedStorage} from "./helpers.js";
 import packageJson from "../package.json";
 
 const {version} = packageJson;
@@ -13,14 +13,11 @@ function languageSelect(page) {
 }
 
 test.describe("Settings page", () => {
-  test("shows app info and links", async ({page}) => {
+  test("shows the app name and version", async ({page}) => {
     await page.goto("/settings");
 
     await expect(heading(page)).toHaveText("Settings");
     await expect(page.getByText(version, {exact: true})).toBeVisible();
-    await expect(page.getByText("hi@jozo.io")).toBeVisible();
-    await expect(page.getByRole("link", {name: "codeberg.org/jozo/prayer-book"}))
-      .toHaveAttribute("href", "https://codeberg.org/jozo/prayer-book");
   });
 
   test.describe("theme", () => {
@@ -85,5 +82,81 @@ test.describe("Settings page", () => {
     await page.goto("/category/basic");
     await expect(heading(page)).toHaveText("Básico");
     await expect(page.getByRole("button", {name: "Padre Nuestro"})).toBeVisible();
+  });
+
+  test.describe("prayer text size", () => {
+    const fontSize = locator => locator.evaluate(element => parseFloat(getComputedStyle(element).fontSize));
+    const smaller = page => page.getByRole("button", {name: "Smaller prayer text"});
+    const larger = page => page.getByRole("button", {name: "Larger prayer text"});
+    const preview = page => page.getByRole("figure");
+
+    test("larger text is applied to prayers and remembered", async ({page}) => {
+      await page.goto("/settings");
+      await expect(page.getByText("100 %")).toBeVisible();
+      await expect(preview(page)).toBeHidden();
+
+      await larger(page).click();
+      await expect(preview(page)).toBeVisible();
+      await expect(preview(page)).toContainText("Preview");
+      await larger(page).click();
+
+      await expect(page.getByText("130 %")).toBeVisible();
+      await expect.poll(() => getPreference(page, "prayerFontScale")).toBe(1.3);
+
+      await page.goto("/prayer/view/en/hailMary");
+      expect(await fontSize(prayerText(page).first())).toBeCloseTo(16 * 1.3);
+      expect(await fontSize(page.getByRole("heading", {level: 3}).first())).toBeCloseTo(24 * 1.3);
+
+      await page.reload();
+      expect(await fontSize(prayerText(page).first())).toBeCloseTo(16 * 1.3);
+    });
+
+    test("buttons are disabled at the smallest and largest size", async ({page}) => {
+      await seedStorage(page, {preferences: {prayerFontScale: "2"}});
+      await page.goto("/settings");
+
+      await expect(page.getByText("200 %")).toBeVisible();
+      await expect(larger(page)).toBeDisabled();
+
+      for (let i = 0; i < 6; i++) {
+        await smaller(page).click();
+      }
+      await expect(page.getByText("85 %")).toBeVisible();
+      await expect(smaller(page)).toBeDisabled();
+      await expect(larger(page)).toBeEnabled();
+    });
+
+    test("an invalid saved size falls back to the default", async ({page}) => {
+      await seedStorage(page, {preferences: {prayerFontScale: "7"}});
+      await page.goto("/prayer/view/en/ourFather");
+
+      expect(await fontSize(prayerText(page))).toBeCloseTo(16);
+    });
+  });
+});
+
+test.describe("Changelog page", () => {
+  test("opens from settings and lists releases newest first", async ({page}) => {
+    await page.goto("/settings");
+    await page.getByRole("link", {name: "What's new"}).click();
+
+    await expect(heading(page)).toHaveText("What's new");
+    const releases = page.getByRole("heading", {level: 2});
+    await expect(releases.first()).toContainText(version);
+    await expect(releases.last()).toContainText("0.0.1");
+    await expect(page.getByText("Unreleased")).toHaveCount(0);
+    await expect(page.getByText("Initial version")).toBeVisible();
+
+    await page.getByRole("button", {name: "Back"}).click();
+    await expect(heading(page)).toHaveText("Settings");
+  });
+
+  test("only the title is translated", async ({page}) => {
+    await seedStorage(page, {preferences: {language: "sk"}});
+    await page.goto("/changelog");
+
+    await expect(heading(page)).toHaveText("Čo je nové");
+    await expect(page.getByRole("heading", {name: "Added"}).first()).toBeVisible();
+    await expect(page.getByText("2023-09-07")).toBeVisible();
   });
 });

@@ -2,7 +2,7 @@ import {Preferences} from "@capacitor/preferences";
 import {Capacitor} from "@capacitor/core";
 import {Directory, Encoding, Filesystem} from "@capacitor/filesystem";
 import {Share} from "@capacitor/share";
-import {Lang} from "@/constants";
+import {Lang, PrayerFontScales} from "@/constants";
 import {Device} from "@capacitor/device";
 
 export async function getLanguage() {
@@ -23,6 +23,26 @@ export async function getLanguage() {
 
 export async function changeLanguage(language) {
   await Preferences.set({key: "language", value: language});
+}
+
+// The prayer text size is a CSS variable on the root element, read by .prayer-content
+export async function loadPrayerFontScale() {
+  const {value} = await Preferences.get({key: "prayerFontScale"});
+  const scale = Number(value);
+  applyPrayerFontScale(PrayerFontScales.includes(scale) ? scale : 1);
+}
+
+export function getPrayerFontScale() {
+  return Number(document.documentElement.style.getPropertyValue("--prayer-font-scale")) || 1;
+}
+
+export async function changePrayerFontScale(scale) {
+  applyPrayerFontScale(scale);
+  await Preferences.set({key: "prayerFontScale", value: String(scale)});
+}
+
+function applyPrayerFontScale(scale) {
+  document.documentElement.style.setProperty("--prayer-font-scale", String(scale));
 }
 
 // Lowercase without diacritics, so a search for "otcenas" finds "Otčenáš"

@@ -80,11 +80,11 @@ async function switchTranslation(newLang) {
       <div
         v-for="prayerVersion in prayer.versions"
         :key="prayerVersion.name"
-        class="mb-4"
+        class="mb-4 prayer-content"
       >
         <h3
           v-if="prayer.versions.length > 1"
-          class="text-2xl font-bold text-center my-2"
+          class="text-[1.5em] leading-[calc(4/3)] font-bold text-center my-2"
         >
           {{ prayerVersion.name }}
         </h3>
