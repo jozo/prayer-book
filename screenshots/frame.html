@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- A store screenshot: a caption above a screenshot of the app. appStore.spec.js loads this page in the
+     viewport of the device the screenshot was taken on, fills in the caption and the image, and takes
+     a screenshot of the whole page, so it has the store's size. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    /* Light screenshots, and the dark ones with the "dark" class */
+    body {
+      --background: linear-gradient(to bottom, #fbf6ea, #efe2c2);
+      --caption: #1e3a5f;
+      --ring: rgb(30 58 95 / 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      background: var(--background);
+      color: var(--caption);
+      font-family: Roboto, sans-serif;
+    }
+
+    body.dark {
+      --background: linear-gradient(to bottom, #2b2418, #15110a);
+      --caption: #f3e6c4;
+      --ring: rgb(255 255 255 / 0.15);
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      height: 18vh;
+      width: 88vw;
+      margin: 0;
+      padding-top: 1vh;
+      font-size: min(8.5vw, 5vh);
+      font-weight: 700;
+      line-height: 1.15;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    /* The screenshot keeps the device's aspect ratio, so its height decides its width */
+    img {
+      height: 78vh;
+      border-radius: min(5vw, 3vh);
+      outline: max(1.2vw, 6px) solid var(--ring);
+      box-shadow: 0 2vh 6vh rgb(0 0 0 / 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <img alt="">
+</body>
+</html>

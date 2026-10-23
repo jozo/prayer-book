@@ -18,16 +18,16 @@ Or download the latest APK from the [Releases Section](https://codeberg.org/jozo
 
 <p>
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" alt="Home screen" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" alt="Rosary category" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" alt="Glorious Mysteries" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" alt="Menu" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" alt="Glorious Mysteries" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" alt="Search" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" alt="Menu with categories" width="180">
 </p>
 
 <p>
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" alt="Home screen in dark theme" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" alt="Rosary category in dark theme" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" alt="Glorious Mysteries in dark theme" width="180">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" alt="Menu in dark theme" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" alt="Translations of a prayer" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" alt="A list of morning prayers" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" alt="A custom prayer" width="180">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" alt="A litany in dark theme" width="180">
 </p>
 
 ## Add prayers

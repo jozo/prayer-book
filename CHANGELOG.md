@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Redesign settings page
+- Redesign store screenshots with captions, showing search, lists, translations and custom prayers
 
 ### Fixed
 - Auto theme no longer switches to light after restarting the app
