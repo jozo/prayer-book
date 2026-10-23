@@ -2,6 +2,9 @@ const messages = {
   en: {
     prayerBook: "Prayer Book",
     search: "Search…",
+    home: {
+      recent: "Recent"
+    },
     category: {
       all: "All",
       basic: "Basic",
@@ -43,6 +46,12 @@ const messages = {
         import: "Import",
         imported: "Imported custom prayers: {prayers}, lists: {lists}, bookmarks: {bookmarks}.",
         invalidFile: "This file is not a Prayer Book backup."
+      },
+      history: {
+        title: "History",
+        description: "The home screen shows the prayers you opened last.",
+        clear: "Clear recent prayers",
+        cleared: "Recent prayers were cleared."
       }
     },
     changelog: {
@@ -97,6 +106,9 @@ const messages = {
   es: {
     prayerBook: "Libro de Oraciones",
     search: "Buscar…",
+    home: {
+      recent: "Recientes"
+    },
     category: {
       all: "Todo",
       basic: "Básico",
@@ -138,6 +150,12 @@ const messages = {
         import: "Importar",
         imported: "Oraciones personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
         invalidFile: "Este archivo no es una copia de seguridad del Libro de Oraciones."
+      },
+      history: {
+        title: "Historial",
+        description: "La pantalla de inicio muestra las últimas oraciones que abriste.",
+        clear: "Borrar oraciones recientes",
+        cleared: "Se borraron las oraciones recientes."
       }
     },
     changelog: {
@@ -192,6 +210,9 @@ const messages = {
   fr: {
     prayerBook: "Livret de Prières",
     search: "Rechercher…",
+    home: {
+      recent: "Récentes"
+    },
     category: {
       all: "Toutes les prières",
       basic: "Prières de base",
@@ -233,6 +254,12 @@ const messages = {
         import: "Importer",
         imported: "Prières personnalisées importées : {prayers}, listes : {lists}, signets : {bookmarks}.",
         invalidFile: "Ce fichier n’est pas une sauvegarde du Livret de Prières."
+      },
+      history: {
+        title: "Historique",
+        description: "L'écran d'accueil affiche les dernières prières que vous avez ouvertes.",
+        clear: "Effacer les prières récentes",
+        cleared: "Les prières récentes ont été effacées."
       }
     },
     changelog: {
@@ -287,6 +314,9 @@ const messages = {
   it: {
     prayerBook: "Libro di Preghiere",
     search: "Cerca…",
+    home: {
+      recent: "Recenti"
+    },
     category: {
       all: "Tutte le preghiere",
       basic: "Preghiere di base",
@@ -328,6 +358,12 @@ const messages = {
         import: "Importa",
         imported: "Preghiere personalizzate importate: {prayers}, liste: {lists}, segnalibri: {bookmarks}.",
         invalidFile: "Questo file non è un backup del Libro di Preghiere."
+      },
+      history: {
+        title: "Cronologia",
+        description: "La schermata iniziale mostra le ultime preghiere che hai aperto.",
+        clear: "Cancella le preghiere recenti",
+        cleared: "Le preghiere recenti sono state cancellate."
       }
     },
     changelog: {
@@ -382,6 +418,9 @@ const messages = {
   pl: {
     prayerBook: "Modlitewnik",
     search: "Szukaj…",
+    home: {
+      recent: "Ostatnie"
+    },
     category: {
       all: "Wszystkie",
       basic: "Podstawowe",
@@ -423,6 +462,12 @@ const messages = {
         import: "Importuj",
         imported: "Zaimportowane własne modlitwy: {prayers}, listy: {lists}, zakładki: {bookmarks}.",
         invalidFile: "Ten plik nie jest kopią zapasową Modlitewnika."
+      },
+      history: {
+        title: "Historia",
+        description: "Ekran główny pokazuje ostatnio otwierane modlitwy.",
+        clear: "Wyczyść ostatnie modlitwy",
+        cleared: "Ostatnie modlitwy zostały wyczyszczone."
       }
     },
     changelog: {
@@ -477,6 +522,9 @@ const messages = {
   pt: {
     prayerBook: "Livro de Orações",
     search: "Procurar…",
+    home: {
+      recent: "Recentes"
+    },
     category: {
       all: "Todas",
       basic: "Básicas",
@@ -518,6 +566,12 @@ const messages = {
         import: "Importar",
         imported: "Orações personalizadas importadas: {prayers}, listas: {lists}, marcadores: {bookmarks}.",
         invalidFile: "Este ficheiro não é uma cópia de segurança do Livro de Orações."
+      },
+      history: {
+        title: "Histórico",
+        description: "O ecrã inicial mostra as últimas orações que abriu.",
+        clear: "Limpar orações recentes",
+        cleared: "As orações recentes foram limpas."
       }
     },
     changelog: {
@@ -572,6 +626,9 @@ const messages = {
   ro: {
     prayerBook: "Carte de rugăciuni",
     search: "Căutați...",
+    home: {
+      recent: "Recente"
+    },
     category: {
       all: "Toate rugăciunile",
       basic: "Rugăciuni de bază",
@@ -613,6 +670,12 @@ const messages = {
         import: "Importă",
         imported: "Rugăciuni personalizate importate: {prayers}, liste: {lists}, marcaje: {bookmarks}.",
         invalidFile: "Acest fișier nu este o copie de rezervă a Cărții de rugăciuni."
+      },
+      history: {
+        title: "Istoric",
+        description: "Ecranul principal arată ultimele rugăciuni pe care le-ați deschis.",
+        clear: "Ștergeți rugăciunile recente",
+        cleared: "Rugăciunile recente au fost șterse."
       }
     },
     changelog: {
@@ -667,6 +730,9 @@ const messages = {
   sk: {
     prayerBook: "Modlitebná knižka",
     search: "Hľadať…",
+    home: {
+      recent: "Nedávne"
+    },
     category: {
       all: "Všetko",
       basic: "Základné",
@@ -708,6 +774,12 @@ const messages = {
         import: "Importovať",
         imported: "Importované vlastné modlitby: {prayers}, zoznamy: {lists}, záložky: {bookmarks}.",
         invalidFile: "Tento súbor nie je zálohou Modlitebnej knižky."
+      },
+      history: {
+        title: "História",
+        description: "Úvodná obrazovka zobrazuje naposledy otvorené modlitby.",
+        clear: "Vymazať nedávne modlitby",
+        cleared: "Nedávne modlitby boli vymazané."
       }
     },
     changelog: {
@@ -762,6 +834,9 @@ const messages = {
   sw: {
     prayerBook: "Kitabu cha Sala",
     search: "Tafuta…",
+    home: {
+      recent: "Za hivi karibuni"
+    },
     category: {
       all: "Zote",
       basic: "Msingi",
@@ -803,6 +878,12 @@ const messages = {
         import: "Leta",
         imported: "Sala binafsi zilizoletwa: {prayers}, orodha: {lists}, alamisho: {bookmarks}.",
         invalidFile: "Faili hii si nakala ya Kitabu cha Sala."
+      },
+      history: {
+        title: "Historia",
+        description: "Skrini ya mwanzo inaonyesha sala ulizofungua mwisho.",
+        clear: "Futa sala za hivi karibuni",
+        cleared: "Sala za hivi karibuni zimefutwa."
       }
     },
     changelog: {

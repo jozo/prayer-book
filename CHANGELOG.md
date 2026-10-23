@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add prayer text size setting
 - Add changelog page to settings
+- Add recent prayers to the home screen
+- Add clearing recent prayers to settings
 
 ### Changed
 - Redesign settings page

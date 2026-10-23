@@ -215,3 +215,19 @@ export async function touchDrag(page, source, target) {
   await touch("touchEnd");
   await session.detach();
 }
+
+/**
+ * Recent prayers for the "recentPrayers" preference, the most recent first. Written as "lang/prayerId".
+ *
+ * @param {string[]} items
+ */
+export function recentPrayers(items) {
+  return items.map((item) => {
+    const [lang, prayerId] = item.split("/");
+    return {lang, prayerId};
+  });
+}
+
+export function recentPrayerLinks(page) {
+  return page.getByRole("region", {name: "Recent"}).getByRole("link");
+}

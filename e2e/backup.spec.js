@@ -20,7 +20,7 @@ async function importFile(page, content) {
 }
 
 function status(page) {
-  return page.getByRole("status");
+  return page.getByRole("region", {name: "Backup"}).getByRole("status");
 }
 
 test.describe("Backup", () => {

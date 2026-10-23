@@ -46,6 +46,10 @@ watch([prayerId, lang], async () => {
   // The custom prayer was deleted, e.g. this page was reached with Back after deleting it
   if (isCustom.value && !prayer.value) {
     await router.replace({name: "category", params: {categoryName: "custom"}});
+    return;
+  }
+  if (prayer.value) {
+    await prayerDataStore.recordVisit(lang.value, prayerId.value);
   }
 }, {immediate: true});
 

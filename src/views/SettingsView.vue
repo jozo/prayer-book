@@ -19,6 +19,15 @@ const fileInput = ref();
 const prayerFontScale = ref(getPrayerFontScale());
 const prayerFontScaleIndex = computed(() => PrayerFontScales.indexOf(prayerFontScale.value));
 const showPreview = ref(false);
+const historyStatus = ref("");
+const hasRecentPrayers = computed(() => prayerDataStore.recentPrayers.length > 0);
+
+prayerDataStore.loadUserData();
+
+async function clearRecentPrayers() {
+  await prayerDataStore.clearRecentPrayers();
+  historyStatus.value = t("settings.history.cleared");
+}
 
 async function stepPrayerFontScale(step) {
   showPreview.value = true;
@@ -194,8 +203,38 @@ function changeTheme(newTheme) {
           </div>
         </section>
 
-        <section>
-          <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+        <section aria-labelledby="history-heading">
+          <h2
+            id="history-heading"
+            class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+          >
+            {{ t('settings.history.title') }}
+          </h2>
+          <p class="mt-1 mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+            {{ t('settings.history.description') }}
+          </p>
+          <button
+            :disabled="!hasRecentPrayers"
+            class="w-full py-2 rounded-l-full rounded-r-full bg-sky-500 dark:bg-sky-700 text-white
+                   disabled:bg-neutral-300 disabled:text-neutral-500 dark:disabled:bg-neutral-700 dark:disabled:text-neutral-400"
+            @click="clearRecentPrayers()"
+          >
+            {{ t('settings.history.clear') }}
+          </button>
+          <p
+            role="status"
+            class="italic"
+            :class="{'mt-4': historyStatus}"
+          >
+            {{ historyStatus }}
+          </p>
+        </section>
+
+        <section aria-labelledby="backup-heading">
+          <h2
+            id="backup-heading"
+            class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+          >
             {{ t('settings.backup.title') }}
           </h2>
           <p class="mt-1 mb-4 text-sm text-neutral-500 dark:text-neutral-400">

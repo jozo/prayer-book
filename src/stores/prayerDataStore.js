@@ -4,6 +4,9 @@ import {Preferences} from "@capacitor/preferences";
 
 export const BOOKMARKS_LIST_ID = "bookmarks";
 
+// How many recently opened prayers the home screen shows
+const RECENT_PRAYERS_LIMIT = 5;
+
 // Identifies a backup file, the version changes when its format does
 const BACKUP_APP = "prayer-book";
 const BACKUP_VERSION = 1;
@@ -33,6 +36,10 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
   // An item's lang can be "custom". The bookmarks hold each prayer once, other lists can repeat it.
   const lists = ref([newBookmarksList()]);
 
+  // Recently opened prayers, the most recent first: [{lang: "en", prayerId: "ourFather"}].
+  // Each prayer is there once, in the language it was last opened in.
+  const recentPrayers = ref([]);
+
   // In-flight and finished loads by key, so concurrent callers share one request
   const loads = {};
 
@@ -54,6 +61,7 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
       // Migrating the old bookmarks needs the titles of the custom prayers
       await loadCustomPrayers();
       await loadLists();
+      await loadRecentPrayers();
     });
   }
 
@@ -188,6 +196,45 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
     return items;
   }
 
+  async function loadRecentPrayers() {
+    const recentJson = await Preferences.get({key: "recentPrayers"});
+    if (recentJson.value) {
+      recentPrayers.value = JSON.parse(recentJson.value);
+    }
+  }
+
+  async function saveRecentPrayers() {
+    await Preferences.set({key: "recentPrayers", value: JSON.stringify(recentPrayers.value)});
+  }
+
+  // Translations share the prayer ID and custom IDs differ from built-in ones, so the ID alone
+  // identifies the prayer. Switching the translation updates its entry instead of adding one.
+  async function recordVisit(lang, prayerId) {
+    await loadUserData();
+    const others = recentPrayers.value.filter(recent => recent.prayerId !== prayerId);
+    recentPrayers.value = [{lang, prayerId}, ...others].slice(0, RECENT_PRAYERS_LIMIT);
+    await saveRecentPrayers();
+  }
+
+  // Load every language the recent prayers are in, they can be in several
+  async function loadRecentPrayerLanguages() {
+    await loadUserData();
+    await loadItemLanguages(recentPrayers.value);
+  }
+
+  // The recent prayers with their titles, without those that no longer exist
+  function resolveRecentPrayers() {
+    return recentPrayers.value
+      .map(recent => ({...recent, title: findPrayer(recent.lang, recent.prayerId)?.title}))
+      .filter(recent => recent.title);
+  }
+
+  async function clearRecentPrayers() {
+    await loadUserData();
+    recentPrayers.value = [];
+    await saveRecentPrayers();
+  }
+
   async function saveLists() {
     await Preferences.set({key: "lists", value: JSON.stringify(lists.value)});
   }
@@ -264,20 +311,23 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
     await saveLists();
   }
 
-  // Used when a custom prayer is deleted
+  // Used when a custom prayer is deleted, also forgets it was opened recently
   async function removePrayerFromLists(lang, prayerId) {
     await loadUserData();
     for (const list of lists.value) {
       list.items = list.items.filter(item => item.lang !== lang || item.prayerId !== prayerId);
     }
+    recentPrayers.value = recentPrayers.value.filter(recent => recent.lang !== lang || recent.prayerId !== prayerId);
     await saveLists();
+    await saveRecentPrayers();
   }
 
   async function saveCustomPrayers() {
     await Preferences.set({key: "customPrayers", value: JSON.stringify(allPrayers.value.custom)});
   }
 
-  // Custom prayers and lists in the format the backup file stores
+  // Custom prayers and lists in the format the backup file stores. The recent prayers are history,
+  // not something the user made, so they are left out.
   async function exportUserData() {
     await loadUserData();
     return {
@@ -369,6 +419,7 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
   return {
     allPrayers,
     lists,
+    recentPrayers,
     loadUserData,
     loadLanguage,
     loadPrayers,
@@ -387,6 +438,10 @@ export const usePrayerDataStore = defineStore("prayerData", () => {
     removeFromList,
     moveInList,
     removePrayerFromLists,
+    recordVisit,
+    loadRecentPrayerLanguages,
+    resolveRecentPrayers,
+    clearRecentPrayers,
     saveCustomPrayers,
     nextCustomPrayerId,
     exportUserData,

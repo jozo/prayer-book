@@ -1,6 +1,6 @@
 import {test, expect} from "@playwright/test";
 import {readFileSync} from "node:fs";
-import {heading, openMenu, prayerText} from "../e2e/helpers.js";
+import {heading, openMenu, prayerText, recentPrayers, seedStorage} from "../e2e/helpers.js";
 
 // App Store Connect tells the devices apart by the image size
 const OUTPUT_DIR = "fastlane/screenshots/en-US";
@@ -19,6 +19,9 @@ const SCREENS = [
   {
     name: "home",
     path: "/",
+    preferences: {recentPrayers: recentPrayers([
+      "en/rosaryGlorious", "en/angelus", "en/ourFather", "en/litanySacredHeartJesus", "en/memorare"
+    ])},
     ready: page => expect(heading(page)).toHaveText("Prayer Book")
   },
   {
@@ -49,6 +52,9 @@ for (const [themeIndex, colorScheme] of ["light", "dark"].entries()) {
     for (const [index, screen] of SCREENS.entries()) {
       test(screen.name, async ({page}, testInfo) => {
         const {android} = testInfo.project.metadata;
+        if (screen.preferences) {
+          await seedStorage(page, {preferences: screen.preferences});
+        }
         await page.goto(screen.path);
         if (android) {
           await page.addStyleTag({content: ROBOTO_CSS});

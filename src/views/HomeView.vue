@@ -4,10 +4,16 @@ import IconGlobe from "@/components/icons/IconGlobe.vue";
 import HeaderBackground from "@/components/HeaderBackground.vue";
 import {useI18n} from "vue-i18n";
 import router from "@/router";
-import {Lang} from "@/constants";
+import {Lang, LanguageNames} from "@/constants";
 import {changeLanguage} from "@/utils";
+import {usePrayerDataStore} from "@/stores/prayerDataStore";
+import {computed} from "vue";
 
 const {t, locale} = useI18n({useScope: "global"});
+const prayerDataStore = usePrayerDataStore();
+const recentPrayers = computed(() => prayerDataStore.resolveRecentPrayers());
+
+prayerDataStore.loadRecentPrayerLanguages();
 
 function goToSearch() {
   // Ask the search view to focus its input, so the user can start typing right away
@@ -65,18 +71,43 @@ function goToSearch() {
         </select>
       </div>
     </div>
-    <!--    <div class="my-4">-->
-    <!--      <div class="text-sm mb-1">Continue with:</div>-->
-    <!--      <div class="flex flex-row flex-wrap text-sm">-->
-    <!--        <a href="#"-->
-    <!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
-    <!--          Our Father-->
-    <!--        </a>-->
-    <!--        <a href="#"-->
-    <!--           class="mr-2 my-1 px-3 py-1 rounded-l-full rounded-r-full bg-gray-300 text-gray-700">-->
-    <!--          Hail, Mary-->
-    <!--        </a>-->
-    <!--      </div>-->
-    <!--    </div>-->
+    <section
+      v-if="recentPrayers.length"
+      aria-labelledby="recent-prayers-heading"
+      class="mb-8"
+    >
+      <h2
+        id="recent-prayers-heading"
+        class="mb-3 text-xs font-bold uppercase tracking-wide text-center text-neutral-500 dark:text-neutral-400"
+      >
+        {{ t("home.recent") }}
+      </h2>
+      <!-- A pill is at most half a row wide minus half the gap, so two always fit on a row
+           and the five recent prayers take at most three rows -->
+      <div class="flex flex-wrap justify-center gap-2">
+        <RouterLink
+          v-for="recent in recentPrayers"
+          :key="recent.prayerId"
+          :to="{name: 'view-prayer', params: {lang: recent.lang, prayerId: recent.prayerId}}"
+          class="flex items-center gap-2 max-w-[calc(50%-0.25rem)] min-h-9 px-4 rounded-full bg-white shadow-[0_0_10px_rgba(0,0,0,0.15)]
+                 text-gray-700 active:bg-sky-50 dark:bg-neutral-700 dark:text-gray-100 dark:active:bg-neutral-600"
+        >
+          <span
+            class="truncate"
+            :lang="recent.lang === 'custom' ? undefined : recent.lang"
+          >
+            {{ recent.title }}
+          </span>
+          <!-- Prayers opened in another language than the app's are marked with its code -->
+          <span
+            v-if="recent.lang !== 'custom' && recent.lang !== locale"
+            class="text-xs font-bold uppercase text-sky-600 dark:text-sky-400"
+            :title="LanguageNames[recent.lang]"
+          >
+            {{ recent.lang }}
+          </span>
+        </RouterLink>
+      </div>
+    </section>
   </div>
 </template>
