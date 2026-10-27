@@ -61,7 +61,8 @@ jobs:
         id: version
         run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
-      - name: Build signed APK and AAB
+      # The AAB is signed with the Google Play upload key, the APK for Codeberg with a separate key.
+      - name: Build signed AAB
         working-directory: android
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -71,7 +72,20 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
           echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$ANDROID_KEYSTORE_PATH"
-          ./gradlew assembleRelease bundleRelease
+          ./gradlew bundleRelease
+          rm "$ANDROID_KEYSTORE_PATH"
+
+      - name: Build signed APK
+        working-directory: android
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.APK_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/apk.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.APK_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.APK_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.APK_KEY_PASSWORD }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$ANDROID_KEYSTORE_PATH"
+          ./gradlew assembleRelease
           rm "$ANDROID_KEYSTORE_PATH"
 
       - name: Collect outputs
