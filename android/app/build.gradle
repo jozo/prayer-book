@@ -18,8 +18,8 @@ android {
         applicationId "io.jozo.prayerbook"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 26
-        versionName "0.13.0"
+        versionCode 27
+        versionName "0.14.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -45,6 +45,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    // F-Droid rejects the dependency metadata block, which only Google can read. Google Play gets it from the AAB.
+    dependenciesInfo {
+        includeInApk = false
     }
 }
 

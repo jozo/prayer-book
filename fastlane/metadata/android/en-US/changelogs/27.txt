@@ -1,0 +1,14 @@
+### Added
+- Add prayer text size setting
+- Add changelog page to settings
+- Add recent prayers to the home screen
+- Add clearing recent prayers to settings
+
+### Changed
+- Redesign settings page
+- Redesign store screenshots
+
+### Fixed
+- Auto theme no longer switches to light after restarting the app
+- Theme setting shows the selected theme
+- Remove dependency metadata from the APK, which F-Droid rejects
